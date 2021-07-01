@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">HauiZone</string>
+    <string name="navigation_home">Trang chủ</string>
+    <string name="navigation_report">Phản ánh</string>
+    <string name="navigaion_qr">Quét QR</string>
+    <string name="navigation_notifi">Thông báo</string>
+    <string name="navigation_account">Tài Khoản</string>
+    <string name="descript_app">BAN CHỈ ĐẠO QUỐC GIA PHÒNG CHỐNG DỊCH BỆNH COVID - 19</string>
+    <string name="statistical_number">SỐ LIỆU THỐNG KÊ</string>
+    <string name="show_detail"><u>Xem chi tiết</u></string>
+    <string name="cases_number">Số ca</string>
+    <string name="death_number">Tử vong</string>
+    <string name="recoverd_number">Bình phục</string>
+    <string name="title_vietnam">Việt Nam</string>
+    <string name="title_world">Thế Giới</string>
+    <string name="title_update_date">Cập nhật 00:00 , </string>
+    <string name="entry_declaration">Khai báo y tế nhập cảnh</string>
+    <string name="inland">Khai báo y tế nội địa</string>
+    <string name="declaration_nstructions">Hướng dẫn phòng chống dịch</string>
+    <string name="map_warning">Bản đồ khuyến cáo</string>
+    <string name="open_map"><u>Mở rộng</u></string>
+    <string name="error_network">Lỗi mạng vui lòng thử lại !!!</string>
+</resources>
