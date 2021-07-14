@@ -12,20 +12,13 @@
             android:layout_height="match_parent"
             android:background="@color/white">
 
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </ScrollView>
-
-            <TextView
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_centerHorizontal="true"
                 android:background="#C8085393">
 
-            </TextView>
+            </ImageView>
 
             <ImageView
                 android:id="@+id/logo"
@@ -94,7 +87,7 @@
             <LinearLayout
                 android:id="@+id/linearVN"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/line1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
@@ -131,7 +124,7 @@
                 <LinearLayout
                     android:id="@+id/linear_death"
                     android:layout_width="0dp"
-                    android:layout_height="60dp"
+                    android:layout_height="match_parent"
                     android:layout_below="@id/line1"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
@@ -161,7 +154,7 @@
                 <LinearLayout
                     android:id="@+id/linear_recorved"
                     android:layout_width="0dp"
-                    android:layout_height="60dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/btn_recover_people"
                     android:orientation="vertical">
@@ -232,7 +225,7 @@
             <LinearLayout
                 android:id="@+id/linearWorld"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/line2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
@@ -261,7 +254,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#FF9900"
-                        android:textSize="16dp"
+                        android:textSize="14dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -291,7 +284,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#FD0000"
-                        android:textSize="16dp"
+                        android:textSize="14dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -320,8 +313,8 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#009e0f"
-                        android:textSize="16dp"
-                        android:textStyle="bold"></TextView>
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -351,7 +344,7 @@
             <LinearLayout
                 android:id="@+id/linearbtn"
                 android:layout_width="match_parent"
-                android:layout_height="115dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/tvUpdateDay"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
@@ -364,6 +357,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_nhapcanh"
                     android:drawableTop="@drawable/ic_baseline_airplanemode_active_24"
+                    android:gravity="center_horizontal"
                     android:text="@string/entry_declaration"
                     android:textColor="@color/white"
                     android:textSize="14dp"
@@ -378,6 +372,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_noi_dia"
                     android:drawableTop="@drawable/ic_baseline_train_24"
+                    android:gravity="center_horizontal"
                     android:text="@string/inland"
                     android:textColor="@color/white"
                     android:textSize="14dp"
@@ -390,6 +385,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_declare_instruction"
                     android:drawableTop="@drawable/ic_baseline_class_24"
+                    android:gravity="center_horizontal"
                     android:text="@string/declaration_nstructions"
                     android:textColor="@color/white"
                     android:textSize="14dp"
