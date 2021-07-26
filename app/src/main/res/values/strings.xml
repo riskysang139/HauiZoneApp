@@ -20,4 +20,23 @@
     <string name="map_warning">Bản đồ khuyến cáo</string>
     <string name="open_map"><u>Mở rộng</u></string>
     <string name="error_network">Lỗi mạng vui lòng thử lại !!!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Report Screen   -->
+    <string name="report_commit">Tôi cam kết các thông tin khai báo là đúng sự thật và đồng ý chia sẻ vị trí để cơ quan chức năng có thể hỗ trợ tốt nhất</string>
+    <string name="report_warning">Khuyến cáo: Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý hình sự</string>
+    <string name="report_title">PHẢN ÁNH</string>
+    <string name="report_TimeDetected">Thời gian phát hiện</string>
+    <string name="report_province">Tỉnh thành</string>
+    <string name="report_district">Quận / Huyện</string>
+    <string name="report_ward">Phường / Xã</string>
+    <string name="report_street">Số nhà , đường</string>
+    <string name="required">(*)</string>
+    <string name="report_content">Nội dung phản ánh</string>
+    <string name="report_option_1">Có trường hợp nghi mắc bệnh</string>
+    <string name="report_option_2">Có trường hợp từ vùng dịch về</string>
+    <string name="report_option_3">Có trường hợp tiếp xúc với người đi từ vùng dịch về</string>
+    <string name="report_option_4">Có trường hợp tiếp xúc với trường hợp nghi mắc bệnh</string>
+    <string name="report_other_report">Nội dung phản ánh khác</string>
+    <string name="report_submit">GỬI THÔNG TIN</string>
 </resources>
