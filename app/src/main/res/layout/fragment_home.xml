@@ -38,7 +38,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="@string/statistical_number"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold">
 
             </TextView>
@@ -69,7 +69,7 @@
                 android:layout_toRightOf="@id/logoVN"
                 android:text="@string/title_vietnam"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_marginRight="20dp"
                 android:text="@string/show_detail"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textStyle="normal" />
 
             <LinearLayout
@@ -108,7 +108,7 @@
                         android:gravity="center"
                         android:text="@string/cases_number"
                         android:textColor="@color/black"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/number_cases"
@@ -117,7 +117,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#FF9900"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -138,7 +138,7 @@
                         android:gravity="center"
                         android:text="@string/death_number"
                         android:textColor="@color/black"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/number_death"
@@ -147,7 +147,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#FD0000"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -165,7 +165,7 @@
                         android:gravity="center"
                         android:text="@string/recoverd_number"
                         android:textColor="@color/black"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/number_recorved"
@@ -174,7 +174,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#009e0f"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -207,7 +207,7 @@
                 android:layout_toRightOf="@id/logoVN"
                 android:text="@string/title_world"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -219,7 +219,7 @@
                 android:layout_marginRight="20dp"
                 android:text="@string/show_detail"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textStyle="normal" />
 
             <LinearLayout
@@ -245,7 +245,7 @@
                         android:gravity="center"
                         android:text="@string/cases_number"
                         android:textColor="@color/black"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/number_cases_world"
@@ -254,7 +254,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#FF9900"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -275,7 +275,7 @@
                         android:gravity="center"
                         android:text="@string/death_number"
                         android:textColor="@color/black"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/number_death_world"
@@ -284,7 +284,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#FD0000"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -302,7 +302,7 @@
                         android:gravity="center"
                         android:text="@string/recoverd_number"
                         android:textColor="@color/black"
-                        android:textSize="14dp">
+                        android:textSize="14sp">
 
                     </TextView>
 
@@ -313,7 +313,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="#009e0f"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -327,7 +327,7 @@
                 android:layout_marginTop="2dp"
                 android:text="@string/title_update_date"
                 android:textColor="@color/black"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvUpdateDay"
@@ -360,7 +360,7 @@
                     android:gravity="center_horizontal"
                     android:text="@string/entry_declaration"
                     android:textColor="@color/white"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Button
@@ -375,7 +375,7 @@
                     android:gravity="center_horizontal"
                     android:text="@string/inland"
                     android:textColor="@color/white"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Button
@@ -388,7 +388,7 @@
                     android:gravity="center_horizontal"
                     android:text="@string/declaration_nstructions"
                     android:textColor="@color/white"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -400,7 +400,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/map_warning"
                 android:textColor="#2b78e4"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -408,12 +408,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linearbtn"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
                 android:text="@string/open_map"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textStyle="normal" />
 
             <WebView

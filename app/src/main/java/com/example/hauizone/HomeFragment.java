@@ -30,9 +30,9 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
-    private String mapCovid = "https://covidmaps.hanoi.gov.vn/";
-    private String detailVNlink = "https://ncovi.vnpt.vn/views/ncovi_detail.html";
-    private String detailWorldlink = "https://ncovi.vnpt.vn/views/ncovi_detail.html";
+    private final String mapCovid = "https://covidmaps.hanoi.gov.vn/";
+    private final String detailVNlink = "https://ncovi.vnpt.vn/views/ncovi_detail.html";
+    private final String detailWorldlink = "https://ncovi.vnpt.vn/views/ncovi_detail.html";
 
     @Nullable
     @Override
@@ -75,10 +75,10 @@ public class HomeFragment extends Fragment {
 
     public void setDate() {
         Calendar calendar = Calendar.getInstance();
-        int thisMonth = calendar.get(Calendar.MONTH);
-        int thisYear = calendar.get(Calendar.YEAR);
         int thisDate = calendar.get(Calendar.DATE);
-        binding.tvUpdateDay.setText(String.valueOf(thisDate) + "/" + String.valueOf(thisMonth) + "/" + String.valueOf(thisYear));
+        int thisMonth = calendar.get(Calendar.MONTH)+1;
+        int thisYear = calendar.get(Calendar.YEAR);
+        binding.tvUpdateDay.setText(thisDate + "/" + thisMonth + "/" + thisYear);
     }
 
     private void callJsonApiWorl() {
@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
                         List<Covid19VN> covid19VNList = response.body();
                         if (covid19VNList != null) {
                             for (Covid19VN covid19VN : covid19VNList) {
-                                if (covid19VN.getCountry().compareTo("Vietnam") == 0) {
+                                if (covid19VN.getCountry().equals("Vietnam")) {
                                     binding.numberCases.setText(covid19VN.getCases());
                                     binding.numberDeath.setText(covid19VN.getDeaths());
                                     binding.numberRecorved.setText(covid19VN.getRecovered());
