@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.Intent;
@@ -12,20 +14,15 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.example.hauizone.databinding.ActivityMainBinding;
-import com.example.hauizone.databinding.FragmentHomeBinding;
+import com.example.hauizone.model.Notification;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Calendar;
-
-import javax.security.auth.callback.Callback;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
 
     }
 
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new QrFragment()).commit();
                         break;
                     case R.id.notification:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new InfoFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new NotificationFragment()).commit();
                         break;
                     case R.id.account:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new AccountFragment()).commit();
@@ -105,4 +101,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(callIntent);
         }
     }
+
+
 }
