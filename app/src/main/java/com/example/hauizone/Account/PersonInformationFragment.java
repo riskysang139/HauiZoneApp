@@ -1,4 +1,4 @@
-package com.example.hauizone;
+package com.example.hauizone.Account;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.DatePicker;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.Account.AccountFragment;
+import com.example.hauizone.MainActivity;
+import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentPersonInformationBinding;
 
 import java.util.ArrayList;

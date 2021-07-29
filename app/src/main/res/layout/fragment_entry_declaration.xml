@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
@@ -9,363 +8,509 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/main_color"
-                android:gravity="center"
-                android:text="@string/report_title"
-                android:textColor="#F82828"
-                android:textSize="20sp"
-                android:textStyle="bold">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/txtWarning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtTitle"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/report_warning"
-                android:textColor="#E30E2E">
-
-            </TextView>
-
-            <LinearLayout
-                android:id="@+id/timeAndAddress"
+            <RelativeLayout
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtWarning"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:background="@color/main_color">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_taiKhoan"
+                    android:layout_width="@dimen/_200sdp"
                     android:layout_height="wrap_content"
-                    android:text="@string/report_TimeDetected"
-                    android:textColor="@color/black"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@string/entry_medical_declaration"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/txtTimeDetect"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_report_screen"
-                    android:inputType="datetime"
-                    android:maxLines="1"
-                    android:textSize="14sp">
-
-                </EditText>
-
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/img_back"
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_province"
-                        android:textColor="@color/black"
-                        android:textStyle="bold">
-
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/required"
-                        android:textColor="#F00"
-                        android:textStyle="bold">
-
-                    </TextView>
-                </LinearLayout>
-
-                <AutoCompleteTextView
-                    android:id="@+id/txtProvince"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_report_screen"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textSize="14sp">
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
-                </AutoCompleteTextView>
+            </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_district"
-                        android:textColor="@color/black"
-                        android:textStyle="bold">
-
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/required"
-                        android:textColor="#F00"
-                        android:textStyle="bold">
-
-                    </TextView>
-                </LinearLayout>
-
-                <AutoCompleteTextView
-                    android:id="@+id/txtDistrict"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_report_screen"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textSize="14sp">
-
-                </AutoCompleteTextView>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_ward"
-                        android:textColor="@color/black"
-                        android:textStyle="bold">
-
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/required"
-                        android:textColor="#F00"
-                        android:textStyle="bold">
-
-                    </TextView>
-                </LinearLayout>
-
-                <AutoCompleteTextView
-                    android:id="@+id/txtWards"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_report_screen"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textSize="14sp">
-
-                </AutoCompleteTextView>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_street"
-                        android:textColor="@color/black"
-                        android:textStyle="bold">
-
-                    </TextView>
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/txtStreet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_report_screen"
-                    android:inputType="text"
-                    android:maxLines="2"
-                    android:textSize="14sp">
-
-                </EditText>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/reportCase"
+            <TextView
+                android:id="@+id/warning_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/timeAndAddress"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp">
+                android:layout_below="@id/title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/warning_entry_medical_declaration"
+                android:textColor="@color/black"
+                android:textSize="16sp"></TextView>
+
+            <TextView
+                android:id="@+id/warning_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/warning_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/warning_entry_medical_declaration1"
+                android:textColor="#F44336"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/relavegate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/warning_text1"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gate"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/report_content"
-                    android:textColor="@color/black"
-                    android:textStyle="bold">
+                    android:layout_toRightOf="@id/title1"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
 
-                </TextView>
+                <AutoCompleteTextView
+                    android:id="@+id/txt_gate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title1"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_gate"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </CheckBox>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_option_1">
-
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </CheckBox>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_option_2">
-
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </CheckBox>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_option_3">
-
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </CheckBox>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_option_4">
-
-                    </TextView>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:id="@+id/otherReport"
+            <RelativeLayout
+                android:id="@+id/relave_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/reportCase"
-                android:orientation="vertical"
-                android:paddingHorizontal="10dp">
+                android:layout_below="@id/relavegate"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_name"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/report_other_report"
-                    android:textColor="@color/black"
-                    android:textStyle="bold">
+                    android:layout_toRightOf="@id/title12"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
 
-                </TextView>
-
-                <EditText
-                    style="@style/Widget.AppCompat.EditText"
+                <AutoCompleteTextView
+                    android:id="@+id/txt_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/title12"
                     android:background="@drawable/edittext_report_screen"
-                    android:inputType="textMultiLine"
-                    android:maxLines="3"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
-                    android:scrollbars="vertical"
-                    android:textSize="14sp">
+                    android:hint="@string/get_name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
 
-                </EditText>
-            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/relave_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_name"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
 
-            <LinearLayout
-                android:id="@+id/commitReport"
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_date"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/title2"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_date_of_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title2"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_date_of_birth"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/title3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/otherReport"
-                android:paddingRight="10dp"
+                android:layout_below="@id/relave_date_of_birth"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="10dp">
+                android:text="@string/account_sex"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-                <CheckBox
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_date_of_birth"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/title3"
+                android:text="@string/required"
+                android:textColor="#F00"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rg_gioiTinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title3"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_nam"
                     android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Nam" />
 
-                </CheckBox>
+                <RadioButton
+                    android:id="@+id/rb_nu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:text="Nữ" />
+            </RadioGroup>
+
+            <RelativeLayout
+                android:id="@+id/relave_nationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rg_gioiTinh"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nationality"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="top"
-                    android:text="@string/report_commit"
-                    android:textColor="#f00">
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/title23"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
 
-                </TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/commitReport"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
-                <Button
+                <AutoCompleteTextView
+                    android:id="@+id/txt_nationality"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_report_submit"
-                    android:text="@string/report_submit"
-                    android:textColor="@color/white"
-                    android:textStyle="bold">
+                    android:layout_below="@id/title23"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_nationality"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
 
-                </Button>
-            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/relave_date_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_nationality"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
 
+                <TextView
+                    android:id="@+id/title234"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_entry"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/title234"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_date_entry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title234"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_date_entry"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/title123"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_date_entry"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Địa chỉ liên lạc tại Việt Nam "
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/relave_province_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title123"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_province"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/title24"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_province_entry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title24"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_province"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relave_distric_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_province_entry"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title243"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_district"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/title243"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_district_entry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title243"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_district"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relave_town_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_distric_entry"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title2435"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_ward"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/title2435"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_town_entry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title2435"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_town"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relave_address_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_town_entry"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title24351"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_street"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_address_entry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title24351"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_street"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relave_numberphone_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_address_entry"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/title6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_phone_number"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/title6"
+                    android:text="@string/required"
+                    android:textColor="#F00"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_number_phone_entry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title6"
+                    android:background="@drawable/edittext_report_screen"
+                    android:hint="@string/get_numberphone"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_warning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relave_numberphone_entry"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/warning123"
+                android:textColor="#F00"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/send_entry_declaration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_warning"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_report_submit"
+                android:text="@string/report_submit"
+                android:textColor="@color/white"
+                android:textStyle="bold">
+
+            </Button>
         </RelativeLayout>
+
     </ScrollView>
 </layout>

@@ -1,4 +1,4 @@
-package com.example.hauizone;
+package com.example.hauizone.Account;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.Account.AccountFragment;
+import com.example.hauizone.MainActivity;
+import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentInfoDeclarationBinding;
 
 public class InfoDeclarationFragment extends Fragment {

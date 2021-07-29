@@ -40,8 +40,8 @@
     <string name="report_other_report">Nội dung phản ánh khác</string>
     <string name="report_submit">GỬI THÔNG TIN</string>
     <string name="disease_tutorial">Hướng Dẫn Phòng Chống Dịch</string>
-<!--    Account-->
-<!--doi english sau-->
+    <!--    Account-->
+    <!--doi english sau-->
 
     <string name="account">TÀI KHOẢN</string>
     <string name="account_province">Tỉnh thành</string>
@@ -64,4 +64,29 @@
     <string name="account_hauifanpage">HAUI FANPAGE</string>
     <string name="account_q_and_a">GỬI HỎI ĐÁP</string>
     <string name="account_terms_of_use">ĐIỀU KHOẢN SỬ SỤNG</string>
+
+
+    <string name="entry_medical_declaration">TỜ KHAI Y TẾ ĐỐI VỚI NGƯỜI NHẬP CẢNH</string>
+    <string name="warning_entry_medical_declaration">Chú ý: Đây là tài liệu quan trọng, thông tin của
+Anh/Chị sẽ giúp cơ quan y tế liên lạc khi cần thiết
+để phòng tránh dịch bệnh truyền nhiễm</string>
+    <string name="warning_entry_medical_declaration1">Khuyến cáo: Khai báo thông tin sai là vi phạm pháp
+    luật Việt Nam và có thể xử lý hình sự</string>
+    <string name="gate">Cửa khẩu</string>
+    <string name="nationality">Quốc tịch</string>
+    <string name="date_entry">Ngày nhập cảnh</string>
+    <string name="warning123">Dữ liệu bạn cung cấp hoàn toàn bảo mật và chỉ
+phục vụ cho việc phòng chống dịch, thuộc quản lý của Ban chỉ đạo Quốc gia về phòng chống dịch Covid-19. Khi bạn nhấn nút "Gửi" là bạn đã
+hiểu và đồng ý</string>
+    <string name="get_gate">Nhập tên của khẩu</string>
+    <string name="get_name">Nhập họ tên</string>
+    <string name="get_date_of_birth">Chọn ngày tháng năm sinh</string>
+    <string name="get_nationality">Nhập quốc tịch</string>
+    <string name="get_date_entry">Chọn ngày nhập cảnh</string>
+    <string name="get_province">Nhập tỉnh thành</string>
+    <string name="get_district">Nhập quận / huyện </string>
+    <string name="get_town">Nhập phường xã</string>
+    <string name="get_street">Nhập số nhà , tên đường</string>
+    <string name="get_numberphone">Nhập số điện thoại</string>
+
 </resources>

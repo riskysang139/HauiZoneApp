@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.hauizone.Account.AccountFragment;
 import com.example.hauizone.DiseaseTutorial.DiseaseTutorialFragment;
 import com.example.hauizone.Home.HomeFragment;
 import com.example.hauizone.Notification.NotificationFragment;

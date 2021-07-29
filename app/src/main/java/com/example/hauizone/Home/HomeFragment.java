@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.example.hauizone.DiseaseTutorial.DiseaseTutorialFragment;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentHomeBinding;
+import com.example.hauizone.entryDeclaration.EntryDeclarationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,12 +49,8 @@ public class HomeFragment extends Fragment {
         callJsonApiVN();
         extentDetail();
         updateWhenBack();
-        binding.btnHuongDan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDiseaseTutorialFragment();
-            }
-        });
+        binding.btnHuongDan.setOnClickListener(v -> openDiseaseTutorialFragment());
+        binding.btnNhapCanh.setOnClickListener(v -> openEntryDeclaration());
         return view;
 
     }
@@ -63,12 +60,7 @@ public class HomeFragment extends Fragment {
         webSettings.setJavaScriptEnabled(true);
         binding.webmap.setWebViewClient(new Callback());
         binding.webmap.loadUrl(mapCovid);
-        binding.openMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mapCovid)));
-            }
-        });
+        binding.openMap.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mapCovid))));
     }
 
     private class Callback extends WebViewClient {
@@ -131,12 +123,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void extentDetail() {
-        binding.detailsWorld.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(detailWorldlink)));
-            }
-        });
+        binding.detailsWorld.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(detailWorldlink))));
         binding.detailsVietnam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,5 +156,14 @@ public class HomeFragment extends Fragment {
     private void updateWhenBack() {
         btnFab.show();
         bottomNavigationView.setVisibility(View.VISIBLE);
+    }
+    private void openEntryDeclaration()
+    {
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .addToBackStack(null)
+                .setCustomAnimations(R.anim.enter, R.anim.exit,
+                        R.anim.enter, R.anim.exit).replace(R.id.mainFragment, new EntryDeclarationFragment()).commit();
+        btnFab.hide();
+        bottomNavigationView.setVisibility(View.GONE);
     }
 }
