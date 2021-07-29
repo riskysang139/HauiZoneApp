@@ -51,11 +51,16 @@
     <string name="account_email_address">Email</string>
     <string name="account_district">Quận/Huyện</string>
     <string name="account_ward">Phường/Xã</string>
+    <string name="account_infomation">THÔNG TIN CÁ NHÂN</string>
     <string name="account_street">Số nhà, đường</string>
-    <string name="commit">Tôi cam kết các thông tin khai báo trên là đúng sự thật</string>
-    <string name="medical_declaration">TỜ KHAI Y TẾ</string>
-    <string name="label_notification">Trong vòng 14 ngày, Anh/Chị có đến quốc gia/vùng lãnh thổ nào(có thể đi qua nhiều nơi): </string>
-    <string name="label_symptom">Trong vòng 14 ngày, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu(sốt, ho, khó thở, mệt mỏi, viêm phổi, đau họng không):</string>
-    <string name="contact">Trong vòng 14 ngày Anh/Chị có tiếp xúc với:</string>
-    <string name="update">CẬP NHẬT</string>
+    <string name="account_commit">Tôi cam kết các thông tin khai báo trên là đúng sự thật</string>
+    <string name="account_medical_declaration">TỜ KHAI Y TẾ</string>
+    <string name="account_label_notification">Trong vòng 14 ngày, Anh/Chị có đến quốc gia/vùng lãnh thổ nào(có thể đi qua nhiều nơi): </string>
+    <string name="account_label_symptom">Trong vòng 14 ngày, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu(sốt, ho, khó thở, mệt mỏi, viêm phổi, đau họng không):</string>
+    <string name="account_contact">Trong vòng 14 ngày Anh/Chị có tiếp xúc với:</string>
+    <string name="account_update">CẬP NHẬT</string>
+    <string name="account_logout">ĐĂNG XUẤT</string>
+    <string name="account_hauifanpage">HAUI FANPAGE</string>
+    <string name="account_q_and_a">GỬI HỎI ĐÁP</string>
+    <string name="account_terms_of_use">ĐIỀU KHOẢN SỬ SỤNG</string>
 </resources>

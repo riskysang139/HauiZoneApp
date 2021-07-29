@@ -25,7 +25,7 @@
                 android:background="#085394"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_4sdp"
-                android:text="@string/medical_declaration"
+                android:text="@string/account_medical_declaration"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -652,7 +652,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_notification"
+                        android:text="@string/account_label_notification"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -675,7 +675,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_symptom"
+                        android:text="@string/account_label_symptom"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -698,7 +698,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/contact"
+                        android:text="@string/account_contact"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 

@@ -54,7 +54,7 @@
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_tv_thong_tin"
                     android:padding="@dimen/_6sdp"
-                    android:text="THÔNG TIN CÁ NHÂN"
+                    android:text="@string/account_infomation"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
@@ -410,23 +410,23 @@
                 </LinearLayout>
 
                 // cam ket
-
                 <CheckBox
                     android:id="@+id/cb_camKet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ln_email"
-                    android:text="@string/commit" />
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/account_commit" />
                 //cap nhat
-
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnCapNhat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:layout_below="@+id/cb_camKet"
                     android:layout_marginBottom="@dimen/_16sdp"
                     android:background="@drawable/bg_btn_update"
-                    android:text="@string/update"
+                    android:text="@string/account_update"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp" />
 
