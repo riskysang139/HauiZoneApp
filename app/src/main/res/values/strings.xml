@@ -39,4 +39,6 @@
     <string name="report_option_4">Có trường hợp tiếp xúc với trường hợp nghi mắc bệnh</string>
     <string name="report_other_report">Nội dung phản ánh khác</string>
     <string name="report_submit">GỬI THÔNG TIN</string>
+    <string name="disease_tutorial">Hướng Dẫn Phòng Chống Dịch</string>
+    <string name=""
 </resources>

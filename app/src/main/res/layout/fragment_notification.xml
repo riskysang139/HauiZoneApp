@@ -10,13 +10,12 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/blue"
+            android:layout_height="40dp"
+            android:background="@color/main_color"
             android:gravity="center"
-            android:padding="15px"
             android:text="THÔNG BÁO"
             android:textColor="@color/white"
-            android:textSize="50px"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

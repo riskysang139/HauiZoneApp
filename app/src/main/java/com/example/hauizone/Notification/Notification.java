@@ -1,4 +1,4 @@
-package com.example.hauizone.model;
+package com.example.hauizone.Notification;
 
 public class Notification {
     private String type;

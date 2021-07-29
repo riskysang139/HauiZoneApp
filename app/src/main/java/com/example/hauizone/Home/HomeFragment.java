@@ -1,4 +1,4 @@
-package com.example.hauizone;
+package com.example.hauizone.Home;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -16,16 +16,16 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.DiseaseTutorial.DiseaseTutorialFragment;
+import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentHomeBinding;
-import com.example.hauizone.model.Covid19;
-import com.example.hauizone.model.Covid19VN;
-import com.example.hauizone.model.JsonApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
@@ -33,24 +33,28 @@ public class HomeFragment extends Fragment {
     private final String mapCovid = "https://covidmaps.hanoi.gov.vn/";
     private final String detailVNlink = "https://ncovi.vnpt.vn/views/ncovi_detail.html";
     private final String detailWorldlink = "https://ncovi.vnpt.vn/views/ncovi_detail.html";
-
+    private BottomNavigationView bottomNavigationView;
+    private FloatingActionButton btnFab;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         View view = binding.getRoot();
-        return view;
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
+        widget();
         setDate();
         setMap();
         callJsonApiWorl();
         callJsonApiVN();
         extentDetail();
+        updateWhenBack();
+        binding.btnHuongDan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDiseaseTutorialFragment();
+            }
+        });
+        return view;
+
     }
 
     public void setMap() {
@@ -76,7 +80,7 @@ public class HomeFragment extends Fragment {
     public void setDate() {
         Calendar calendar = Calendar.getInstance();
         int thisDate = calendar.get(Calendar.DATE);
-        int thisMonth = calendar.get(Calendar.MONTH)+1;
+        int thisMonth = calendar.get(Calendar.MONTH) + 1;
         int thisYear = calendar.get(Calendar.YEAR);
         binding.tvUpdateDay.setText(thisDate + "/" + thisMonth + "/" + thisYear);
     }
@@ -144,5 +148,25 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mapCovid)));
             }
         });
+    }
+
+    private void openDiseaseTutorialFragment() {
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .addToBackStack(null)
+                .setCustomAnimations(R.anim.enter, R.anim.exit,
+                        R.anim.enter, R.anim.exit).replace(R.id.mainFragment, new DiseaseTutorialFragment()).commit();
+        btnFab.hide();
+        bottomNavigationView.setVisibility(View.GONE);
+
+    }
+
+    private void widget() {
+        btnFab = getActivity().findViewById(R.id.btnFab);
+        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigation);
+    }
+
+    private void updateWhenBack() {
+        btnFab.show();
+        bottomNavigationView.setVisibility(View.VISIBLE);
     }
 }
