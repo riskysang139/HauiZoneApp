@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:padding="@dimen/_4sdp"
+            android:id="@+id/tv_taiKhoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#085394"
+            android:gravity="center_horizontal"
+            android:text="@string/account"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <ImageButton
+            android:layout_below="@+id/tv_taiKhoan"
+            android:layout_alignParentRight="true"
+            android:id="@+id/img_usa"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_30sdp"
+             />
+
+        <ImageButton
+
+            android:layout_below="@+id/tv_taiKhoan"
+            android:id="@+id/img_vn"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_toLeftOf="@id/img_usa"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_30sdp"
+             />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/thongTinCaNhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:text="THÔNG TIN CÁ NHÂN"
+            android:textSize="16sp"
+            android:paddingLeft="@dimen/_24sdp"
+            android:layout_below="@id/img_vn"
+            android:layout_margin="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:background="#2B78E4"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/toKhaiYTe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_file_copy_24"
+            android:text="TỜ KHAI Y TẾ"
+            android:textSize="16sp"
+            android:paddingLeft="@dimen/_24sdp"
+            android:layout_below="@id/thongTinCaNhan"
+            android:layout_margin="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:background="#2B78E4"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/dieuKhoanSuDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_format_list_bulleted_24"
+            android:text="ĐIỀU KHOẢN SỬ SỤNG"
+            android:textSize="16sp"
+            android:paddingLeft="@dimen/_24sdp"
+            android:layout_below="@id/toKhaiYTe"
+            android:layout_margin="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:background="#2B78E4"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/guiHoiDap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_send_24"
+            android:text="GỬI HỎI ĐÁP"
+            android:textSize="16sp"
+            android:paddingLeft="@dimen/_24sdp"
+            android:layout_below="@id/dieuKhoanSuDung"
+            android:layout_margin="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:background="#2B78E4"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/hauiFanpage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_send_24"
+            android:text="HAUI FANPAGE"
+            android:textSize="16sp"
+            android:paddingLeft="@dimen/_24sdp"
+            android:layout_below="@id/guiHoiDap"
+            android:layout_margin="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:background="#2B78E4"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_login"
+            android:text="ĐĂNG XUẤT"
+            android:textSize="18sp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/_8sdp"
+            android:textColor="@color/white"/>
+
+
+    </RelativeLayout>
+</layout>

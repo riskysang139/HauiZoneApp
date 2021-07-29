@@ -29,6 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
+
     private FragmentHomeBinding binding;
     private final String mapCovid = "https://covidmaps.hanoi.gov.vn/";
     private final String detailVNlink = "https://ncovi.vnpt.vn/views/ncovi_detail.html";

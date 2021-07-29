@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_rcv_declaration"
+    android:padding="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_8sdp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NGUYỄN VĂN A"
+        android:id="@+id/tv_name"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="thời gian tạo mã QR:"
+        android:layout_below="@id/tv_name"
+        android:id="@+id/tv_titleDate"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15:47:15 13/07/2021"
+        android:layout_below="@id/tv_titleDate"
+        android:id="@+id/tv_date"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/img_QRCode"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_date"/>
+
+
+</RelativeLayout>

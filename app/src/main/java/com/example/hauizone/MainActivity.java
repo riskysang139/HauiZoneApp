@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.report:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new ReportFragment()).commit();
-                         break;
+                        break;
                     case R.id.qr_scan:
                         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, new QrFragment()).commit();
                         break;

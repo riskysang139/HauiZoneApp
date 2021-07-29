@@ -39,4 +39,23 @@
     <string name="report_option_4">Có trường hợp tiếp xúc với trường hợp nghi mắc bệnh</string>
     <string name="report_other_report">Nội dung phản ánh khác</string>
     <string name="report_submit">GỬI THÔNG TIN</string>
+<!--    Account-->
+<!--doi english sau-->
+
+    <string name="account">TÀI KHOẢN</string>
+    <string name="account_province">Tỉnh thành</string>
+    <string name="account_name">Họ tên</string>
+    <string name="account_date">Ngày sinh</string>
+    <string name="account_sex">Giới tính</string>
+    <string name="account_phone_number">Số điện thoại</string>
+    <string name="account_email_address">Email</string>
+    <string name="account_district">Quận/Huyện</string>
+    <string name="account_ward">Phường/Xã</string>
+    <string name="account_street">Số nhà, đường</string>
+    <string name="commit">Tôi cam kết các thông tin khai báo trên là đúng sự thật</string>
+    <string name="medical_declaration">TỜ KHAI Y TẾ</string>
+    <string name="label_notification">Trong vòng 14 ngày, Anh/Chị có đến quốc gia/vùng lãnh thổ nào(có thể đi qua nhiều nơi): </string>
+    <string name="label_symptom">Trong vòng 14 ngày, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu(sốt, ho, khó thở, mệt mỏi, viêm phổi, đau họng không):</string>
+    <string name="contact">Trong vòng 14 ngày Anh/Chị có tiếp xúc với:</string>
+    <string name="update">CẬP NHẬT</string>
 </resources>
