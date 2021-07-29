@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.qr_scan:
                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter, R.anim.exit,
-                                R.anim.enter, R.anim.exit).replace(R.id.mainFragment, new DiseaseTutorialFragment()).commit();
+                                R.anim.enter, R.anim.exit).replace(R.id.mainFragment, new QrFragment()).commit();
                         binding.btnFab.hide();
                         break;
                     case R.id.notification:
