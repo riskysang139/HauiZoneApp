@@ -27,9 +27,9 @@
     <string name="report_warning">Khuyến cáo: Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý hình sự</string>
     <string name="report_title">PHẢN ÁNH</string>
     <string name="report_TimeDetected">Thời gian phát hiện</string>
-    <string name="report_province">Tỉnh thành</string>
-    <string name="report_district">Quận / Huyện</string>
-    <string name="report_ward">Phường / Xã</string>
+    <string name="province">Tỉnh thành</string>
+    <string name="district">Quận / Huyện</string>
+    <string name="ward">Phường / Xã</string>
     <string name="report_street">Số nhà , đường</string>
     <string name="required">(*)</string>
     <string name="report_content">Nội dung phản ánh</string>
@@ -39,6 +39,7 @@
     <string name="report_option_4">Có trường hợp tiếp xúc với trường hợp nghi mắc bệnh</string>
     <string name="report_other_report">Nội dung phản ánh khác</string>
     <string name="report_submit">GỬI THÔNG TIN</string>
+<<<<<<< HEAD
     <string name="disease_tutorial">Hướng Dẫn Phòng Chống Dịch</string>
     <!--    Account-->
     <!--doi english sau-->
@@ -89,4 +90,7 @@ hiểu và đồng ý</string>
     <string name="get_street">Nhập số nhà , tên đường</string>
     <string name="get_numberphone">Nhập số điện thoại</string>
 
+=======
+    <string name="btn_back_home">&#60;</string>
+>>>>>>> 79a4263 (khai bao noi dia)
 </resources>
