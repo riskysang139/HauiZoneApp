@@ -1,5 +1,9 @@
 package com.example.hauizone;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DataYourRoute {
     private String name;
     private String address;
@@ -8,7 +12,17 @@ public class DataYourRoute {
     private String day_des;
     private String day_go;
 
+    public DataYourRoute(String name, String address, String address_des, String address_go, Date day_des, Date day_go) {
+        SimpleDateFormat dft =  new SimpleDateFormat("dd/MM/yyyy");
+        this.name = name;
+        this.address = address;
+        this.address_des = address_des;
+        this.address_go = address_go;
+        this.day_des = dft.format(day_des);
+        this.day_go = dft.format(day_go);
+    }
     public DataYourRoute(String name, String address, String address_des, String address_go, String day_des, String day_go) {
+        SimpleDateFormat dft =  new SimpleDateFormat("dd/MM/yyyy");
         this.name = name;
         this.address = address;
         this.address_des = address_des;

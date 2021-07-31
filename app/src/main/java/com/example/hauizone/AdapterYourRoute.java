@@ -17,6 +17,11 @@ import java.util.List;
 public class AdapterYourRoute extends RecyclerView.Adapter<AdapterYourRoute.ViewHolder> {
     Context mContext;
     List<DataYourRoute> dataYourRoutes;
+    OnClickItemYourRoute onClickItemYourRoute;
+
+    public void setOnClickItemYourRoute(OnClickItemYourRoute onClickItemYourRoute) {
+        this.onClickItemYourRoute = onClickItemYourRoute;
+    }
 
     public AdapterYourRoute(Context mContext, List<DataYourRoute> dataYourRoutes) {
         this.mContext = mContext;
@@ -38,8 +43,21 @@ public class AdapterYourRoute extends RecyclerView.Adapter<AdapterYourRoute.View
         DataYourRoute dataYourRoute = dataYourRoutes.get(position);
         if(dataYourRoute != null){
 
-            holder.tvRoute.setText(dataYourRoute.getAddress_des());
+            holder.tvRoute.setText(dataYourRoute.getAddress_go()+" => "+dataYourRoute.getAddress_des());
             holder.tvTime.setText(dataYourRoute.getDay_go() + " => "+dataYourRoute.getDay_des());
+
+            holder.tvRoute.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickItemYourRoute.onData(dataYourRoute,position);
+                }
+            });
+            holder.tvTime.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickItemYourRoute.onData(dataYourRoute,position);
+                }
+            });
         }
     }
 
