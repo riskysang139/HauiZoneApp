@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.example.hauizone.DiseaseTutorial.DiseaseTutorialFragment;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentHomeBinding;
+import com.example.hauizone.domesticDeclaration.DomesticDeclarationFragment;
 import com.example.hauizone.entryDeclaration.EntryDeclarationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
         updateWhenBack();
         binding.btnHuongDan.setOnClickListener(v -> openDiseaseTutorialFragment());
         binding.btnNhapCanh.setOnClickListener(v -> openEntryDeclaration());
+        binding.btnNoiDia.setOnClickListener(v -> openEDomesticDeclaration());
         return view;
 
     }
@@ -163,6 +165,15 @@ public class HomeFragment extends Fragment {
                 .addToBackStack(null)
                 .setCustomAnimations(R.anim.enter, R.anim.exit,
                         R.anim.enter, R.anim.exit).replace(R.id.mainFragment, new EntryDeclarationFragment()).commit();
+        btnFab.hide();
+        bottomNavigationView.setVisibility(View.GONE);
+    }
+    private void openEDomesticDeclaration()
+    {
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .addToBackStack(null)
+                .setCustomAnimations(R.anim.enter, R.anim.exit,
+                        R.anim.enter, R.anim.exit).replace(R.id.mainFragment, new DomesticDeclarationFragment()).commit();
         btnFab.hide();
         bottomNavigationView.setVisibility(View.GONE);
     }
