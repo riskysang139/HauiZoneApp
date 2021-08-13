@@ -73,7 +73,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/report_province"
+                        android:text="@string/province"
                         android:textColor="@color/black"
                         android:textStyle="bold">
 
@@ -108,7 +108,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/report_district"
+                        android:text="@string/district"
                         android:textColor="@color/black"
                         android:textStyle="bold">
 
@@ -143,7 +143,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/report_ward"
+                        android:text="@string/ward"
                         android:textColor="@color/black"
                         android:textStyle="bold">
 

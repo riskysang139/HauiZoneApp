@@ -319,7 +319,7 @@
                     android:id="@+id/title24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/report_province"
+                    android:text="@string/province"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -356,7 +356,7 @@
                     android:id="@+id/title243"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/report_district"
+                    android:text="@string/district"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -393,7 +393,7 @@
                     android:id="@+id/title2435"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/report_ward"
+                    android:text="@string/ward"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
