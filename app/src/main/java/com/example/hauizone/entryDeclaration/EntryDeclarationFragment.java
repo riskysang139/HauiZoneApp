@@ -30,11 +30,17 @@ public class EntryDeclarationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_entry_declaration, container, false);
         View view = binding.getRoot();
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         binding.txtDateOfBirth.setInputType(InputType.TYPE_NULL);
         binding.txtDateEntry.setInputType(InputType.TYPE_NULL);
         binding.txtDateOfBirth.setOnClickListener(v -> showDateDialog());
         binding.txtDateEntry.setOnClickListener(v -> showDateEntryDialog());
-        return view;
+
     }
 
     private void showDateEntryDialog() {

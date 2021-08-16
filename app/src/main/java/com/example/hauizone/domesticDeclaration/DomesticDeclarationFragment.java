@@ -1,6 +1,7 @@
 package com.example.hauizone.domesticDeclaration;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -17,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.Admin.AdminDomesticAndEntry.AdminDomesticAndEntry;
+import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentDomesticDeclarationBinding;
 
@@ -32,20 +35,34 @@ public class DomesticDeclarationFragment extends Fragment {
     int Day = calendar.get(Calendar.DATE);
     ArrayList<String> spinnerVehicles = null;
     ArrayList<String> autoCompleteStartEnd = null;
+    BaseDatabase database;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_domestic_declaration, container, false);
         View view = binding.getRoot();
+        database=BaseDatabase.getInstance(getActivity());
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
             }
         });
+        binding.btnSendDomestic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertDomestic();
+                startActivity(new Intent(getActivity(),AdminDomesticAndEntry.class));
+            }
+        });
         setDatimeDialog();
         setSpinner();
         setAutoCompleteStartEnd();
-        return view;
     }
 
     private void setDatimeDialog() {
@@ -93,5 +110,48 @@ public class DomesticDeclarationFragment extends Fragment {
                 "Lâm đồng", "Long khánh", "Hưng Yên", "Hà Nam"};
         binding.startPoint.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,arr));
         binding.endPoint.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arr));
+    }
+    private void insertDomestic()
+    {
+        String sex="";
+        String txtContactCovid="";
+        String txtKhaiHo="";
+        if(binding.cbKhaiHo.isChecked())
+            txtKhaiHo="Khai hộ";
+        else
+            txtKhaiHo="Không";
+
+        if(binding.rdNam.isChecked())
+            sex="Nam";
+        else
+            sex="Nữ";
+
+        if(binding.cbF0.isChecked())
+            txtContactCovid=" Trường hợp 1 ," + txtContactCovid;
+
+        if(binding.cbNationalityF0.isChecked())
+            txtContactCovid=" Trường hợp 2 ," + txtContactCovid;
+
+        if(binding.cbSymptonF0.isChecked())
+            txtContactCovid=" Trường hợp 3" +txtContactCovid;
+
+        database.insertDomestic(new DomesticDeclaration(
+                txtKhaiHo,
+                binding.spinnerVehicles.getSelectedItem().toString(),
+                binding.startPoint.getText().toString(),
+                binding.endPoint.getText().toString(),
+                binding.txtName.getText().toString(),
+                binding.dateOfBirth.getText().toString(),
+                binding.txtCMND.getText().toString(),
+                sex,
+                binding.txtProvince.getText().toString(),
+                binding.txtDistrict.getText().toString(),
+                binding.txtTown.getText().toString(),
+                binding.txtAddress.getText().toString(),
+                binding.txtNumberhone.getText().toString(),
+                binding.txtSympton.getText().toString(),
+                txtContactCovid,
+                0
+        ));
     }
 }

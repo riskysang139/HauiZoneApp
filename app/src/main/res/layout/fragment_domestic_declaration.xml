@@ -11,30 +11,29 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/main_color">
 
-               <ImageView
-                   android:id="@+id/btn_back"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:padding="10dp"
-                   android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="5"
+                    android:layout_centerInParent="true"
                     android:gravity="center"
                     android:text="TỜ KHAI Y TẾ NỘI ĐỊA"
                     android:textColor="#fff"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,6 +80,7 @@
                 android:paddingRight="10dp">
 
                 <CheckBox
+                    android:id="@+id/cb_khaiHo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -131,13 +131,15 @@
                     android:id="@+id/spinnerVehicles"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen">
 
                 </Spinner>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -162,15 +164,18 @@
                     android:id="@+id/startPoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:completionThreshold="1"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
+                    android:completionThreshold="1"
                     android:textSize="14sp">
 
                 </AutoCompleteTextView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -194,16 +199,20 @@
                 <AutoCompleteTextView
                     android:id="@+id/endPoint"
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content"
-                    android:completionThreshold="1"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
+                    android:completionThreshold="1"
                     android:textSize="14sp">
 
                 </AutoCompleteTextView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -226,7 +235,9 @@
 
                 <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/txt_name"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
                     android:hint="CAO THẾ THẮNG"
                     android:textSize="14sp">
@@ -235,7 +246,9 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -255,20 +268,25 @@
 
                     </TextView>
                 </LinearLayout>
+
                 <EditText
                     android:id="@+id/dateOfBirth"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="datetime"
-                    android:hint="25/12/2000"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
+                    android:hint="25/12/2000"
+                    android:inputType="datetime"
                     android:textSize="14sp">
 
                 </EditText>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -291,8 +309,10 @@
 
                 <EditText
                     android:id="@+id/txtCMND"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen">
 
                 </EditText>
@@ -300,13 +320,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Giới tính">
+                    android:layout_marginTop="5dp"
+                    android:text="Giới tính"
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
 
                 </TextView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <RadioGroup
                         android:layout_width="match_parent"
@@ -314,6 +338,7 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/rd_nam"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="Nam">
@@ -321,16 +346,10 @@
                         </RadioButton>
 
                         <RadioButton
+                            android:id="@+id/rd_nu"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="Nữ">
-
-                        </RadioButton>
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Khác">
 
                         </RadioButton>
                     </RadioGroup>
@@ -339,6 +358,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Địa chỉ liên lạc tại Việt Nam"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -348,7 +368,8 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -371,17 +392,21 @@
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
+                    android:id="@+id/txtProvince"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
-                    android:maxLines="1"
                     android:hint="Hà Nội"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </AutoCompleteTextView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -404,17 +429,21 @@
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
+                    android:id="@+id/txtDistrict"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
-                    android:maxLines="1"
                     android:hint="Ba Đình"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </AutoCompleteTextView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -437,17 +466,21 @@
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
+                    android:id="@+id/txt_town"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
-                    android:maxLines="1"
                     android:hint="Nhân Chính"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </AutoCompleteTextView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -470,17 +503,21 @@
 
                 <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/txtAddress"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
-                    android:maxLines="1"
                     android:hint="số nhà 6"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </EditText>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -502,21 +539,24 @@
                 </LinearLayout>
 
 
-
                 <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/txtNumberhone"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
-                    android:maxLines="1"
-                    android:inputType="phone"
                     android:hint="0123456789"
+                    android:inputType="phone"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </EditText>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -532,33 +572,9 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
-                    android:maxLines="1"
                     android:hint="abc@gmail.com"
-                    android:textSize="14sp">
-
-                </EditText>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Trong vòng 14 ngày, Anh/Chị có đến quốc gia/ vùng lãnh thổ nào (Có thể đi qua nhiều nơi)"
-                        android:textColor="@color/black"
-                        android:textSize="14sp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_report_screen"
                     android:maxLines="1"
                     android:textSize="14sp">
 
@@ -567,6 +583,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -582,8 +600,10 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/txtSympton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
                     android:maxLines="1"
                     android:textSize="14sp">
@@ -615,43 +635,49 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
-                        android:text="Người bệnh hoặc nghi ngờ,
-mắc bệnh COVID-19"
-                        android:textColor="@color/black"/>
+                        android:text="Người bệnh hoặc nghi ngờ, mắc bệnh COVID-19"
+                        android:textColor="@color/black" />
 
                     <CheckBox
+                        android:id="@+id/cb_f0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
-                        android:text="Người tư nước có bệnh
+                        android:text="Người từ nước có bệnh
 COVID 19"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
                     <CheckBox
+                        android:id="@+id/cb_nationality_f0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -663,12 +689,14 @@ khó thở; viêm phổi)"
                         android:textColor="@color/black">/</TextView>
 
                     <CheckBox
+                        android:id="@+id/cb_sympton_f0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
@@ -698,6 +726,7 @@ khó thở; viêm phổi)"
                     android:paddingRight="10dp">
 
                     <Button
+                        android:id="@+id/btn_send_domestic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/btn_report_submit"

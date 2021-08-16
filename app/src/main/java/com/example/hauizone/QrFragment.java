@@ -16,7 +16,7 @@ public class QrFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        binding= DataBindingUtil.inflate(inflater,R.layout.fragment_entry_declaration,container,false);
+        binding= DataBindingUtil.inflate(inflater,R.layout.fragment_home,container,false);
         View view=binding.getRoot();
         return view;
 

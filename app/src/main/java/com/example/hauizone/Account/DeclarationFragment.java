@@ -15,18 +15,19 @@ import com.example.hauizone.databinding.FragmentDeclarationBinding;
 
 public class DeclarationFragment extends Fragment {
 
-FragmentDeclarationBinding binding;
+    FragmentDeclarationBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_declaration,container,false);
-        View view=binding.getRoot();
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_declaration, container, false);
+        View view = binding.getRoot();
         setEvents();
         return view;
     }
 
     private void setEvents() {
-        binding.imgBack.setOnClickListener(v->setClickBack());
+        binding.imgBack.setOnClickListener(v -> setClickBack());
     }
 
     private void setClickBack() {
