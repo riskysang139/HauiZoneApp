@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/report_TimeDetected"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -64,6 +65,72 @@
                     android:textSize="14sp">
 
                 </EditText>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Họ tên"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="#F00"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/txtNameReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+                </EditText>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số điện thoại"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="#F00"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/txtSdtReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+                </EditText>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -75,6 +142,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/province"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -110,6 +178,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/district"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -145,6 +214,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ward"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -180,6 +250,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/report_street"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -209,8 +280,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/report_content"
+                    android:text="@string/report_type_content"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -303,6 +375,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/report_other_report"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
                     android:textStyle="bold">
 
                 </TextView>

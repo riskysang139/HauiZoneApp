@@ -32,7 +32,7 @@
     <string name="ward">Phường / Xã</string>
     <string name="report_street">Số nhà , đường</string>
     <string name="required">(*)</string>
-    <string name="report_content">Nội dung phản ánh</string>
+    <string name="report_type_content">Loại nội dung phản ánh</string>
     <string name="report_option_1">Có trường hợp nghi mắc bệnh</string>
     <string name="report_option_2">Có trường hợp từ vùng dịch về</string>
     <string name="report_option_3">Có trường hợp tiếp xúc với người đi từ vùng dịch về</string>
