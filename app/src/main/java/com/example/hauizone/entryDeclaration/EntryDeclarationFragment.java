@@ -94,12 +94,13 @@ public class EntryDeclarationFragment extends Fragment {
         String arrGate[] = { "Móng Cái", "Hữu Nghị"," La Lay"," Bờ Y", "Gánh Đa",
               "  Lệ Thanh"," Hoa Lư"," Xa Mát"," Mộc Bài", "Dinh Bà"," Thường Phước"," Vĩnh Xương"," Tịnh Biên"," Hà Tiên"," Bình Hiệp"};
 
+        String arrCountry[] = { "Úc" ,"New Zealand" ,"Singapore"," Việt Nam"," Nhật Bản"," Hong Kong"," Hàn Quốc"};
+
         binding.txtGate.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,arrGate));
         binding.txtProvinceEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arr));
         binding.txtDistrictEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrDistrict));
         binding.txtTownEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrTown));
 
-
-
+        binding.txtNationality.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrCountry));
     }
 }

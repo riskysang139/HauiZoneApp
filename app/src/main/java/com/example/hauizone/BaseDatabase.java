@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class BaseDatabase extends SQLiteOpenHelper {
     private static final String TAG = "MyDatabase";
     private static final String DATABASE_NAME = "MY_DB";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
 
     // same column in table domestic and entry

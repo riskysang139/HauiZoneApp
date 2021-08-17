@@ -402,8 +402,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
+                    android:completionThreshold="1"
                     android:hint="Hà Nội"
-
                     android:maxLines="1"
                     android:textSize="14sp">
 
@@ -439,6 +439,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
+                    android:completionThreshold="1"
                     android:hint="Ba Đình"
                     android:maxLines="1"
                     android:textSize="14sp">
@@ -476,6 +477,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edittext_report_screen"
+                    android:completionThreshold="1"
                     android:hint="Nhân Chính"
                     android:maxLines="1"
                     android:textSize="14sp">
@@ -618,8 +620,8 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
