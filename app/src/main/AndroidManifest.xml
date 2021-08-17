@@ -24,6 +24,9 @@
         <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry">
 
         </activity>
+        <activity android:name=".Admin.ReportManage.AdminReportManage">
+
+        </activity>
     </application>
 
 </manifest>

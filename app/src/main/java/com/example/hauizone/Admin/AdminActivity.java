@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.hauizone.Admin.AdminDomesticAndEntry.AdminDomesticAndEntry;
+import com.example.hauizone.Admin.ReportManage.AdminReportManage;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityAdminBinding;
 
@@ -21,6 +22,12 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminActivity.this, AdminDomesticAndEntry.class));
+            }
+        });
+        binding.btnManageReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminActivity.this, AdminReportManage.class));
             }
         });
     }
