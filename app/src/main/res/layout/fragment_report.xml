@@ -50,9 +50,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:text="@string/report_TimeDetected"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -65,18 +65,17 @@
                     android:textSize="14sp">
 
                 </EditText>
-
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:text="Họ tên"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -90,7 +89,6 @@
 
                     </TextView>
                 </LinearLayout>
-
                 <EditText
                     android:id="@+id/txtNameReport"
                     android:layout_width="match_parent"
@@ -98,19 +96,19 @@
                     android:background="@drawable/edittext_report_screen"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:textSize="14sp"></EditText>
-
+                    android:textSize="14sp">
+                </EditText>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:text="Số điện thoại"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -124,7 +122,6 @@
 
                     </TextView>
                 </LinearLayout>
-
                 <EditText
                     android:id="@+id/txtSdtReport"
                     android:layout_width="match_parent"
@@ -132,19 +129,20 @@
                     android:background="@drawable/edittext_report_screen"
                     android:inputType="phone"
                     android:maxLines="1"
-                    android:textSize="14sp"></EditText>
+                    android:textSize="14sp">
+                </EditText>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:text="@string/province"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -171,16 +169,16 @@
                 </AutoCompleteTextView>
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:text="@string/district"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -208,15 +206,15 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:text="@string/ward"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -244,15 +242,15 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:text="@string/report_street"
                         android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -275,45 +273,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/timeAndAddress"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
+                android:layout_marginTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingLeft="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:text="@string/report_type_content"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
                     android:textStyle="bold">
 
                 </TextView>
-
                 <Spinner
-                    android:id="@+id/spinnerReportType"
+                    android:id="@+id/typeReport"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp">
 
                 </Spinner>
 
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:id="@+id/otherReport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/reportCase"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:paddingHorizontal="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:text="@string/report_other_report"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -321,9 +319,10 @@
                 <EditText
                     style="@style/Widget.AppCompat.EditText"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/edittext_report_screen"
                     android:inputType="textMultiLine"
+                    android:maxLines="3"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:scrollbars="vertical"
                     android:textSize="14sp">
