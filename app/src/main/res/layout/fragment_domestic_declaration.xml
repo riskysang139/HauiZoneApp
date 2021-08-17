@@ -130,7 +130,7 @@
                 <Spinner
                     android:id="@+id/spinnerVehicles"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen">
 
@@ -139,7 +139,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -167,6 +167,8 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
                     android:completionThreshold="1"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </AutoCompleteTextView>
@@ -175,7 +177,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -199,11 +201,12 @@
                 <AutoCompleteTextView
                     android:id="@+id/endPoint"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
                     android:completionThreshold="1"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </AutoCompleteTextView>
@@ -212,7 +215,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -234,12 +237,14 @@
                 </LinearLayout>
 
                 <EditText
-                    android:layout_width="match_parent"
                     android:id="@+id/txt_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
                     android:hint="CAO THẾ THẮNG"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </EditText>
@@ -248,7 +253,7 @@
                     android:layout_width="wrap_content"
 
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -271,13 +276,13 @@
 
                 <EditText
                     android:id="@+id/dateOfBirth"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
                     android:hint="25/12/2000"
                     android:inputType="datetime"
+                    android:maxLines="1"
                     android:textSize="14sp">
 
                 </EditText>
@@ -286,7 +291,7 @@
                     android:layout_width="wrap_content"
 
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -309,18 +314,19 @@
 
                 <EditText
                     android:id="@+id/txtCMND"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/edittext_report_screen">
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="text"
+                    android:maxLines="1">
 
                 </EditText>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:text="Giới tính"
                     android:textColor="@color/black"
                     android:textSize="14sp">
@@ -391,12 +397,13 @@
                 </LinearLayout>
 
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
                     android:id="@+id/txtProvince"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
                     android:hint="Hà Nội"
+
                     android:maxLines="1"
                     android:textSize="14sp">
 
@@ -404,9 +411,8 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -428,8 +434,8 @@
                 </LinearLayout>
 
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
                     android:id="@+id/txtDistrict"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
@@ -443,7 +449,7 @@
                     android:layout_width="wrap_content"
 
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -465,10 +471,10 @@
                 </LinearLayout>
 
                 <AutoCompleteTextView
-                    android:layout_width="match_parent"
                     android:id="@+id/txt_town"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/edittext_report_screen"
                     android:hint="Nhân Chính"
                     android:maxLines="1"
@@ -502,8 +508,8 @@
                 </LinearLayout>
 
                 <EditText
-                    android:layout_width="match_parent"
                     android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
@@ -517,7 +523,7 @@
                     android:layout_width="wrap_content"
 
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -540,8 +546,8 @@
 
 
                 <EditText
-                    android:layout_width="match_parent"
                     android:id="@+id/txtNumberhone"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/edittext_report_screen"
@@ -584,7 +590,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -603,7 +609,7 @@
                     android:id="@+id/txtSympton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/edittext_report_screen"
                     android:maxLines="1"
                     android:textSize="14sp">
@@ -612,6 +618,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content">
 
                     <TextView

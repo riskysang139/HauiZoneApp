@@ -34,7 +34,6 @@ public class DomesticDeclarationFragment extends Fragment {
     int Month = calendar.get(Calendar.MONTH);
     int Day = calendar.get(Calendar.DATE);
     ArrayList<String> spinnerVehicles = null;
-    ArrayList<String> autoCompleteStartEnd = null;
     BaseDatabase database;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -100,16 +99,22 @@ public class DomesticDeclarationFragment extends Fragment {
         binding.spinnerVehicles.setAdapter(spinnerVehicleAdapter);
     }
     private void setAutoCompleteStartEnd(){
-        autoCompleteStartEnd = new ArrayList<>();
-        autoCompleteStartEnd.add("Hà Nội");
-        autoCompleteStartEnd.add("Vĩnh Phúc");
-        autoCompleteStartEnd.add("Đà Nẵng");
-        autoCompleteStartEnd.add("Bắc Giang");
         String arr[] = {"Hà Nội", "Huế", "Sài gòn",
                 "Thái Bình", "Bắc Giang", "Nam Định",
                 "Lâm đồng", "Long khánh", "Hưng Yên", "Hà Nam"};
+
+        String arrDistrict[]= {"Hoàn Kiếm"," Đống Đa"," Ba Đình",
+                "Hai Bà Trưng"," Hoàng Mai"," Thanh Xuân", "Long Biên"," Nam Từ Liêm", "Bắc Từ Liêm", "Tây Hồ"," Cầu Giấy"," Hà Đông"
+                ,"Thành phố Thái Bình","Đông Hưng", "Huyện Hưng Hà" ,"Huyện Kiến Xương","Huyện Quỳnh Phụ"};
+
+        String arrTown[]= {
+                "Bắc Sơn", "Hưng Hà", "Canh Tân","Chí Hòa"," Hưng Hà","Hưng Nhân"," Hàng Bông",
+                "Hàng Buồm", "Hàng Đào"," Hàng Gai", "Hàng Mã"," Hàng Trống", "Lý Thái Tổ"," Phan Chu Trinh"," Phúc Tân"," Trần Hưng Đạo", "Tràng Tiền"};
         binding.startPoint.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,arr));
         binding.endPoint.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arr));
+        binding.txtProvince.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arr));
+        binding.txtDistrict.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrDistrict));
+        binding.txtTown.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrTown));
     }
     private void insertDomestic()
     {
