@@ -1,4 +1,4 @@
-package com.example.hauizone;
+package com.example.hauizone.Report;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentReportBinding;
 
 import java.text.SimpleDateFormat;
