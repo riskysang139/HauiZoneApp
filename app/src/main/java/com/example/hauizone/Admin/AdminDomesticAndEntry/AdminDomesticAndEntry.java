@@ -35,8 +35,9 @@ public class AdminDomesticAndEntry extends AppCompatActivity {
 //        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getBaseContext());
 //        binding.rcvListToKhai.setLayoutManager(layoutManager);
 //        binding.rcvListToKhai.setAdapter(domesticAndEntryAdapter);
+
         entryDeclarations = baseDatabase.getAllEntry();
-        if(entryDeclarations.size()==1)
+        if(entryDeclarations.size()==0)
         {
             fakeData();
         }

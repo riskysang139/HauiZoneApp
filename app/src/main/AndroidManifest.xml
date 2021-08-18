@@ -24,6 +24,10 @@
         <activity android:name=".Admin.AdminActivity">
 
         </activity>
+
+        <activity android:name=".Admin.ReportManage.AdminReportManage">
+
+        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry" />
     </application>

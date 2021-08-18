@@ -6,6 +6,7 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class EntryDeclarationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_entry_declaration, container, false);
         View view = binding.getRoot();
+        setUpAutoCompleteTextView();
         return view;
     }
 
@@ -73,5 +75,32 @@ public class EntryDeclarationFragment extends Fragment {
         }, Year, Month, Day);
         datePickerDialog.setTitle("Date Of Birth");
         datePickerDialog.show();
+    }
+    private void setUpAutoCompleteTextView()
+    {
+        String arr[] = {"Hà Nội", "Huế", "Sài gòn",
+                "Thái Bình", "Bắc Giang", "Nam Định",
+                "Lâm đồng", "Long khánh", "Hưng Yên", "Hà Nam"};
+
+
+        String arrDistrict[]= {"Hoàn Kiếm"," Đống Đa"," Ba Đình",
+                "Hai Bà Trưng"," Hoàng Mai"," Thanh Xuân", "Long Biên"," Nam Từ Liêm", "Bắc Từ Liêm", "Tây Hồ"," Cầu Giấy"," Hà Đông"
+                ,"Thành phố Thái Bình","Đông Hưng", "Huyện Hưng Hà" ,"Huyện Kiến Xương","Huyện Quỳnh Phụ"};
+
+        String arrTown[]= {
+                "Bắc Sơn", "Hưng Hà", "Canh Tân","Chí Hòa"," Hưng Hà","Hưng Nhân"," Hàng Bông",
+                "Hàng Buồm", "Hàng Đào"," Hàng Gai", "Hàng Mã"," Hàng Trống", "Lý Thái Tổ"," Phan Chu Trinh"," Phúc Tân"," Trần Hưng Đạo", "Tràng Tiền"};
+
+        String arrGate[] = { "Móng Cái", "Hữu Nghị"," La Lay"," Bờ Y", "Gánh Đa",
+              "  Lệ Thanh"," Hoa Lư"," Xa Mát"," Mộc Bài", "Dinh Bà"," Thường Phước"," Vĩnh Xương"," Tịnh Biên"," Hà Tiên"," Bình Hiệp"};
+
+        String arrCountry[] = { "Úc" ,"New Zealand" ,"Singapore"," Việt Nam"," Nhật Bản"," Hong Kong"," Hàn Quốc"};
+
+        binding.txtGate.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,arrGate));
+        binding.txtProvinceEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arr));
+        binding.txtDistrictEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrDistrict));
+        binding.txtTownEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrTown));
+
+        binding.txtNationality.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrCountry));
     }
 }
