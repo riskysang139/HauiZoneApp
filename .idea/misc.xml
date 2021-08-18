@@ -3,24 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/activity_admin.xml" value="0.23697916666666666" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/activity_admin_domestic_and_entry.xml" value="0.23697916666666666" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/activity_main.xml" value="0.23697916666666666" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/activity_manage_report.xml" value="0.23697916666666666" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/fragment_report.xml" value="0.25" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/item_report_manage.xml" value="0.23697916666666666" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
-=======
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/fragment_report.xml" value="0.33" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/drawable/btn_your_route.xml" value="0.2203125" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/drawable/tv_dialogyourroute.xml" value="0.2203125" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/drawable/tv_yourroute.xml" value="0.2203125" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/activity_admin.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/dialog_yourrouter.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/fragment_qr.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_nearplace.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_yourroute.xml" value="0.1480978260869565" />
       </map>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
->>>>>>> 313514b8beba51644481421b17d3d6717cc4804e
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
