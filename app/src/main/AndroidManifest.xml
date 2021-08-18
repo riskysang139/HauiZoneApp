@@ -29,6 +29,7 @@
         <activity android:name=".Admin.ReportManage.AdminReportManage">
 
         </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
