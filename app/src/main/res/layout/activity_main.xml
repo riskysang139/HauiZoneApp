@@ -11,16 +11,16 @@
             android:id="@+id/mainFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/bottomNavigation"/>
+            android:layout_above="@id/bottomNavigation" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="#FFFFFF"
             android:elevation="15dp"
-            app:itemIconSize="30dp"
+            app:itemIconSize="22dp"
             app:itemIconTint="@color/color_bottom_navigation"
             app:itemTextColor="@color/color_bottom_navigation"
             app:labelVisibilityMode="labeled"
@@ -36,9 +36,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="80dp"
             android:backgroundTint="#ED8413"
-            android:src="@drawable/ic_baseline_local_phone_24">
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:src="@drawable/ic_baseline_local_phone_24" />
     </RelativeLayout>
 
 </layout>

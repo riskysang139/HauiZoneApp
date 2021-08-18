@@ -1,19 +1,9 @@
-package com.example.hauizone.model;
+package com.example.hauizone.Home;
 
-
-public class Covid19VN {
-    private String country;
+public class Covid19 {
     private String cases;
     private String deaths;
     private String recovered;
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public String getCases() {
         return cases;
@@ -37,5 +27,14 @@ public class Covid19VN {
 
     public void setRecovered(String recovered) {
         this.recovered = recovered;
+    }
+
+    public Covid19(String cases, String deaths, String recovered) {
+        this.cases = cases;
+        this.deaths = deaths;
+        this.recovered = recovered;
+    }
+
+    public Covid19() {
     }
 }

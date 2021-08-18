@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/main_color"
+                android:gravity="center"
+                android:text="@string/report_title"
+                android:textColor="#F82828"
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtTitle"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/report_warning"
+                android:textColor="#E30E2E">
+
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/timeAndAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtWarning"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_TimeDetected"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/txtTimeDetect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="datetime"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+
+                </EditText>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Họ tên"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="#F00"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/txtNameReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+                </EditText>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số điện thoại"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="#F00"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/txtSdtReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+                </EditText>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/province"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="#F00"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <AutoCompleteTextView
+                    android:id="@+id/txtProvince"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+
+                </AutoCompleteTextView>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/district"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="#F00"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <AutoCompleteTextView
+                    android:id="@+id/txtDistrict"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+
+                </AutoCompleteTextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ward"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="#F00"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <AutoCompleteTextView
+                    android:id="@+id/txtWards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp">
+
+                </AutoCompleteTextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/report_street"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/txtStreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="text"
+                    android:maxLines="2"
+                    android:textSize="14sp">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reportCase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/timeAndAddress"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_type_content"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold">
+
+                </TextView>
+                <Spinner
+                    android:id="@+id/typeReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp">
+
+                </Spinner>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/otherReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reportCase"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_other_report"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <EditText
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_report_screen"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbars="vertical"
+                    android:textSize="14sp">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/commitReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/otherReport"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent">
+
+                </CheckBox>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:text="@string/report_commit"
+                    android:textColor="#f00">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/commitReport"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_report_submit"
+                    android:text="@string/report_submit"
+                    android:textColor="@color/white"
+                    android:textStyle="bold">
+
+                </Button>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>

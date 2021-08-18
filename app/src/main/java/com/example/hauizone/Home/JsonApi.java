@@ -1,4 +1,4 @@
-package com.example.hauizone.model;
+package com.example.hauizone.Home;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

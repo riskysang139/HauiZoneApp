@@ -25,4 +25,74 @@
     <string name="near_place">Địa điểm gần bạn</string>
     <string name="your_route">Lộ trình của bạn</string>
     <string name="check_in">Check In</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Report Screen   -->
+    <string name="report_commit">Tôi cam kết các thông tin khai báo là đúng sự thật và đồng ý chia sẻ vị trí để cơ quan chức năng có thể hỗ trợ tốt nhất</string>
+    <string name="report_warning">Khuyến cáo: Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý hình sự</string>
+    <string name="report_title">PHẢN ÁNH</string>
+    <string name="report_TimeDetected">Thời gian phát hiện</string>
+    <string name="province">Tỉnh thành</string>
+    <string name="district">Quận / Huyện</string>
+    <string name="ward">Phường / Xã</string>
+    <string name="report_street">Số nhà , đường</string>
+    <string name="required">(*)</string>
+    <string name="report_type_content">Loại nội dung phản ánh</string>
+    <string name="report_option_1">Có trường hợp nghi mắc bệnh</string>
+    <string name="report_option_2">Có trường hợp từ vùng dịch về</string>
+    <string name="report_option_3">Có trường hợp tiếp xúc với người đi từ vùng dịch về</string>
+    <string name="report_option_4">Có trường hợp tiếp xúc với trường hợp nghi mắc bệnh</string>
+    <string name="report_other_report">Nội dung phản ánh khác</string>
+    <string name="report_submit">GỬI THÔNG TIN</string>
+    <string name="disease_tutorial">Hướng Dẫn Phòng Chống Dịch</string>
+    <!--    Account-->
+    <!--doi english sau-->
+
+    <string name="account">TÀI KHOẢN</string>
+    <string name="account_province">Tỉnh thành</string>
+    <string name="account_name">Họ tên</string>
+    <string name="account_date">Ngày sinh</string>
+    <string name="account_sex">Giới tính</string>
+    <string name="account_phone_number">Số điện thoại</string>
+    <string name="account_email_address">Email</string>
+    <string name="account_district">Quận/Huyện</string>
+    <string name="account_ward">Phường/Xã</string>
+    <string name="account_infomation">THÔNG TIN CÁ NHÂN</string>
+    <string name="account_street">Số nhà, đường</string>
+    <string name="account_commit">Tôi cam kết các thông tin khai báo trên là đúng sự thật</string>
+    <string name="account_medical_declaration">TỜ KHAI Y TẾ</string>
+    <string name="account_label_notification">Trong vòng 14 ngày, Anh/Chị có đến quốc gia/vùng lãnh thổ nào(có thể đi qua nhiều nơi): </string>
+    <string name="account_label_symptom">Trong vòng 14 ngày, Anh/Chị có thấy xuất hiện ít nhất 1 trong các dấu hiệu(sốt, ho, khó thở, mệt mỏi, viêm phổi, đau họng không):</string>
+    <string name="account_contact">Trong vòng 14 ngày Anh/Chị có tiếp xúc với:</string>
+    <string name="account_update">CẬP NHẬT</string>
+    <string name="account_logout">ĐĂNG XUẤT</string>
+    <string name="account_hauifanpage">HAUI FANPAGE</string>
+    <string name="account_q_and_a">GỬI HỎI ĐÁP</string>
+    <string name="account_terms_of_use">ĐIỀU KHOẢN SỬ SỤNG</string>
+
+
+    <string name="entry_medical_declaration">TỜ KHAI Y TẾ ĐỐI VỚI NGƯỜI NHẬP CẢNH</string>
+    <string name="warning_entry_medical_declaration">Chú ý: Đây là tài liệu quan trọng, thông tin của
+Anh/Chị sẽ giúp cơ quan y tế liên lạc khi cần thiết
+để phòng tránh dịch bệnh truyền nhiễm</string>
+    <string name="warning_entry_medical_declaration1">Khuyến cáo: Khai báo thông tin sai là vi phạm pháp
+    luật Việt Nam và có thể xử lý hình sự</string>
+    <string name="gate">Cửa khẩu</string>
+    <string name="nationality">Quốc tịch</string>
+    <string name="date_entry">Ngày nhập cảnh</string>
+    <string name="warning123">Dữ liệu bạn cung cấp hoàn toàn bảo mật và chỉ
+phục vụ cho việc phòng chống dịch, thuộc quản lý của Ban chỉ đạo Quốc gia về phòng chống dịch Covid-19. Khi bạn nhấn nút "Gửi" là bạn đã
+hiểu và đồng ý</string>
+    <string name="get_gate">Nhập tên của khẩu</string>
+    <string name="get_name">Nhập họ tên</string>
+    <string name="get_date_of_birth">Chọn ngày tháng năm sinh</string>
+    <string name="get_nationality">Nhập quốc tịch</string>
+    <string name="get_date_entry">Chọn ngày nhập cảnh</string>
+    <string name="get_province">Nhập tỉnh thành</string>
+    <string name="get_district">Nhập quận / huyện </string>
+    <string name="get_town">Nhập phường xã</string>
+    <string name="get_street">Nhập số nhà , tên đường</string>
+    <string name="get_numberphone">Nhập số điện thoại</string>
+
+    <string name="btn_back_home">&#60;</string>
 </resources>
