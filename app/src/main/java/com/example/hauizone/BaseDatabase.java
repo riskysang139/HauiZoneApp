@@ -10,10 +10,12 @@ import android.widget.BaseAdapter;
 
 import androidx.annotation.Nullable;
 
+import com.example.hauizone.Account.User;
 import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BaseDatabase extends SQLiteOpenHelper {
     private static final String TAG = "MyDatabase";
@@ -32,7 +34,42 @@ public class BaseDatabase extends SQLiteOpenHelper {
     private static final String NUMBERPHONE_CONTACT_COLUMN = "numberphone";
     private static final String ID_USERNAME_COLUMN = "id_username";
 
+    // table user
 
+    private static final String TABLE_USER = "USER_TABLE";
+    public static final String USER_ID = "id";
+    public static final String USER_USERNAME = "userName";
+    public static final String USER_PASSWORD = "password";
+    public static final String USER_NAME = "name";
+    public static final String USER_DATEOFBIRTH = "date_of_birth";
+    public static final String USER_SEX = "sex";
+    public static final String USER_PROVINCE = "province";
+    public static final String USER_DISTRICT = "district";
+    public static final String USER_WARD = "ward";
+    public static final String USER_STREET = "street";
+    public static final String USER_PHONE_NUMBER = "phoneNumber";
+    public static final String USER_EMAIL = "email";
+    public static final String USER_EPIDEMIC = "epidemic";
+    public static final String USER_FLAG = "flag";
+
+
+    public static final String CREATE_TABLE_USER_SQL =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_USER + " (" +
+                    USER_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                    USER_USERNAME + " TEXT NOT NULL," +
+                    USER_PASSWORD + " TEXT NOT NULL," +
+                    USER_NAME + " TEXT NOT NULL," +
+                    USER_DATEOFBIRTH + " TEXT NOT NULL," +
+                    USER_SEX + " TEXT NOT NULL," +
+                    USER_PROVINCE + " TEXT NOT NULL," +
+                    USER_DISTRICT + " TEXT NOT NULL," +
+                    USER_WARD + " TEXT NOT NULL," +
+                    USER_STREET + " TEXT NOT NULL," +
+                    USER_PHONE_NUMBER + " TEXT NOT NULL," +
+                    USER_EMAIL + " TEXT ," +
+                    USER_EPIDEMIC + " TEXT NOT NULL," +
+                    USER_FLAG + " INTEGER NOT NULL" +
+                    ")";
     // table domestic
 
     private static final String TABLE_DOMESTIC= "DOMESTIC_TABLE";
@@ -113,6 +150,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         try {
             db.execSQL(CREATE_TABLE_DOMESTIC_SQL);
             db.execSQL(CREATE_TABLE_ENTRY_SQL);
+            db.execSQL(CREATE_TABLE_USER_SQL);
         }
         catch (Exception e)
         {
@@ -125,6 +163,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         Log.e(TAG, "onUpgrade: ");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOMESTIC);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(db);
     }
     //Đếm tổng số dòng trong database
@@ -150,6 +189,158 @@ public class BaseDatabase extends SQLiteOpenHelper {
 //        db.close();
 //        return rowEffect;
 //    }
+
+
+    public long insertUser(User user) {
+
+        Log.e(TAG, "onInsertUser: ");
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(USER_USERNAME, user.getUserName());
+        values.put(USER_PASSWORD, user.getPassword());
+        values.put(USER_NAME, user.getName());
+        values.put(USER_DATEOFBIRTH, user.getDateOfBirth());
+        values.put(USER_SEX, user.getGender());
+        values.put(USER_PROVINCE, user.getUserProvince());
+        values.put(USER_DISTRICT, user.getUserDistrict());
+        values.put(USER_WARD, user.getUserWard());
+        values.put(USER_STREET, user.getUserStreet());
+        values.put(USER_PHONE_NUMBER, user.getPhoneNumber());
+        values.put(USER_EMAIL, user.getEmail());
+        values.put(USER_EPIDEMIC, user.getEpidemic());
+        values.put(USER_FLAG, user.getFlag());
+
+        long rowId = db.insert(TABLE_USER, null, values);
+        db.close();
+        return rowId;
+    }
+
+    public User getUserById(int id){
+        SQLiteDatabase db = getReadableDatabase();
+        User user = new User();
+
+        String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_ID  + " = ?" ;
+
+        Cursor cursor =  db.rawQuery(sql, new String[]{String.valueOf(id)});
+
+        if(cursor!= null && cursor.moveToFirst()){
+            user = new User(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9),
+                    cursor.getString(10),
+                    cursor.getString(11),
+                    cursor.getString(12),
+                    cursor.getInt(13)
+            );
+            cursor.close();
+        }
+        db.close();
+
+        return user;
+    }
+
+    public User getUserByUsernamePassword(String name, String pass){
+        SQLiteDatabase db = getReadableDatabase();
+        User user = new User();
+
+        String sql = "SELECT * FROM " +
+                TABLE_USER + " WHERE " + USER_USERNAME  + " = ? AND "  + USER_PASSWORD +" = ?";
+
+        Cursor cursor =  db.rawQuery(sql, new String[]{name, pass});
+
+        if(cursor!= null && cursor.moveToFirst()){
+            user = new User(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9),
+                    cursor.getString(10),
+                    cursor.getString(11),
+                    cursor.getString(12),
+                    cursor.getInt(13)
+            );
+            cursor.close();
+        }
+        db.close();
+        return user;
+    }
+
+    public List<User> getAllUser() {
+        SQLiteDatabase db = getReadableDatabase();
+        List<User> lists = new ArrayList<User>();
+        String sql = "SELECT * FROM " + TABLE_USER;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                lists.add(new User(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(7),
+                        cursor.getString(8),
+                        cursor.getString(9),
+                        cursor.getString(10),
+                        cursor.getString(11),
+                        cursor.getString(12),
+                        cursor.getInt(13)
+                ));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return lists;
+    }
+    public int updateUser(User user) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(USER_USERNAME, user.getUserName());
+        values.put(USER_PASSWORD, user.getPassword());
+        values.put(USER_NAME, user.getName());
+        values.put(USER_DATEOFBIRTH, user.getDateOfBirth());
+        values.put(USER_SEX, user.getGender());
+        values.put(USER_PROVINCE, user.getUserProvince());
+        values.put(USER_DISTRICT, user.getUserDistrict());
+        values.put(USER_WARD, user.getUserWard());
+        values.put(USER_STREET, user.getUserStreet());
+        values.put(USER_PHONE_NUMBER, user.getPhoneNumber());
+        values.put(USER_EMAIL, user.getEmail());
+        values.put(USER_EPIDEMIC, user.getEpidemic());
+        values.put(USER_FLAG, user.getFlag());
+
+        int rowEffect = db.update(TABLE_USER,
+                values,
+                 USER_ID + " = ? " ,
+                new String[]{String.valueOf(user.getUserId())});
+        db.close();
+        return rowEffect;
+    }
+
+    public int deleteUserByID(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+        int rowEffect = db.delete(TABLE_USER,  USER_ID + " = ? "  ,new String[]{String.valueOf(id)});
+        db.close();
+        return rowEffect;
+    }
 
     public ArrayList<DomesticDeclaration> getAllDomesTic() {
         SQLiteDatabase db = getReadableDatabase();
