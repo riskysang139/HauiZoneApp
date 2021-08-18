@@ -20,11 +20,11 @@
     <string name="map_warning">Bản đồ khuyến cáo</string>
     <string name="open_map"><u>Mở rộng</u></string>
     <string name="error_network">Lỗi mạng vui lòng thử lại !!!</string>
-<!--    <string name="scan_qr_code">Quét mã QR</string>-->
-<!--    <string name="title_scan_qr_code">Quét QRCode để checkin tại địa điểm đến hoặc nhập tờ khai y tế tại cửa khẩu</string>-->
-<!--    <string name="near_place">Địa điểm gần bạn</string>-->
-<!--    <string name="your_route">Lộ trình của bạn</string>-->
-<!--    <string name="check_in">Check In</string>-->
+    <string name="scan_qr_code">Quét mã QR</string>
+    <string name="title_scan_qr_code">Quét QRCode để checkin tại địa điểm đến hoặc nhập tờ khai y tế tại cửa khẩu</string>
+    <string name="near_place">Địa điểm gần bạn</string>
+    <string name="your_route">Lộ trình của bạn</string>
+    <string name="check_in">Check In</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Report Screen   -->
@@ -103,5 +103,6 @@ hiểu và đồng ý</string>
     <string name="account_manage_account">Quản lý tài khoản</string>
     <string name="account_epidemic">Tình hình dịch bệnh</string>
     <string name="account_infor">Thông tin tài khoản</string>
+    <string name="report_type_content">Loại nội dung phản ánh</string>
 
 </resources>
