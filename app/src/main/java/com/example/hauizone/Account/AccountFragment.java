@@ -1,5 +1,6 @@
 package com.example.hauizone.Account;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,17 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentAccountBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AccountFragment extends Fragment {
     FragmentAccountBinding binding;
+    BaseDatabase mBaseDatabase;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -47,5 +53,25 @@ public class AccountFragment extends Fragment {
 
             }
         });
+
+        binding.btnDangXuat.setOnClickListener(v -> close());
+    }
+
+    private void close() {
+        //dialog
+
+        mBaseDatabase = new BaseDatabase(getContext());
+        List<User> list = new ArrayList<>();
+        list = mBaseDatabase.getAllUser();
+
+        for(User u : list){
+            if(u.getFlag() == 1){
+                u.setFlag(0);
+                mBaseDatabase.updateUser(u);
+            }
+        }
+
+        Intent intent = new Intent(getContext(), SignInActivity.class);
+        startActivity(intent);
     }
 }

@@ -91,5 +91,13 @@ hiểu và đồng ý</string>
 
     =======
     <string name="btn_back_home">&#60;</string>
+    <string name="account_sign_in">Đăng nhập</string>
+    <string name="account_sign_up_1"><i>Bạn chưa có tài khoản?<u> Đăng ký tại đây.</u></i></string>
+    <string name="account_sign_up">Đăng ký</string>
+    <string name="account_username">Tài khoản</string>
+    <string name="account_password">Mật khẩu</string>
+    <string name="account_manage_account">Quản lý tài khoản</string>
+    <string name="account_epidemic">Tình hình dịch bệnh</string>
+    <string name="account_infor">Thông tin tài khoản</string>
     >>>>>>> 79a4263 (khai bao noi dia)
 </resources>

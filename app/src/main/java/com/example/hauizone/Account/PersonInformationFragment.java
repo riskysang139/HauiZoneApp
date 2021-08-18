@@ -2,16 +2,19 @@ package com.example.hauizone.Account;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.hauizone.Account.AccountFragment;
+import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentPersonInformationBinding;
@@ -23,30 +26,40 @@ import java.util.List;
 public class PersonInformationFragment extends Fragment {
 
 
-FragmentPersonInformationBinding binding;
+    FragmentPersonInformationBinding binding;
+    BaseDatabase mBaseDatabase;
+    List<User> mListUser;
 
-    List<String> listTinh, listQuan, listPhuong ;
+    List<String> listTinh, listQuan, listPhuong;
+    String []dichBenh = {"F0", "F1", "F2", "F3", "F4", "Không mắc bệnh"};
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_person_information,container,false);
-        View view=binding.getRoot();
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_person_information, container, false);
+        View view = binding.getRoot();
         setEvents();
         return view;
     }
 
     private void setEvents() {
 
+
+
         getDataList();
         setAutoComplete();
+        // spinner
+        setSpinnerTinhTrang();
+        //
+        setDataToView();
         //cap nhat
         binding.btnCapNhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkAndAddList();
+                updateData();
             }
         });
-
 
         // date_
         binding.imgDate.setOnClickListener(new View.OnClickListener() {
@@ -56,26 +69,119 @@ FragmentPersonInformationBinding binding;
             }
         });
         // back
-        binding.imgBack.setOnClickListener(v->setClickBack());
+        binding.imgBack.setOnClickListener(v -> setClickBack());
+
+    }
+
+    private void setDataToView() {
+
+        mListUser = new ArrayList<>();
+
+        User user = new User();
+        mBaseDatabase = new BaseDatabase(getContext());
+        try {
+            mListUser = mBaseDatabase.getAllUser();
+            for (User u : mListUser) {
+                if (u.getFlag() == 1) {
+                    user = u;
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            Log.e("PersonInfomationFrag", e.toString());
+        }
+        if (user != null) {
+
+            binding.edtHoTen.setText(user.getName());
+            binding.edtNgaySinh.setText(user.getDateOfBirth());
+            binding.edtEmail.setText(user.getEmail());
+            binding.edtSDT.setText(user.getPhoneNumber());
+            binding.edtSoNha.setText(user.getUserStreet());
+            binding.tvTinhThanh.setText(user.getUserProvince());
+            binding.tvQuanHuyen.setText(user.getUserDistrict());
+            binding.tvPhuongXa.setText(user.getUserWard());
+//            binding.tv
+
+            if(user.getGender() == "Nam"){
+                binding.rbNam.setChecked(true);
+            }else{
+                binding.rbNu.setChecked(true);
+            }
+            int i = 0;
+            for(;i < dichBenh.length; i++){
+                if(dichBenh[i].equals(user.getEpidemic())){
+                    break;
+                }
+            }
+            binding.spDichbenh.setSelection(i);
+        }
+    }
+
+    private void updateData() {
+        mListUser = new ArrayList<>();
+
+        User user = new User();
+        mBaseDatabase = new BaseDatabase(getContext());
+        try {
+            mListUser = mBaseDatabase.getAllUser();
+            for(User u : mListUser){
+                if(u.getFlag() == 1){
+                    user = u;
+                    return;
+                }
+            }
+        }catch(Exception e){
+            Log.e("PersonInfomationFrag", e.toString());
+        }
+        if(user != null){
+
+            user.setName(binding.edtHoTen.getText().toString());
+            user.setDateOfBirth(binding.edtNgaySinh.getText().toString());
+
+            if(binding.rbNam.isChecked()){
+                user.setGender(binding.rbNam.getText().toString());
+            }else{
+                user.setGender(binding.rbNu.getText().toString());
+            }
+
+            user.setUserProvince(binding.tvTinhThanh.getText().toString());
+            user.setUserDistrict(binding.tvQuanHuyen.getText().toString());
+            user.setUserWard(binding.tvPhuongXa.getText().toString());
+            user.setUserStreet(binding.edtSoNha.getText().toString());
+            user.setPhoneNumber(binding.edtSDT.getText().toString());
+            user.setEmail(binding.edtEmail.getText().toString());
+            user.setEpidemic(binding.spDichbenh.getSelectedItem().toString());
+
+            int check = -1;
+            check = mBaseDatabase.updateUser(user);
+            if(check != -1){
+                Toast.makeText(getContext(), "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getContext(), "Có lỗi! Cập nhật thông tin thất bại!", Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            Toast.makeText(getContext(), "Có lỗi! Cập nhật thông tin thất bại!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
     private void setAutoComplete() {
         //tinh
         ArrayAdapter<String> arrayAdapterTinh = new ArrayAdapter<String>(
-                getContext(), android.R.layout.simple_list_item_1, listTinh  );
+                getContext(), android.R.layout.simple_list_item_1, listTinh);
 //        arrayAdapterTinh.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.tvTinhThanh.setAdapter(arrayAdapterTinh);
         binding.tvTinhThanh.setThreshold(1);
         // quan
         ArrayAdapter<String> arrayAdapterQuan = new ArrayAdapter<String>(
-                getContext(), android.R.layout.simple_list_item_1, listQuan  );
+                getContext(), android.R.layout.simple_list_item_1, listQuan);
 //        arrayAdapterQuan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.tvQuanHuyen.setAdapter(arrayAdapterQuan);
         binding.tvQuanHuyen.setThreshold(1);
         // phuong
         ArrayAdapter<String> arrayAdapterPhuong = new ArrayAdapter<String>(
-                getContext(), android.R.layout.simple_list_item_1, listPhuong  );
+                getContext(), android.R.layout.simple_list_item_1, listPhuong);
 //        arrayAdapterPhuong.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.tvPhuongXa.setAdapter(arrayAdapterPhuong);
         binding.tvPhuongXa.setThreshold(1);
@@ -83,39 +189,39 @@ FragmentPersonInformationBinding binding;
 
     private void checkAndAddList() {
         int check = 0;
-        for (String s:listTinh) {
-            if(binding.tvTinhThanh.getText().toString().equals(s)){
+        for (String s : listTinh) {
+            if (binding.tvTinhThanh.getText().toString().equals(s)) {
                 check = 1;
                 break;
             }
         }
-        if(check == 0){
+        if (check == 0) {
             listTinh.add(binding.tvTinhThanh.getText().toString());
-        }else{
+        } else {
             check = 0;
         }
         //quan
-        for (String s:listQuan) {
-            if(binding.tvQuanHuyen.getText().toString().equals(s)){
+        for (String s : listQuan) {
+            if (binding.tvQuanHuyen.getText().toString().equals(s)) {
                 check = 1;
                 break;
             }
         }
-        if(check == 0){
+        if (check == 0) {
             listQuan.add(binding.tvQuanHuyen.getText().toString());
-        }else{
+        } else {
             check = 0;
         }
         // phuong
-        for (String s:listPhuong) {
-            if(binding.tvPhuongXa.getText().toString().equals(s)){
+        for (String s : listPhuong) {
+            if (binding.tvPhuongXa.getText().toString().equals(s)) {
                 check = 1;
                 break;
             }
         }
-        if(check == 0){
+        if (check == 0) {
             listPhuong.add(binding.tvPhuongXa.getText().toString());
-        }else{
+        } else {
             check = 0;
         }
         setAutoComplete();
@@ -147,19 +253,24 @@ FragmentPersonInformationBinding binding;
     }
 
     public void processBirthday() {
-        DatePickerDialog.OnDateSetListener callBack =new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog.OnDateSetListener callBack = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-                binding.edtNgaySinh.setText(arg3+"/"+(arg2 + 1) +"/"+arg1);
+                binding.edtNgaySinh.setText(arg3 + "/" + (arg2 + 1) + "/" + arg1);
             }
         };
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DATE);
-        int month = calendar.get(Calendar.MONTH) ;
-        int  year = calendar.get(Calendar.YEAR);
-        DatePickerDialog dateDialog=new DatePickerDialog(getContext(), callBack, year, month, day);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        DatePickerDialog dateDialog = new DatePickerDialog(getContext(), callBack, year, month, day);
         dateDialog.setTitle("Ngày sinh");
         dateDialog.show();
     }
-
+    private void setSpinnerTinhTrang() {
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                getContext(), android.R.layout.simple_dropdown_item_1line, dichBenh);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spDichbenh.setAdapter(arrayAdapter);
+    }
 }
