@@ -190,6 +190,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
 //        return rowEffect;
 //    }
 
+
     public int getIndex(){
 
         List<User> list = new ArrayList<>();
@@ -211,7 +212,18 @@ public class BaseDatabase extends SQLiteOpenHelper {
                 updateUser(u);
             }
         }
+    }
 
+    //check trung ten tk
+    public int checkUsername(String username){
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        for(User u : list){
+            if(u.getUserName().equals(username.trim())){
+                return 0;
+            }
+        }
+        return 1;
     }
 
 

@@ -41,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void setEvent() {
 
+        mBaseDatabase = new BaseDatabase(this);
         // set data spinner tinh hinh dich benh
         setSpinnerTinhTrang();
         // data autocomplete tinh/huyen/xa
@@ -51,8 +52,8 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAndAddList();
-                int check = checkInput();
-                if (check == 0) {
+
+                if (checkInput() == 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setTitle("Thông báo");
                     builder.setMessage("Bạn phải nhập đầy đủ thông tin bên trên để đăng ký tài khoản!");
@@ -66,7 +67,23 @@ public class SignUpActivity extends AppCompatActivity {
                     dialog.show();
                 } else {
 
-                    insertDataToDatabase();
+                    if(mBaseDatabase.checkUsername(binding.edtUsername.getText().toString()) == 1){
+                        insertDataToDatabase();
+                    }else{
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                        builder.setTitle("Thông báo");
+                        builder.setMessage("Tên tài khoản đã tồn tại! Hãy đổi tên tài khoản khác để đăng ký!");
+                        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
+                        Dialog dialog = builder.create();
+                        dialog.show();
+                    }
+
+
                 }
             }
         });
@@ -116,7 +133,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void insertDataToDatabase() {
 
-        mBaseDatabase = new BaseDatabase(this);
         mBaseDatabase.setFlagOut();
         User user = new User();
 

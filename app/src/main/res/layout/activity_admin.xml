@@ -25,6 +25,17 @@
             android:background="#f00"
             android:layout_marginTop="20dp"
             android:text="Quản lý phản ánh từ người dùng " />
+
+        <Button
+            android:id="@+id/btn_manage_account"
+            android:layout_width="300dp"
+            android:layout_below="@id/btn_manage_report"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/main_color"
+            android:text="Quản lý tài khoản " />
+
     </RelativeLayout>
 
 </layout>

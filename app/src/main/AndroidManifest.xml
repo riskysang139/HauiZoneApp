@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HauiZone">
-        <activity android:name=".Account.ViewInformationAccountActivity"></activity>
-        <activity android:name=".Account.ManageAccountActivity" />
+        <activity android:name=".Admin.AccountManage.ViewInformationAccountActivity"></activity>
+        <activity android:name=".Admin.AccountManage.ManageAccountActivity" />
         <activity android:name=".Account.SignUpActivity" />
         <activity android:name=".Account.SignInActivity" >
             <intent-filter>
