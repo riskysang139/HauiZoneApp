@@ -28,8 +28,7 @@
         <activity android:name=".Admin.ReportManage.AdminReportManage">
 
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry" />
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

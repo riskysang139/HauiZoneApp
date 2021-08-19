@@ -37,7 +37,7 @@
     <string name="ward">Phường / Xã</string>
     <string name="report_street">Số nhà , đường</string>
     <string name="required">(*)</string>
-    <string name="report_content">Nội dung phản ánh</string>
+    <string name="report_type_content">Loại nội dung phản ánh</string>
     <string name="report_option_1">Có trường hợp nghi mắc bệnh</string>
     <string name="report_option_2">Có trường hợp từ vùng dịch về</string>
     <string name="report_option_3">Có trường hợp tiếp xúc với người đi từ vùng dịch về</string>
@@ -103,6 +103,4 @@ hiểu và đồng ý</string>
     <string name="account_manage_account">Quản lý tài khoản</string>
     <string name="account_epidemic">Tình hình dịch bệnh</string>
     <string name="account_infor">Thông tin tài khoản</string>
-    <string name="report_type_content">Loại nội dung phản ánh</string>
-
 </resources>

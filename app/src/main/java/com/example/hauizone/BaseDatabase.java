@@ -20,7 +20,7 @@ import java.util.List;
 public class BaseDatabase extends SQLiteOpenHelper {
     private static final String TAG = "MyDatabase";
     private static final String DATABASE_NAME = "MY_DB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
 
     // same column in table domestic and entry
