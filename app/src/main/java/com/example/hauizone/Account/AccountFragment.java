@@ -21,11 +21,12 @@ import java.util.List;
 public class AccountFragment extends Fragment {
     FragmentAccountBinding binding;
     BaseDatabase mBaseDatabase;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_account,container,false);
-        View view=binding.getRoot();
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_account, container, false);
+        View view = binding.getRoot();
         setEvents();
         return view;
 
@@ -61,15 +62,7 @@ public class AccountFragment extends Fragment {
         //dialog
 
         mBaseDatabase = new BaseDatabase(getContext());
-        List<User> list = new ArrayList<>();
-        list = mBaseDatabase.getAllUser();
-
-        for(User u : list){
-            if(u.getFlag() == 1){
-                u.setFlag(0);
-                mBaseDatabase.updateUser(u);
-            }
-        }
+        mBaseDatabase.setFlagOut();
 
         Intent intent = new Intent(getContext(), SignInActivity.class);
         startActivity(intent);

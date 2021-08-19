@@ -3,7 +3,10 @@ package com.example.hauizone.Account;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,8 +27,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     ActivitySignUpBinding binding;
     BaseDatabase mBaseDatabase;
-    List<String> listTinh, listQuan, listPhuong ;
-    String []dichBenh = {"F0", "F1", "F2", "F3", "F4", "Không mắc bệnh"};
+    List<String> listTinh, listQuan, listPhuong;
+    String[] dichBenh = {"F0", "F1", "F2", "F3", "F4", "Không mắc bệnh"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +51,25 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAndAddList();
-                insertDataToDatabase();
+                int check = checkInput();
+                if (check == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                    builder.setTitle("Thông báo");
+                    builder.setMessage("Bạn phải nhập đầy đủ thông tin bên trên để đăng ký tài khoản!");
+                    builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+
+                    Dialog dialog = builder.create();
+                    dialog.show();
+                } else {
+
+                    insertDataToDatabase();
+                }
             }
         });
-
-
         // date_
         binding.imgDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,12 +78,46 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
         // back
-        binding.imgBack.setOnClickListener(v->finish());
+        binding.imgBack.setOnClickListener(v -> finish());
+    }
+
+    private int checkInput() {
+
+        if (binding.edtUsername.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.edtPassword.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.edtHoTen.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.edtNgaySinh.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.tvTinhThanh.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.tvQuanHuyen.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.tvPhuongXa.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.edtSoNha.getText().toString().trim().equals("")) {
+            return 0;
+        }
+        if (binding.edtSDT.getText().toString().trim().equals("")) {
+            return 0;
+        }
+
+        return 1;
     }
 
     private void insertDataToDatabase() {
-        mBaseDatabase = new BaseDatabase(this);
 
+        mBaseDatabase = new BaseDatabase(this);
+        mBaseDatabase.setFlagOut();
         User user = new User();
 
         user.setUserName(binding.edtUsername.getText().toString());
@@ -75,9 +126,9 @@ public class SignUpActivity extends AppCompatActivity {
         user.setName(binding.edtHoTen.getText().toString());
         user.setDateOfBirth(binding.edtNgaySinh.getText().toString());
 
-        if(binding.rbNam.isChecked()){
+        if (binding.rbNam.isChecked()) {
             user.setGender(binding.rbNam.getText().toString());
-        }else{
+        } else {
             user.setGender(binding.rbNu.getText().toString());
         }
 
@@ -87,16 +138,17 @@ public class SignUpActivity extends AppCompatActivity {
         user.setUserStreet(binding.edtSoNha.getText().toString());
         user.setPhoneNumber(binding.edtSDT.getText().toString());
 //        user.setEmail(binding.edtEmail.getText().toString());
+        user.setEmail("");
         user.setEpidemic(binding.spDichbenh.getSelectedItem().toString());
         user.setFlag(1);
 
         long check = -1;
         check = mBaseDatabase.insertUser(user);
-        if(check != -1){
+        if (check != -1) {
             Toast.makeText(this, "Đăng ký tài khoản thành công!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }else{
+        } else {
             Toast.makeText(this, "Đăng ký tài khoản thất bại!", Toast.LENGTH_SHORT).show();
         }
 
@@ -113,19 +165,19 @@ public class SignUpActivity extends AppCompatActivity {
     private void setAutoComplete() {
         //tinh
         ArrayAdapter<String> arrayAdapterTinh = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, listTinh  );
+                this, android.R.layout.simple_list_item_1, listTinh);
 //        arrayAdapterTinh.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.tvTinhThanh.setAdapter(arrayAdapterTinh);
         binding.tvTinhThanh.setThreshold(1);
         // quan
         ArrayAdapter<String> arrayAdapterQuan = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, listQuan  );
+                this, android.R.layout.simple_list_item_1, listQuan);
 //        arrayAdapterQuan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.tvQuanHuyen.setAdapter(arrayAdapterQuan);
         binding.tvQuanHuyen.setThreshold(1);
         // phuong
         ArrayAdapter<String> arrayAdapterPhuong = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, listPhuong  );
+                this, android.R.layout.simple_list_item_1, listPhuong);
 //        arrayAdapterPhuong.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.tvPhuongXa.setAdapter(arrayAdapterPhuong);
         binding.tvPhuongXa.setThreshold(1);
@@ -133,39 +185,39 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void checkAndAddList() {
         int check = 0;
-        for (String s:listTinh) {
-            if(binding.tvTinhThanh.getText().toString().equals(s)){
+        for (String s : listTinh) {
+            if (binding.tvTinhThanh.getText().toString().equals(s)) {
                 check = 1;
                 break;
             }
         }
-        if(check == 0){
+        if (check == 0) {
             listTinh.add(binding.tvTinhThanh.getText().toString());
-        }else{
+        } else {
             check = 0;
         }
         //quan
-        for (String s:listQuan) {
-            if(binding.tvQuanHuyen.getText().toString().equals(s)){
+        for (String s : listQuan) {
+            if (binding.tvQuanHuyen.getText().toString().equals(s)) {
                 check = 1;
                 break;
             }
         }
-        if(check == 0){
+        if (check == 0) {
             listQuan.add(binding.tvQuanHuyen.getText().toString());
-        }else{
+        } else {
             check = 0;
         }
         // phuong
-        for (String s:listPhuong) {
-            if(binding.tvPhuongXa.getText().toString().equals(s)){
+        for (String s : listPhuong) {
+            if (binding.tvPhuongXa.getText().toString().equals(s)) {
                 check = 1;
                 break;
             }
         }
-        if(check == 0){
+        if (check == 0) {
             listPhuong.add(binding.tvPhuongXa.getText().toString());
-        }else{
+        } else {
             check = 0;
         }
         setAutoComplete();
@@ -197,17 +249,17 @@ public class SignUpActivity extends AppCompatActivity {
 //    }
 
     public void processBirthday() {
-        DatePickerDialog.OnDateSetListener callBack =new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog.OnDateSetListener callBack = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-                binding.edtNgaySinh.setText(arg3+"/"+(arg2 + 1) +"/"+arg1);
+                binding.edtNgaySinh.setText(arg3 + "/" + (arg2 + 1) + "/" + arg1);
             }
         };
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DATE);
-        int month = calendar.get(Calendar.MONTH) ;
-        int  year = calendar.get(Calendar.YEAR);
-        DatePickerDialog dateDialog=new DatePickerDialog(this, callBack, year, month, day);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        DatePickerDialog dateDialog = new DatePickerDialog(this, callBack, year, month, day);
         dateDialog.setTitle("Ngày sinh");
         dateDialog.show();
     }

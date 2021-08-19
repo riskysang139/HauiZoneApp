@@ -46,6 +46,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void ClickDangNhap() {
         mBaseDataBase = new BaseDatabase(this);
+        mBaseDataBase.setFlagOut();
 
         String name = binding.edtUsername.getText().toString();
         String pass = binding.edtPassword.getText().toString();

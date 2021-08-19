@@ -190,6 +190,30 @@ public class BaseDatabase extends SQLiteOpenHelper {
 //        return rowEffect;
 //    }
 
+    public int getIndex(){
+
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        for(User u : list){
+            if(u.getFlag() == 1){
+                return u.getUserId();
+            }
+        }
+        return -1;
+    }
+    public void setFlagOut(){
+
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        for(User u : list){
+            if(u.getFlag() == 1){
+                u.setFlag(0);
+                updateUser(u);
+            }
+        }
+
+    }
+
 
     public long insertUser(User user) {
 
@@ -313,8 +337,8 @@ public class BaseDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(USER_USERNAME, user.getUserName());
-        values.put(USER_PASSWORD, user.getPassword());
+//        values.put(USER_USERNAME, user.getUserName());
+//        values.put(USER_PASSWORD, user.getPassword());
         values.put(USER_NAME, user.getName());
         values.put(USER_DATEOFBIRTH, user.getDateOfBirth());
         values.put(USER_SEX, user.getGender());
