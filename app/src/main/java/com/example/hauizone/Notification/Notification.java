@@ -1,13 +1,25 @@
 package com.example.hauizone.Notification;
 
 public class Notification {
+    private int id;
     private String type;
     private String content;
     private String date;
     private String time;
-    private int imageNotification;
+    private String imageNotification;
 
-    public Notification(String type, String content, String date, String time, int imageNotification) {
+    public Notification() {
+    }
+
+    public Notification(int id, String type, String date, String time, String content, String imageNotification) {
+        this.id = id;
+        this.type = type;
+        this.content = content;
+        this.date = date;
+        this.time = time;
+        this.imageNotification = imageNotification;
+    }
+    public Notification(String type, String date, String time, String content, String imageNotification) {
         this.type = type;
         this.content = content;
         this.date = date;
@@ -15,7 +27,12 @@ public class Notification {
         this.imageNotification = imageNotification;
     }
 
-    public Notification() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getType() {
@@ -50,11 +67,12 @@ public class Notification {
         this.time = time;
     }
 
-    public int getImageNotification() {
+    public String getImageNotification() {
         return imageNotification;
     }
 
-    public void setImageNotification(int imageNotification) {
+    public void setImageNotification(String imageNotification) {
         this.imageNotification = imageNotification;
     }
+
 }

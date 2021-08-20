@@ -1,57 +1,149 @@
-package com.example.hauizone.Notification;
+package com.example.hauizone.Admin.AdminNotifi;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.hauizone.Admin.AdminNotifi.MyNotifiAdminAdapter;
+import com.example.hauizone.Admin.AdminDomesticAndEntry.RCVEntryAdapter;
 import com.example.hauizone.BaseDatabase;
+import com.example.hauizone.Notification.Notification;
+import com.example.hauizone.Notification.NotificationAdapter;
 import com.example.hauizone.R;
-import com.example.hauizone.databinding.FragmentNotificationBinding;
+import com.example.hauizone.databinding.ActivityAdminNotifiBinding;
+import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationFragment extends Fragment{
-    FragmentNotificationBinding binding;
-//    List<Notification> arrList ;
-//    NotificationAdapter notificationAdapter;
-    MyNotifiAdminAdapter myNotifiAdminAdapter;
-    RecyclerView rv_admin_notifi;
-    ArrayList<Notification> arrList = null;
-    BaseDatabase baseDatabase;
+public class AdminNotifiActivity extends AppCompatActivity implements MyNotifiAdminAdapter.ClickListener {
+        ActivityAdminNotifiBinding binding;
+        RecyclerView rv_admin_notifi;
+        Notification notification;
+
+        String arr[] = {"HAUI NCOVI - TIN COVID","HAUI NCOVI - THÔNG BÁO"};
+        int pos = 0, i = 0;
+        ArrayAdapter<String> spin_adapter = null;
+        MyNotifiAdminAdapter myNotifiAdminAdapter;
+        ArrayList<Notification> arrList = null;
+        BaseDatabase db = null;
+        String a;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notification, container, false);
-        View view = binding.getRoot();
-        baseDatabase = BaseDatabase.getInstance(getContext());
-        arrList = baseDatabase.getAllNotifi();
-        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, getContext()) ;
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        binding.rvNotification.setLayoutManager(layoutManager);
-        binding.rvNotification.setAdapter(myNotifiAdminAdapter);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_admin_notifi);
+        db = BaseDatabase.getInstance(getBaseContext());
+        notification = new Notification();
+        rv_admin_notifi = (RecyclerView) findViewById(R.id.rv_admin_notification);
+        arrList = new ArrayList<Notification>();
+        arrList = db.getAllNotifi();
         if(arrList.size() == 0){
             addDataNotificationFragment();
             refreshAdapter();
         }
 
-        return view;
+        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, getBaseContext(),this) ;
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
+        binding.rvAdminNotification.setLayoutManager(layoutManager);
+        binding.rvAdminNotification.setAdapter(myNotifiAdminAdapter);
+        getWidget();
+
+        binding.buttonCalendar.setOnClickListener((view) -> {
+            DatePickerDialog.OnDateSetListener callback = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    binding.editTextNgayThem.setText(dayOfMonth + "/" + month + "/" + year);
+                }
+            };
+            DatePickerDialog pic = new DatePickerDialog(AdminNotifiActivity.this, callback, 2021, 7, 28);
+            pic.setTitle("Chọn ngày");
+            pic.show();
+        });
+
+        binding.buttonSettime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog.OnTimeSetListener callback = new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        binding.editTextGioThem.setText(hourOfDay + ":" + minute);
+                    }
+                };
+                TimePickerDialog time = new TimePickerDialog(AdminNotifiActivity.this, callback, 8, 33, true);
+                time.setTitle("Chọn giờ");
+                time.show();
+            }
+        });
+
+        binding.buttonThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertData();
+            }
+        });
+
+        binding.buttonSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditData();
+            }
+        });
+
+    }
+
+    public void getWidget() {
+        spin_adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_activated_1, arr);
+        binding.spinnerLoaiTin.setAdapter(spin_adapter);
+        db = BaseDatabase.getInstance(this);
     }
 
     public void refreshAdapter(){
-        arrList = baseDatabase.getAllNotifi();
-        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, getActivity());
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        binding.rvNotification.setLayoutManager(layoutManager);
+        arrList = new ArrayList<>();
+        arrList = db.getAllNotifi();
+        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, this, this);
         rv_admin_notifi.setAdapter(myNotifiAdminAdapter);
     }
+
+    private void insertData(){
+        Notification tb = new Notification(binding.spinnerLoaiTin.getSelectedItem().toString(), binding.editTextNgayThem.getText().toString(), binding.editTextGioThem.getText().toString(), binding.editTextNoiDung.getText().toString(), binding.editTextImage.getText().toString());
+        db.insertNotification(tb);
+        refreshAdapter();
+        myNotifiAdminAdapter.notifyDataSetChanged();
+    }
+
+    private void EditData(){
+        Notification a = notification;
+        a.setType(binding.spinnerLoaiTin.getSelectedItem().toString());
+        a.setDate(binding.editTextNgayThem.getText().toString());
+        a.setTime(binding.editTextGioThem.getText().toString());
+        a.setContent(binding.editTextNoiDung.getText().toString());
+        a.setImageNotification(binding.editTextImage.getText().toString());
+        db.updateNotificaton(a);
+        refreshAdapter();
+    }
+
 
     public void addDataNotificationFragment(){
         Notification notification1 = new Notification();
@@ -83,11 +175,47 @@ public class NotificationFragment extends Fragment{
         notification4.setContent("Bản cập nhật mới đã sẵn sàng");
         notification4.setImageNotification("https://camnangkhoinghiep.vn/wp-content/uploads/2019/12/update-l%C3%A0-g%C3%AC-1140x570.jpg");
 
-        baseDatabase.insertNotification(notification1);
-        baseDatabase.insertNotification(notification2);
-        baseDatabase.insertNotification(notification3);
-        baseDatabase.insertNotification(notification4);
+        db.insertNotification(notification1);
+        db.insertNotification(notification2);
+        db.insertNotification(notification3);
+        db.insertNotification(notification4);
     }
 
 
+    @Override
+    public void onClick(Notification notification, int position) {
+        this.notification = new Notification();
+        this.notification = notification;
+        int spinnerPosition = spin_adapter.getPosition(notification.getType());
+        binding.spinnerLoaiTin.setSelection(spinnerPosition);
+        binding.editTextNgayThem.setText(notification.getDate());
+        binding.editTextGioThem.setText(notification.getTime());
+        binding.editTextNoiDung.setText(notification.getContent());
+        binding.editTextImage.setText(notification.getImageNotification());
+
+    }
+
+    @Override
+    public void onLongClick(Notification notification, int position) {
+        AlertDialog alertDialog = new AlertDialog.Builder(AdminNotifiActivity.this)
+                .setTitle("Thông báo")
+                .setMessage("Bạn có chắc chắn muốn xóa dòng này không ?")
+                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.deleteNotifi(arrList.get(position));
+                        refreshAdapter();
+                        Toast.makeText(AdminNotifiActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(AdminNotifiActivity.this, "Hủy xóa", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .create();
+
+        alertDialog.show();
+    }
 }
