@@ -103,7 +103,7 @@ public class PersonInformationFragment extends Fragment {
             }
         });
         // back
-        binding.imgBack.setOnClickListener(v -> setClickBack());
+        binding.imgBack.setOnClickListener(v -> getActivity().onBackPressed());
 
     }
     private int checkInput() {

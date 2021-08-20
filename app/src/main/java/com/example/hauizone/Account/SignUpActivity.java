@@ -138,7 +138,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         user.setUserName(binding.edtUsername.getText().toString());
         user.setPassword(binding.edtPassword.getText().toString());
-
         user.setName(binding.edtHoTen.getText().toString());
         user.setDateOfBirth(binding.edtNgaySinh.getText().toString());
 

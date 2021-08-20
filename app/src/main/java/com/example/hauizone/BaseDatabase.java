@@ -20,7 +20,7 @@ import java.util.List;
 public class BaseDatabase extends SQLiteOpenHelper {
     private static final String TAG = "MyDatabase";
     private static final String DATABASE_NAME = "MY_DB";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
 
     // same column in table domestic and entry
@@ -250,6 +250,12 @@ public class BaseDatabase extends SQLiteOpenHelper {
         long rowId = db.insert(TABLE_USER, null, values);
         db.close();
         return rowId;
+    }
+
+    public int getCountUser(){
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        return list.size();
     }
 
     public User getUserById(int id){

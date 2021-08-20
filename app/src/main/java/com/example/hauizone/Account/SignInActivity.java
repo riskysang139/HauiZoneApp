@@ -31,12 +31,89 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
+        addData();
         //dang nhap
         binding.btnDangNhap.setOnClickListener(v -> ClickDangNhap());
         // dang ky
         binding.tvDangKy.setOnClickListener(v -> ClickDangKy());
         // back
 //        binding.imgBack.setOnClickListener(v -> finish());
+    }
+
+    private void addData() {
+        mBaseDataBase = new BaseDatabase(this);
+        if(mBaseDataBase.getCountUser() <= 0 ){
+            fakeData();
+        }
+    }
+
+    private void fakeData() {
+        //public User(int userId, String userName, String password, String name, String dateOfBirth, String gender, String userProvince, String userDistrict, String userWard, String userStreet, String phoneNumber, String email, String epidemic, int flag) {
+        mBaseDataBase.insertUser(new User(1
+                ,"tanbui"
+                ,"tan1234"
+                ,"Bùi Đăng Tân"
+                , "01/02/2000"
+                ,"Nam"
+                ,"Thái Bình"
+                ,"Kiến Xương"
+                ,"Quốc Tuấn"
+                ,"Xóm 6"
+                , "0396172418"
+                ,"buidangtan01042000@gmail.com"
+                ,"Không mắc bệnh", 0));
+        mBaseDataBase.insertUser(new User(1
+                ,"sangtran"
+                ,"sang1234"
+                ,"Trần Quang Sang"
+                , "02/02/2000"
+                ,"Nam"
+                ,"Thái Bình"
+                ,"Hưng Hà"
+                ,"a"
+                ,"a"
+                , "000"
+                ,"email"
+                ,"Không mắc bệnh", 0));
+        mBaseDataBase.insertUser(new User(1
+                ,"thangnguyen"
+                ,"thang1234"
+                ,"Nguyễn Văn Thàng"
+                , "03/02/2000"
+                ,"Nam"
+                ,"Nam Định"
+                ,"b"
+                ,"b"
+                ,"b"
+                , "000"
+                ,"email"
+                ,"Không mắc bệnh", 0));
+        mBaseDataBase.insertUser(new User(1
+                ,"thanhnguyen"
+                ,"thanh1234"
+                ,"Nguyễn Đức Thành"
+                , "04/02/2000"
+                ,"Nam"
+                ,"Hà Nam"
+                ,"c"
+                ,"c"
+                ,"c"
+                , "000"
+                ,"email"
+                ,"Không mắc bệnh", 0));
+        mBaseDataBase.insertUser(new User(1
+                ,"thangcao"
+                ,"thang1234"
+                ,"Cao Thế Thắng"
+                , "05/02/2000"
+                ,"Nam"
+                ,"Vĩnh Phúc"
+                ,"d"
+                ,"d"
+                ,"d"
+                , "0000"
+                ,"email"
+                ,"Không mắc bệnh", 0));
     }
 
     private void ClickDangKy() {
