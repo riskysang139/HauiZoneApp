@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityAdminDomesticAndEntryBinding;
-import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
-import com.example.hauizone.entryDeclaration.EntryDeclaration;
+import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
+import com.example.hauizone.EntryDeclaration.EntryDeclaration;
 
 import java.util.ArrayList;
 
-public class AdminDomesticAndEntry extends AppCompatActivity {
+public class AdminDomesticAndEntry extends AppCompatActivity implements RCVEntryAdapter.ClickListener {
     ActivityAdminDomesticAndEntryBinding binding;
     BaseDatabase baseDatabase;
     ArrayList<DomesticDeclaration> declarationArrayList;
@@ -41,7 +41,7 @@ public class AdminDomesticAndEntry extends AppCompatActivity {
         {
             fakeData();
         }
-        entryAdapter=new RCVEntryAdapter(entryDeclarations,getBaseContext());
+        entryAdapter=new RCVEntryAdapter(entryDeclarations,getBaseContext(),this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
         binding.rcvListToKhai.setLayoutManager(layoutManager);
         binding.rcvListToKhai.setAdapter(entryAdapter);
@@ -52,4 +52,13 @@ public class AdminDomesticAndEntry extends AppCompatActivity {
         baseDatabase.insertEntry(new EntryDeclaration("Lao Bảo","Trần Quang Sang","13/09/2000","Nam","Việt Nam","13/03/2021","Thái Bình","Hưng Hà","Hưng Nhân","Khu Lái","0971410156",1));
     }
 
+    @Override
+    public void OnClick(EntryDeclaration entryDeclaration) {
+
+    }
+
+    @Override
+    public void OnLongClick(EntryDeclaration entryDeclaration) {
+
+    }
 }

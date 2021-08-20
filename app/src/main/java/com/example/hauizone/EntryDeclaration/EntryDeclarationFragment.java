@@ -1,4 +1,4 @@
-package com.example.hauizone.entryDeclaration;
+package com.example.hauizone.EntryDeclaration;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentEntryDeclarationBinding;
 
@@ -25,12 +26,14 @@ public class EntryDeclarationFragment extends Fragment {
     final Calendar calendar = Calendar.getInstance();
     private int Year = 2000, Month = 0, Day = 1;
     private DatePickerDialog datePickerDialog;
+    private BaseDatabase baseDatabase;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_entry_declaration, container, false);
         View view = binding.getRoot();
+        baseDatabase = BaseDatabase.getInstance(getContext());
         setUpAutoCompleteTextView();
         return view;
     }
@@ -43,6 +46,13 @@ public class EntryDeclarationFragment extends Fragment {
         binding.txtDateOfBirth.setOnClickListener(v -> showDateDialog());
         binding.txtDateEntry.setOnClickListener(v -> showDateEntryDialog());
 
+        binding.sendEntryDeclaration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertEntry();
+
+            }
+        });
     }
 
     private void showDateEntryDialog() {
@@ -76,31 +86,53 @@ public class EntryDeclarationFragment extends Fragment {
         datePickerDialog.setTitle("Date Of Birth");
         datePickerDialog.show();
     }
-    private void setUpAutoCompleteTextView()
-    {
+
+    private void setUpAutoCompleteTextView() {
         String arr[] = {"Hà Nội", "Huế", "Sài gòn",
                 "Thái Bình", "Bắc Giang", "Nam Định",
                 "Lâm đồng", "Long khánh", "Hưng Yên", "Hà Nam"};
 
 
-        String arrDistrict[]= {"Hoàn Kiếm"," Đống Đa"," Ba Đình",
-                "Hai Bà Trưng"," Hoàng Mai"," Thanh Xuân", "Long Biên"," Nam Từ Liêm", "Bắc Từ Liêm", "Tây Hồ"," Cầu Giấy"," Hà Đông"
-                ,"Thành phố Thái Bình","Đông Hưng", "Huyện Hưng Hà" ,"Huyện Kiến Xương","Huyện Quỳnh Phụ"};
+        String arrDistrict[] = {"Hoàn Kiếm", " Đống Đa", " Ba Đình",
+                "Hai Bà Trưng", " Hoàng Mai", " Thanh Xuân", "Long Biên", " Nam Từ Liêm", "Bắc Từ Liêm", "Tây Hồ", " Cầu Giấy", " Hà Đông"
+                , "Thành phố Thái Bình", "Đông Hưng", "Huyện Hưng Hà", "Huyện Kiến Xương", "Huyện Quỳnh Phụ"};
 
-        String arrTown[]= {
-                "Bắc Sơn", "Hưng Hà", "Canh Tân","Chí Hòa"," Hưng Hà","Hưng Nhân"," Hàng Bông",
-                "Hàng Buồm", "Hàng Đào"," Hàng Gai", "Hàng Mã"," Hàng Trống", "Lý Thái Tổ"," Phan Chu Trinh"," Phúc Tân"," Trần Hưng Đạo", "Tràng Tiền"};
+        String arrTown[] = {
+                "Bắc Sơn", "Hưng Hà", "Canh Tân", "Chí Hòa", " Hưng Hà", "Hưng Nhân", " Hàng Bông",
+                "Hàng Buồm", "Hàng Đào", " Hàng Gai", "Hàng Mã", " Hàng Trống", "Lý Thái Tổ", " Phan Chu Trinh", " Phúc Tân", " Trần Hưng Đạo", "Tràng Tiền"};
 
-        String arrGate[] = { "Móng Cái", "Hữu Nghị"," La Lay"," Bờ Y", "Gánh Đa",
-              "  Lệ Thanh"," Hoa Lư"," Xa Mát"," Mộc Bài", "Dinh Bà"," Thường Phước"," Vĩnh Xương"," Tịnh Biên"," Hà Tiên"," Bình Hiệp"};
+        String arrGate[] = {"Móng Cái", "Hữu Nghị", " La Lay", " Bờ Y", "Gánh Đa",
+                "  Lệ Thanh", " Hoa Lư", " Xa Mát", " Mộc Bài", "Dinh Bà", " Thường Phước", " Vĩnh Xương", " Tịnh Biên", " Hà Tiên", " Bình Hiệp"};
 
-        String arrCountry[] = { "Úc" ,"New Zealand" ,"Singapore"," Việt Nam"," Nhật Bản"," Hong Kong"," Hàn Quốc"};
+        String arrCountry[] = {"Úc", "New Zealand", "Singapore", " Việt Nam", " Nhật Bản", " Hong Kong", " Hàn Quốc"};
 
-        binding.txtGate.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,arrGate));
-        binding.txtProvinceEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arr));
-        binding.txtDistrictEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrDistrict));
-        binding.txtTownEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrTown));
+        binding.txtGate.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, arrGate));
+        binding.txtProvinceEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, arr));
+        binding.txtDistrictEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, arrDistrict));
+        binding.txtTownEntry.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, arrTown));
 
-        binding.txtNationality.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,arrCountry));
+        binding.txtNationality.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, arrCountry));
+    }
+
+    private void insertEntry() {
+        String sex = "";
+        if (binding.rbNam.isChecked())
+            sex = "Nam";
+        else
+            sex = "Nữ";
+        baseDatabase.insertEntry(new EntryDeclaration(
+                binding.txtGate.getText().toString(),
+                binding.txtName.getText().toString(),
+                binding.txtDateOfBirth.getText().toString(),
+                sex,
+                binding.txtNationality.getText().toString(),
+                binding.txtDateEntry.getText().toString(),
+                binding.txtProvinceEntry.getText().toString(),
+                binding.txtDistrictEntry.getText().toString(),
+                binding.txtTownEntry.getText().toString(),
+                binding.txtAddressEntry.getText().toString(),
+                binding.txtNumberPhoneEntry.getText().toString(),
+                0
+        ));
     }
 }
