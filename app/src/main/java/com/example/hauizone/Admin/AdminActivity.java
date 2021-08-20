@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.hauizone.Admin.AdminDomesticAndEntry.AdminDomesticAndEntry;
+import com.example.hauizone.Admin.AdminNotifi.AdminNotifiActivity;
+import com.example.hauizone.Admin.ReportManage.AdminReportManage;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityAdminBinding;
 

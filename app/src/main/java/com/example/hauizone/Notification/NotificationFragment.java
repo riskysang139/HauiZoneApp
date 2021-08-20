@@ -18,7 +18,7 @@ import com.example.hauizone.databinding.FragmentNotificationBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationFragment extends Fragment{
+public class NotificationFragment extends Fragment implements MyNotifiAdminAdapter.ClickListener {
     FragmentNotificationBinding binding;
 //    List<Notification> arrList ;
 //    NotificationAdapter notificationAdapter;
@@ -33,21 +33,22 @@ public class NotificationFragment extends Fragment{
         View view = binding.getRoot();
         baseDatabase = BaseDatabase.getInstance(getContext());
         arrList = baseDatabase.getAllNotifi();
-        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, getContext()) ;
+        if(arrList.size()==0)
+        {
+            addDataNotificationFragment();
+            arrList = baseDatabase.getAllNotifi();
+        }
+        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, getContext(),this) ;
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rvNotification.setLayoutManager(layoutManager);
         binding.rvNotification.setAdapter(myNotifiAdminAdapter);
-        if(arrList.size() == 0){
-            addDataNotificationFragment();
-            refreshAdapter();
-        }
 
         return view;
     }
 
     public void refreshAdapter(){
         arrList = baseDatabase.getAllNotifi();
-        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, getActivity());
+        myNotifiAdminAdapter = new MyNotifiAdminAdapter(arrList, getActivity(),this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rvNotification.setLayoutManager(layoutManager);
         rv_admin_notifi.setAdapter(myNotifiAdminAdapter);
@@ -90,4 +91,13 @@ public class NotificationFragment extends Fragment{
     }
 
 
+    @Override
+    public void onClick(Notification notification, int position) {
+
+    }
+
+    @Override
+    public void onLongClick(Notification notification, int position) {
+
+    }
 }
