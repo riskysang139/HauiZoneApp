@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import androidx.annotation.Nullable;
 
 import com.example.hauizone.Account.User;
+import com.example.hauizone.Notification.Notification;
 import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
