@@ -13,6 +13,11 @@
         android:theme="@style/Theme.HauiZone">
         <activity android:name=".Admin.AccountManage.ViewInformationAccountActivity"></activity>
         <activity android:name=".Admin.AccountManage.ManageAccountActivity" />
+        <activity android:name=".Admin.AdminNotifi.AdminNotifiActivity"></activity>
+        <activity android:name=".Admin.AdminActivity">
+
+        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Account.SignUpActivity" />
         <activity android:name=".Account.SignInActivity" >
             <intent-filter>
@@ -21,14 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Admin.AdminActivity">
 
-        </activity>
-
+        <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry"></activity>
         <activity android:name=".Admin.ReportManage.AdminReportManage">
 
         </activity>
-        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
