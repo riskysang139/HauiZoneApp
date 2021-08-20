@@ -20,6 +20,11 @@
     <string name="map_warning">Bản đồ khuyến cáo</string>
     <string name="open_map"><u>Mở rộng</u></string>
     <string name="error_network">Lỗi mạng vui lòng thử lại !!!</string>
+    <string name="scan_qr_code">Quét mã QR</string>
+    <string name="title_scan_qr_code">Quét QRCode để checkin tại địa điểm đến hoặc nhập tờ khai y tế tại cửa khẩu</string>
+    <string name="near_place">Địa điểm gần bạn</string>
+    <string name="your_route">Lộ trình của bạn</string>
+    <string name="check_in">Check In</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Report Screen   -->
@@ -32,7 +37,7 @@
     <string name="ward">Phường / Xã</string>
     <string name="report_street">Số nhà , đường</string>
     <string name="required">(*)</string>
-    <string name="report_content">Nội dung phản ánh</string>
+    <string name="report_type_content">Loại nội dung phản ánh</string>
     <string name="report_option_1">Có trường hợp nghi mắc bệnh</string>
     <string name="report_option_2">Có trường hợp từ vùng dịch về</string>
     <string name="report_option_3">Có trường hợp tiếp xúc với người đi từ vùng dịch về</string>
@@ -89,7 +94,13 @@ hiểu và đồng ý</string>
     <string name="get_street">Nhập số nhà , tên đường</string>
     <string name="get_numberphone">Nhập số điện thoại</string>
 
-    =======
     <string name="btn_back_home">&#60;</string>
-    >>>>>>> 79a4263 (khai bao noi dia)
+    <string name="account_sign_in">Đăng nhập</string>
+    <string name="account_sign_up_1"><i>Bạn chưa có tài khoản?<u> Đăng ký tại đây.</u></i></string>
+    <string name="account_sign_up">Đăng ký</string>
+    <string name="account_username">Tài khoản</string>
+    <string name="account_password">Mật khẩu</string>
+    <string name="account_manage_account">Quản lý tài khoản</string>
+    <string name="account_epidemic">Tình hình dịch bệnh</string>
+    <string name="account_infor">Thông tin tài khoản</string>
 </resources>

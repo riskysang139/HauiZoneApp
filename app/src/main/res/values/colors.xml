@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#235DF1</color>
     <color name="gray">#7C7B7B</color>
+    <color name="green">#2CC32C</color>
+    <color name="yellow">#EAE627</color>
     <color name="main_color">#2583CC</color>
     <color name="header_color"></color>
     <color name="tutorial_main_1">#FF5722</color>
