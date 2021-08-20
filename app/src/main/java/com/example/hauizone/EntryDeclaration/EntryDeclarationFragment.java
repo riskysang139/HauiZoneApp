@@ -15,6 +15,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.hauizone.BaseDatabase;
+import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentEntryDeclarationBinding;
 
@@ -132,7 +133,7 @@ public class EntryDeclarationFragment extends Fragment {
                 binding.txtTownEntry.getText().toString(),
                 binding.txtAddressEntry.getText().toString(),
                 binding.txtNumberPhoneEntry.getText().toString(),
-                0
+                MainActivity.INDEX
         ));
     }
 }

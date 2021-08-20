@@ -38,6 +38,18 @@
             android:background="#f00"
             android:text="Quản lý phản ánh từ người dùng "
             android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btn_manage_account"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_manage_report"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@color/main_color"
+            android:text="Quản lý tài khoản "
+            android:textColor="@color/white" />
+
     </RelativeLayout>
 
 </layout>

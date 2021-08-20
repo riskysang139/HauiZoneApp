@@ -22,6 +22,7 @@ import com.example.hauizone.Admin.AdminDomesticAndEntry.RCVEntryAdapter;
 import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.EntryDeclaration.EntryDeclaration;
+import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityAdminDomesticAndEntryBinding;
 
@@ -46,7 +47,7 @@ public class ShowListEntryDeclaration extends Fragment implements RCVEntryAdapte
         super.onResume();
         Log.e("sang","on resum");
         baseDatabase = BaseDatabase.getInstance(getContext());
-        entryDeclarations = baseDatabase.getAllEntry();
+        entryDeclarations = baseDatabase.getAllEntryWithUser(MainActivity.INDEX);
         if(entryDeclarations.size()==0)
         {
             fakeData();
@@ -63,21 +64,21 @@ public class ShowListEntryDeclaration extends Fragment implements RCVEntryAdapte
         baseDatabase.insertEntry(new EntryDeclaration("Lao Bảo","Trần Quang Sang"
                                                         ,"13/09/2000","Nam","Việt Nam",
                                                     "13/03/2021","Thái Bình","Hưng Hà",
-                                            "Hưng Nhân","Khu Lái","0971410156",1));
+                                            "Hưng Nhân","Khu Lái","0971410156",MainActivity.INDEX));
 
         baseDatabase.insertEntry(new EntryDeclaration("Hải Phòng","Cao Thế Thắng"
                 ,"22/12/2000","Nam","Việt Nam",
                 "16/09/2021","Vĩnh Phúc","Vĩnh Tường",
-                "Ngũ Kiên","Khu ABC","06554112434",1));
+                "Ngũ Kiên","Khu ABC","06554112434",MainActivity.INDEX));
 
         baseDatabase.insertEntry(new EntryDeclaration("Cà Mau","Nguyễn Văn Thàng"
                 ,"11/06/2000","Nam","Việt Nam",
                 "16/09/2021","Nam Định","Hải Hậu",
-                "Hòn Dấu","Khu Chùa","074156568",1));
+                "Hòn Dấu","Khu Chùa","074156568", MainActivity.INDEX));
     }
     private void updateData()
     {
-        entryDeclarations = baseDatabase.getAllEntry();
+        entryDeclarations = baseDatabase.getAllEntryWithUser(MainActivity.INDEX);
         entryAdapter=new RCVEntryAdapter(entryDeclarations,getContext(),this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rcvListToKhai.setLayoutManager(layoutManager);

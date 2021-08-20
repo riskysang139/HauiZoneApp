@@ -10,10 +10,11 @@ import android.widget.BaseAdapter;
 
 import androidx.annotation.Nullable;
 
-import com.example.hauizone.Notification.Notification;
 import com.example.hauizone.Account.User;
 import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.EntryDeclaration.EntryDeclaration;
+import com.example.hauizone.Notification.Notification;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -360,7 +361,13 @@ public class BaseDatabase extends SQLiteOpenHelper {
         return rowId;
     }
 
-    public User getUserById(int id) {
+    public int getCountUser(){
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        return list.size();
+    }
+
+    public User getUserById(int id){
         SQLiteDatabase db = getReadableDatabase();
         User user = new User();
 
@@ -581,6 +588,39 @@ public class BaseDatabase extends SQLiteOpenHelper {
         ArrayList<EntryDeclaration> entryDeclarations = new ArrayList<>();
         String sql = "SELECT * FROM " + TABLE_ENTRY;
         Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                entryDeclarations.add(new
+                        EntryDeclaration(cursor.getInt(cursor.getColumnIndex(ID_ENTRY_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(GATE_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NAME_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DATE_OF_BIRTH_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(SEX_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NATIONALITY)),
+                        cursor.getString(cursor.getColumnIndex(DATE_ENTRY_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(CITY_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DISTRICT_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TOWN_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(ADDRESS_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NUMBERPHONE_CONTACT_COLUMN)),
+                        cursor.getInt(cursor.getColumnIndex(ID_USERNAME_COLUMN))
+
+                ));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return entryDeclarations;
+    }
+
+    public ArrayList<EntryDeclaration> getAllEntryWithUser(int idUser) {
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<EntryDeclaration> entryDeclarations = new ArrayList<>();
+
+        String sql = "SELECT * FROM " +
+                TABLE_ENTRY + " WHERE " + ID_USERNAME_COLUMN + " = ? ";
+
+        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(idUser)});
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 entryDeclarations.add(new

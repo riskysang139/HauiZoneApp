@@ -58,17 +58,17 @@ public class AdminDomesticAndEntry extends AppCompatActivity implements RCVEntry
         baseDatabase.insertEntry(new EntryDeclaration("Lao Bảo","Trần Quang Sang"
                 ,"13/09/2000","Nam","Việt Nam",
                 "13/03/2021","Thái Bình","Hưng Hà",
-                "Hưng Nhân","Khu Lái","0971410156",1));
+                "Hưng Nhân","Khu Lái","0971410156",3));
 
         baseDatabase.insertEntry(new EntryDeclaration("Hải Phòng","Cao Thế Thắng"
                 ,"22/12/2000","Nam","Việt Nam",
                 "16/09/2021","Vĩnh Phúc","Vĩnh Tường",
-                "Ngũ Kiên","Khu ABC","06554112434",1));
+                "Ngũ Kiên","Khu ABC","06554112434",4));
 
         baseDatabase.insertEntry(new EntryDeclaration("Cà Mau","Nguyễn Văn Thàng"
                 ,"11/06/2000","Nam","Việt Nam",
                 "16/09/2021","Nam Định","Hải Hậu",
-                "Hòn Dấu","Khu Chùa","074156568",1));
+                "Hòn Dấu","Khu Chùa","074156568",5));
     }
 
     @Override
