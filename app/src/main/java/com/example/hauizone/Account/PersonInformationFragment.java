@@ -1,6 +1,9 @@
 package com.example.hauizone.Account;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.example.hauizone.MainActivity.INDEX;
+
 public class PersonInformationFragment extends Fragment {
 
 
@@ -32,6 +37,7 @@ public class PersonInformationFragment extends Fragment {
 
     List<String> listTinh, listQuan, listPhuong;
     String []dichBenh = {"F0", "F1", "F2", "F3", "F4", "Không mắc bệnh"};
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,8 +50,6 @@ public class PersonInformationFragment extends Fragment {
 
     private void setEvents() {
 
-
-
         getDataList();
         setAutoComplete();
         // spinner
@@ -57,7 +61,37 @@ public class PersonInformationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkAndAddList();
-                updateData();
+
+                if(checkInput() == 0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("Thông báo");
+                    builder.setMessage("Bạn phải nhập đầy đủ thông tin bên trên để cập nhật thông tin!");
+                    builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+
+                    Dialog dialog = builder.create();
+                    dialog.show();
+                }
+                else if(binding.cbCamKet.isChecked() == false){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("Thông báo");
+                    builder.setMessage("Bạn phải tích vào cam kết bên trên để cập nhật thông tin!");
+                    builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    Dialog dialog = builder.create();
+                    dialog.show();
+                }else{
+                    updateData();
+                }
+
             }
         });
 
@@ -69,100 +103,104 @@ public class PersonInformationFragment extends Fragment {
             }
         });
         // back
-        binding.imgBack.setOnClickListener(v -> setClickBack());
+        binding.imgBack.setOnClickListener(v -> getActivity().onBackPressed());
 
+    }
+    private int checkInput() {
+
+
+        if(binding.edtHoTen.getText().toString().trim().equals("")){
+            return 0;
+        }
+        if(binding.edtNgaySinh.getText().toString().trim().equals("")){
+            return 0;
+        }
+        if(binding.tvTinhThanh.getText().toString().trim().equals("")){
+            return 0;
+        }
+        if(binding.tvQuanHuyen.getText().toString().trim().equals("")){
+            return 0;
+        }
+        if(binding.tvPhuongXa.getText().toString().trim().equals("")){
+            return 0;
+        }
+        if(binding.edtSoNha.getText().toString().trim().equals("")){
+            return 0;
+        }if(binding.edtSDT.getText().toString().trim().equals("")){
+            return 0;
+        }
+
+        return 1;
     }
 
     private void setDataToView() {
 
-        mListUser = new ArrayList<>();
-
-        User user = new User();
         mBaseDatabase = new BaseDatabase(getContext());
-        try {
-            mListUser = mBaseDatabase.getAllUser();
-            for (User u : mListUser) {
-                if (u.getFlag() == 1) {
-                    user = u;
+        User user = new User();
+        user = mBaseDatabase.getUserById(INDEX);
+                    binding.edtHoTen.setText(user.getName());
+                    binding.edtNgaySinh.setText(user.getDateOfBirth());
+                    binding.edtEmail.setText(user.getEmail());
+                    binding.edtSDT.setText(user.getPhoneNumber());
+                    binding.edtSoNha.setText(user.getUserStreet());
+                    binding.tvTinhThanh.setText(user.getUserProvince());
+                    binding.tvQuanHuyen.setText(user.getUserDistrict());
+                    binding.tvPhuongXa.setText(user.getUserWard());
+
+                    if(user.getGender().equals("Nam")){
+                        binding.rbNam.setChecked(true);
+                    }else{
+                        binding.rbNu.setChecked(true);
+                    }
+                    int i = 0;
+                    for(;i < dichBenh.length; i++){
+                        if(dichBenh[i].equals(user.getEpidemic())){
+                            break;
+                        }
+                    }
+                    binding.spDichbenh.setSelection(i);
                     return;
                 }
-            }
-        } catch (Exception e) {
-            Log.e("PersonInfomationFrag", e.toString());
-        }
-        if (user != null) {
 
-            binding.edtHoTen.setText(user.getName());
-            binding.edtNgaySinh.setText(user.getDateOfBirth());
-            binding.edtEmail.setText(user.getEmail());
-            binding.edtSDT.setText(user.getPhoneNumber());
-            binding.edtSoNha.setText(user.getUserStreet());
-            binding.tvTinhThanh.setText(user.getUserProvince());
-            binding.tvQuanHuyen.setText(user.getUserDistrict());
-            binding.tvPhuongXa.setText(user.getUserWard());
-//            binding.tv
 
-            if(user.getGender() == "Nam"){
-                binding.rbNam.setChecked(true);
-            }else{
-                binding.rbNu.setChecked(true);
-            }
-            int i = 0;
-            for(;i < dichBenh.length; i++){
-                if(dichBenh[i].equals(user.getEpidemic())){
-                    break;
-                }
-            }
-            binding.spDichbenh.setSelection(i);
-        }
-    }
+
 
     private void updateData() {
-        mListUser = new ArrayList<>();
-
-        User user = new User();
         mBaseDatabase = new BaseDatabase(getContext());
         try {
-            mListUser = mBaseDatabase.getAllUser();
-            for(User u : mListUser){
-                if(u.getFlag() == 1){
-                    user = u;
-                    return;
-                }
-            }
+            User user  = new User();
+            user = mBaseDatabase.getUserById(INDEX);
+
+                    user.setName(binding.edtHoTen.getText().toString());
+                    user.setDateOfBirth(binding.edtNgaySinh.getText().toString());
+
+                    if(binding.rbNam.isChecked()){
+                        user.setGender(binding.rbNam.getText().toString());
+                    }else{
+                        user.setGender(binding.rbNu.getText().toString());
+                    }
+
+                    user.setUserProvince(binding.tvTinhThanh.getText().toString());
+                    user.setUserDistrict(binding.tvQuanHuyen.getText().toString());
+                    user.setUserWard(binding.tvPhuongXa.getText().toString());
+                    user.setUserStreet(binding.edtSoNha.getText().toString());
+                    user.setPhoneNumber(binding.edtSDT.getText().toString());
+                    user.setEmail(binding.edtEmail.getText().toString());
+                    user.setEpidemic(binding.spDichbenh.getSelectedItem().toString());
+
+
+                    int check = -1;
+                    check = mBaseDatabase.updateUser(user);
+                    if(check != -1){
+                        Toast.makeText(getContext(), "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "Có lỗi! Cập nhật thông tin thất bại!", Toast.LENGTH_SHORT).show();
+                    }
+
         }catch(Exception e){
             Log.e("PersonInfomationFrag", e.toString());
         }
-        if(user != null){
 
-            user.setName(binding.edtHoTen.getText().toString());
-            user.setDateOfBirth(binding.edtNgaySinh.getText().toString());
-
-            if(binding.rbNam.isChecked()){
-                user.setGender(binding.rbNam.getText().toString());
-            }else{
-                user.setGender(binding.rbNu.getText().toString());
-            }
-
-            user.setUserProvince(binding.tvTinhThanh.getText().toString());
-            user.setUserDistrict(binding.tvQuanHuyen.getText().toString());
-            user.setUserWard(binding.tvPhuongXa.getText().toString());
-            user.setUserStreet(binding.edtSoNha.getText().toString());
-            user.setPhoneNumber(binding.edtSDT.getText().toString());
-            user.setEmail(binding.edtEmail.getText().toString());
-            user.setEpidemic(binding.spDichbenh.getSelectedItem().toString());
-
-            int check = -1;
-            check = mBaseDatabase.updateUser(user);
-            if(check != -1){
-                Toast.makeText(getContext(), "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(getContext(), "Có lỗi! Cập nhật thông tin thất bại!", Toast.LENGTH_SHORT).show();
-            }
-
-        }else{
-            Toast.makeText(getContext(), "Có lỗi! Cập nhật thông tin thất bại!", Toast.LENGTH_SHORT).show();
-        }
 
     }
 

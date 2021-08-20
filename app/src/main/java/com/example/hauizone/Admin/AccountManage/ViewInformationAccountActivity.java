@@ -1,4 +1,4 @@
-package com.example.hauizone.Account;
+package com.example.hauizone.Admin.AccountManage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.hauizone.Account.User;
 import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityViewInformationAccountBinding;

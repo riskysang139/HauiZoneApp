@@ -412,12 +412,12 @@
 
                 // tinh hinh dich benh
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/ln_dichbenh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:layout_below="@+id/ln_email"
+                    android:gravity="center_vertical"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="horizontal">
 
@@ -425,15 +425,17 @@
                         android:id="@+id/tv_dichbenh"
                         android:layout_width="wrap_content"
                         android:textColor="@color/black"
+                        android:gravity="center_vertical"
                         android:layout_height="wrap_content"
                         android:text="Tình hình dịch bệnh: " />
 
                     <Spinner
                         android:layout_toRightOf="@id/tv_dichbenh"
                         android:id="@+id/sp_dichbenh"
+                        android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                </RelativeLayout>
+                </LinearLayout>
 
 
                 // cam ket

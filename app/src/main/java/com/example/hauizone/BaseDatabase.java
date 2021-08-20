@@ -10,8 +10,8 @@ import android.widget.BaseAdapter;
 
 import androidx.annotation.Nullable;
 
-import com.example.hauizone.Notification.Notification;
 import com.example.hauizone.Account.User;
+import com.example.hauizone.Notification.Notification;
 import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
@@ -300,6 +300,42 @@ public class BaseDatabase extends SQLiteOpenHelper {
 //    }
 
 
+    public int getIndex(){
+
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        for(User u : list){
+            if(u.getFlag() == 1){
+                return u.getUserId();
+            }
+        }
+        return -1;
+    }
+    public void setFlagOut(){
+
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        for(User u : list){
+            if(u.getFlag() == 1){
+                u.setFlag(0);
+                updateUser(u);
+            }
+        }
+    }
+
+    //check trung ten tk
+    public int checkUsername(String username){
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        for(User u : list){
+            if(u.getUserName().equals(username.trim())){
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+
     public long insertUser(User user) {
 
         Log.e(TAG, "onInsertUser: ");
@@ -323,6 +359,12 @@ public class BaseDatabase extends SQLiteOpenHelper {
         long rowId = db.insert(TABLE_USER, null, values);
         db.close();
         return rowId;
+    }
+
+    public int getCountUser(){
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+        return list.size();
     }
 
     public User getUserById(int id){
