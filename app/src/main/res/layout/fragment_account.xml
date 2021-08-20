@@ -18,20 +18,26 @@
             android:textStyle="bold" />
 
 
-        <ImageButton
+        <ImageView
             android:id="@+id/img_usa"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/anh"
+            android:scaleType="fitCenter"
+            android:padding="4dp"
             android:layout_below="@+id/tv_taiKhoan"
             android:layout_alignParentRight="true"
             android:layout_margin="@dimen/_8sdp" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/img_vn"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_30sdp"
+            android:padding="4dp"
             android:layout_below="@+id/tv_taiKhoan"
             android:layout_marginTop="@dimen/_8sdp"
+            android:src="@drawable/vn"
+            android:scaleType="fitCenter"
             android:layout_toLeftOf="@id/img_usa" />
 
         <RelativeLayout

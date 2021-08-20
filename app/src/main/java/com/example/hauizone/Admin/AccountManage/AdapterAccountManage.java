@@ -1,4 +1,4 @@
-package com.example.hauizone.Account;
+package com.example.hauizone.Admin.AccountManage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.hauizone.Account.User;
 import com.example.hauizone.R;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class AdapterAccountManage extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = LayoutInflater.from(convertView.getContext()).inflate(R.layout.item_manage_account,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_manage_account,parent,false);
 
         //
         TextView name, birth, province, phone, epidemic;

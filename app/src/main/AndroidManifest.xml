@@ -17,8 +17,15 @@
         <activity android:name=".Admin.AdminActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".Account.ManageAccountActivity" />
+        <activity android:name=".Admin.AccountManage.ViewInformationAccountActivity"></activity>
+        <activity android:name=".Admin.AccountManage.ManageAccountActivity" />
+        <activity android:name=".Admin.AdminNotifi.AdminNotifiActivity"></activity>
+        <activity android:name=".Admin.AdminActivity">
+
+        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Account.SignUpActivity" />
-        <activity android:name=".Account.SignInActivity">
+        <activity android:name=".Account.SignInActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +34,11 @@
         </activity>
         <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry" />
         <activity android:name=".Admin.ReportManage.AdminReportManage" />
+
+        <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry"></activity>
+        <activity android:name=".Admin.ReportManage.AdminReportManage">
+
+        </activity>
     </application>
 
 </manifest>
