@@ -10,14 +10,23 @@
 
         <Button
             android:id="@+id/btn_entry_declare"
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="@color/main_color"
             android:text="Quản lý khai báo nhập cảnh và nội địa " />
         <Button
+            android:id="@+id/btn_notifi"
+            android:layout_below="@id/btn_entry_declare"
+            android:layout_width="200dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/main_color"
+            android:text="Quản lý thông báo" />
+        <Button
             android:id="@+id/btn_manage_report"
-            android:layout_below="@+id/btn_entry_declare"
+            android:layout_below="@+id/btn_notifi"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

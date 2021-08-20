@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.BaseAdapter;
 
 import androidx.annotation.Nullable;
 
+import com.example.hauizone.Notification.Notification;
 import com.example.hauizone.Account.User;
 import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.EntryDeclaration.EntryDeclaration;
@@ -104,7 +106,112 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     ID_USERNAME_COLUMN + " INTEGER NOT NULL" +
                     ")";
 
-    //
+    //table notification
+    private static final String TABLE_NOTIFI= "NOTIFICATION_TABLE";
+    private static final String ID_NOTIFI_COLUMN = "ID";
+    private static final String TYPE_NOTIFI_COLUMN = "Type";
+    private static final String DATE_NOTIFI_COLUMN = "Date";
+    private static final String TIME_NOTIFI_COLUMN = "Time";
+    private static final String CONTENT_NOTIFI_COLUMN = "Content";
+    private static final String URL_NOTIFI_COLUMN = "Image";
+    private static final String CREATE_TABLE_NOTIFI_SQL =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NOTIFI + " (" +
+                    ID_NOTIFI_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                    TYPE_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    DATE_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    TIME_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    CONTENT_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    URL_NOTIFI_COLUMN + " TEXT NOT NULL" +
+                    ")";
+    public ArrayList<Notification> getAllNotifi() {
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Notification> notifications = new ArrayList<Notification>();
+        String sql = "SELECT * FROM " + TABLE_NOTIFI;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                notifications.add(new
+                        Notification(cursor.getInt(cursor.getColumnIndex(ID_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TYPE_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DATE_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TIME_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(CONTENT_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(URL_NOTIFI_COLUMN))
+                ));
+
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return notifications;
+    }
+
+
+
+    public Notification getNotifications( Notification notifications) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NOTIFI, new String[]{ID_NOTIFI_COLUMN,
+                        TYPE_NOTIFI_COLUMN, DATE_NOTIFI_COLUMN, TIME_NOTIFI_COLUMN, CONTENT_NOTIFI_COLUMN, URL_NOTIFI_COLUMN},
+                ID_NOTIFI_COLUMN + " = ?",
+                new String[]{String.valueOf(notifications.getId())}, null, null, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            notifications = new Notification(cursor.getInt(0), cursor.getString(1),
+                    cursor.getString(2),cursor.getString(3),cursor.getString(4), cursor.getString(5));
+            cursor.close();
+        }
+        db.close();
+        return notifications;
+    }
+
+    public boolean insertNotification(Notification notifications) {
+        Log.e(TAG, "onInsert: ");
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TYPE_NOTIFI_COLUMN, notifications.getType());
+        values.put(DATE_NOTIFI_COLUMN, notifications.getDate());
+        values.put(TIME_NOTIFI_COLUMN, notifications.getTime());
+        values.put(CONTENT_NOTIFI_COLUMN, notifications.getContent());
+        values.put(URL_NOTIFI_COLUMN, notifications.getImageNotification());
+        long rowId = db.insert(TABLE_NOTIFI, null, values);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
+    }
+    public int updateNotificaton(Notification notification) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TYPE_NOTIFI_COLUMN, notification.getType());
+        values.put(DATE_NOTIFI_COLUMN, notification.getDate());
+        values.put(TIME_NOTIFI_COLUMN, notification.getTime());
+        values.put(CONTENT_NOTIFI_COLUMN, notification.getContent());
+        values.put(URL_NOTIFI_COLUMN, notification.getImageNotification());
+        int rowEffect = db.update(TABLE_NOTIFI, values, ID_NOTIFI_COLUMN + " = ?",
+                new String[]{String.valueOf(notification.getId())});
+        db.close();
+        return rowEffect;
+
+//        SQLiteDatabase db = getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(TYPE_COLUMN, notifications.getLoaiTin());
+//        values.put(DATE_COLUMN, notifications.getNgayThem());
+//        values.put(TIME_COLUMN, notifications.getGioThem());
+//        values.put(CONTENT_COLUMN, notifications.getNoiDung());
+//        int rowEffect = db.update(TABLE, values, ID_COLUMN + " = ?",
+//                new String[]{String.valueOf(notifications.getId())});
+//        db.close();
+//        return rowEffect;
+    }
+
+    public int deleteNotifi(Notification notifications) {
+        SQLiteDatabase db = getReadableDatabase();
+        int rowEffect = db.delete(TABLE_NOTIFI, ID_NOTIFI_COLUMN + " = ?", new
+                String[]{String.valueOf(notifications.getId())});
+        db.close();
+        return rowEffect;
+    }
+
+
     //table entry
     private static final String TABLE_ENTRY = "ENTRY_TABLE";
     private static final String ID_ENTRY_COLUMN = "id_entry";
@@ -150,8 +257,12 @@ public class BaseDatabase extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_DOMESTIC_SQL);
             db.execSQL(CREATE_TABLE_ENTRY_SQL);
             db.execSQL(CREATE_TABLE_USER_SQL);
-        } catch (Exception e) {
-            Log.e(TAG, e.toString());
+            db.execSQL(CREATE_TABLE_NOTIFI_SQL);
+
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG,e.toString());
         }
     }
 
