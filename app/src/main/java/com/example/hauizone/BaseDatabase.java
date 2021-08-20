@@ -484,8 +484,9 @@ public class BaseDatabase extends SQLiteOpenHelper {
     }
 
     public int deleteEntryByID(EntryDeclaration entryDeclaration) {
+
         SQLiteDatabase db = getReadableDatabase();
-        int rowEffect = db.delete(TABLE_USER, USER_ID + " = ? ", new String[]{String.valueOf(entryDeclaration.getId())});
+        int rowEffect = db.delete(TABLE_ENTRY, ID_ENTRY_COLUMN + " = ? ", new String[]{String.valueOf(entryDeclaration.getId())});
         db.close();
         return rowEffect;
     }
