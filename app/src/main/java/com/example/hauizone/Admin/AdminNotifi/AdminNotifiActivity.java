@@ -31,7 +31,7 @@ import com.example.hauizone.Notification.Notification;
 import com.example.hauizone.Notification.NotificationAdapter;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityAdminNotifiBinding;
-import com.example.hauizone.entryDeclaration.EntryDeclaration;
+
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

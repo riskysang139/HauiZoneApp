@@ -11,14 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HauiZone">
-        <activity android:name=".Account.UpdateEntryDeclaration.UpdateEntryDeclaration"/>
+        <activity android:name=".Account.UpdateEntryDeclaration.UpdateEntryDeclaration" />
         <activity android:name=".Account.ViewInformationAccountActivity" />
-        <activity android:name=".Admin.AdminNotifi.AdminNotifiActivity"></activity>
-        <activity android:name=".Admin.AdminActivity">
-
-        </activity>
+        <activity android:name=".Admin.AdminNotifi.AdminNotifiActivity" />
+        <activity android:name=".Admin.AdminActivity"/>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Account.ViewInformationAccountActivity" />
         <activity android:name=".Account.ManageAccountActivity" />
         <activity android:name=".Account.SignUpActivity" />
         <activity android:name=".Account.SignInActivity">
@@ -28,16 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Admin.AdminActivity"/>
-        <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry"/>
-        <activity android:name=".Admin.ReportManage.AdminReportManage"/>
-        <activity android:name=".MainActivity" />
-
-
-        <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry"></activity>
-        <activity android:name=".Admin.ReportManage.AdminReportManage">
-
-        </activity>
+        <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry" />
+        <activity android:name=".Admin.ReportManage.AdminReportManage" />
     </application>
 
 </manifest>
