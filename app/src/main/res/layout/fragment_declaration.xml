@@ -22,7 +22,7 @@
                 android:padding="@dimen/_4sdp"
                 android:text="@string/account_medical_declaration"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageButton

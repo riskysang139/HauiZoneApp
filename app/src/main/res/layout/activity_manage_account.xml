@@ -23,7 +23,6 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_4sdp"
-                android:textAllCaps="true"
                 android:text="@string/account_manage_account"
                 android:textColor="@color/white"
                 android:textSize="24sp"
