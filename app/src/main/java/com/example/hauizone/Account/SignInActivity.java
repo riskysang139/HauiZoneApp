@@ -138,7 +138,6 @@ public class SignInActivity extends AppCompatActivity {
 
             if( user.getName() != null || user.getUserName() != null){
                 user.setFlag(1);
-                Log.e("Error", user.getName() + user.getFlag());
                 int check = -1;
                 check = mBaseDataBase.updateUser(user);
                 if(check != -1){

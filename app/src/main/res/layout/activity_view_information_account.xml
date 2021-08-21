@@ -23,9 +23,8 @@
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_4sdp"
                 android:text="@string/account_infor"
-                android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -104,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="01/01/1999"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
 
 
                 </LinearLayout>
@@ -132,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="Nam"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -158,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="Hà Nội"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 // quan/huyen
@@ -184,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="Bắc Từ Liêm"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 //phuong/xa
@@ -209,7 +208,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="Minh Khai"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 //so nha, duong
@@ -234,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="Số nhà 19/132/66 đường Cầu Diễn"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 // sdt
@@ -259,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="0981233422"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 //email
@@ -284,7 +283,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="nguyenvana@gmail.com"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 // tinh hinh sich benh
@@ -309,7 +308,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="Không mắc bệnh"
-                        android:textColor="#FA0202" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
 

@@ -23,10 +23,9 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_4sdp"
-                android:textAllCaps="true"
                 android:text="@string/account_sign_up"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -528,6 +527,7 @@
                     android:layout_marginBottom="@dimen/_16sdp"
                     android:background="@drawable/bg_btn_update"
                     android:text="@string/account_sign_up"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp" />
             </RelativeLayout>

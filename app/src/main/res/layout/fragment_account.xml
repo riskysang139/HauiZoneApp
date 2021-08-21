@@ -14,7 +14,7 @@
             android:padding="@dimen/_4sdp"
             android:text="@string/account"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
 
@@ -50,7 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
-            android:background="#2B78E4"
+            android:background="@color/main_color"
+            android:textAllCaps="true"
             android:text="@string/account_infomation"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -59,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_person_24"
                 android:gravity="center_horizontal"
                  />
@@ -76,7 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
-            android:background="#2B78E4"
+            android:background="@color/main_color"
+            android:textAllCaps="true"
             android:text="@string/account_medical_declaration"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -85,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_file_copy_24"
                 android:gravity="center_horizontal" />
 
@@ -102,9 +104,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
                 android:text="@string/account_terms_of_use"
-
+                android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -112,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_format_list_bulleted_24"
                 android:gravity="center_horizontal"
                  />
@@ -129,8 +131,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
-                
+                android:background="@color/main_color"
+                android:textAllCaps="true"
                 android:text="@string/account_q_and_a"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -139,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_send_24"
                 android:gravity="center_horizontal"
                  />
@@ -155,7 +157,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
+                android:textAllCaps="true"
                 android:text="@string/account_hauifanpage"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -164,7 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_send_24"
                 android:gravity="center_horizontal"
                  />
@@ -177,6 +180,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/_8sdp"
+            android:textAllCaps="true"
             android:background="@drawable/bg_btn_login"
             android:text="@string/account_logout"
             android:textColor="@color/white"
