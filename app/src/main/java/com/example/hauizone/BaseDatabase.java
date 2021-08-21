@@ -11,9 +11,14 @@ import android.widget.BaseAdapter;
 import androidx.annotation.Nullable;
 
 import com.example.hauizone.Account.User;
+import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
+import com.example.hauizone.EntryDeclaration.EntryDeclaration;
 import com.example.hauizone.Notification.Notification;
+import com.example.hauizone.Account.User;
+import com.example.hauizone.Report.Report;
 import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.entryDeclaration.EntryDeclaration;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,23 +72,22 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     USER_WARD + " TEXT NOT NULL," +
                     USER_STREET + " TEXT NOT NULL," +
                     USER_PHONE_NUMBER + " TEXT NOT NULL," +
-                    USER_EMAIL + " TEXT ," +
+                    USER_EMAIL + " TEXT," +
                     USER_EPIDEMIC + " TEXT NOT NULL," +
                     USER_FLAG + " INTEGER NOT NULL" +
                     ")";
     // table domestic
 
-    private static final String TABLE_DOMESTIC= "DOMESTIC_TABLE";
+    private static final String TABLE_DOMESTIC = "DOMESTIC_TABLE";
     private static final String ID_DOMESTIC_COLUMN = "id_domestic";
-    private static final String CHECK_COLUMN="check_cl";
-    private static final String VEHICLE_COLUMN="vehicle";
+    private static final String CHECK_COLUMN = "check_cl";
+    private static final String VEHICLE_COLUMN = "vehicle";
     private static final String ADDRESS_DEPARTURE_COLUMN = "departure";
     private static final String ADDRESS_DESTINATION_COLUMN = "destination";
     private static final String NUMBER_PASSPORT_COLUMN = "number_passport";
 
 
-
-    private static final String SYMPTON_COLUMN="sympton";
+    private static final String SYMPTON_COLUMN = "sympton";
     private static final String COVID_CONTACT_COLUMN = "covid_contact";
 
     private static final String CREATE_TABLE_DOMESTIC_SQL =
@@ -214,11 +218,11 @@ public class BaseDatabase extends SQLiteOpenHelper {
 
 
     //table entry
-    private static final String TABLE_ENTRY= "ENTRY_TABLE";
+    private static final String TABLE_ENTRY = "ENTRY_TABLE";
     private static final String ID_ENTRY_COLUMN = "id_entry";
-    private static final String GATE_COLUMN="gate";
+    private static final String GATE_COLUMN = "gate";
     private static final String DATE_ENTRY_COLUMN = "date_entry";
-    private static final String NATIONALITY="nationality";
+    private static final String NATIONALITY = "nationality";
 
     private static final String CREATE_TABLE_ENTRY_SQL =
             "CREATE TABLE IF NOT EXISTS " + TABLE_ENTRY + " (" +
@@ -246,19 +250,20 @@ public class BaseDatabase extends SQLiteOpenHelper {
         }
         return sInstance;
     }
+
     public BaseDatabase(@Nullable Context context) {
-        super(context, DATABASE_NAME,null,DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.e(TAG,"on create");
+        Log.e(TAG, "on create");
         try {
             db.execSQL(CREATE_TABLE_DOMESTIC_SQL);
             db.execSQL(CREATE_TABLE_ENTRY_SQL);
             db.execSQL(CREATE_TABLE_USER_SQL);
             db.execSQL(CREATE_TABLE_NOTIFI_SQL);
-
+            db.execSQL(CREATE_TABLE_REPORT_SQL);
         }
         catch (Exception e)
         {
@@ -273,6 +278,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTIFI);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT);
         onCreate(db);
     }
     //Đếm tổng số dòng trong database
@@ -371,11 +377,11 @@ public class BaseDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         User user = new User();
 
-        String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_ID  + " = ?" ;
+        String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_ID + " = ?";
 
-        Cursor cursor =  db.rawQuery(sql, new String[]{String.valueOf(id)});
+        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(id)});
 
-        if(cursor!= null && cursor.moveToFirst()){
+        if (cursor != null && cursor.moveToFirst()) {
             user = new User(
                     cursor.getInt(0),
                     cursor.getString(1),
@@ -399,16 +405,16 @@ public class BaseDatabase extends SQLiteOpenHelper {
         return user;
     }
 
-    public User getUserByUsernamePassword(String name, String pass){
+    public User getUserByUsernamePassword(String name, String pass) {
         SQLiteDatabase db = getReadableDatabase();
         User user = new User();
 
         String sql = "SELECT * FROM " +
-                TABLE_USER + " WHERE " + USER_USERNAME  + " = ? AND "  + USER_PASSWORD +" = ?";
+                TABLE_USER + " WHERE " + USER_USERNAME + " = ? AND " + USER_PASSWORD + " = ?";
 
-        Cursor cursor =  db.rawQuery(sql, new String[]{name, pass});
+        Cursor cursor = db.rawQuery(sql, new String[]{name, pass});
 
-        if(cursor!= null && cursor.moveToFirst()){
+        if (cursor != null && cursor.moveToFirst()) {
             user = new User(
                     cursor.getInt(0),
                     cursor.getString(1),
@@ -460,6 +466,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         db.close();
         return lists;
     }
+
     public int updateUser(User user) {
         SQLiteDatabase db = getWritableDatabase();
 
@@ -480,7 +487,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
 
         int rowEffect = db.update(TABLE_USER,
                 values,
-                 USER_ID + " = ? " ,
+                USER_ID + " = ? ",
                 new String[]{String.valueOf(user.getUserId())});
         db.close();
         return rowEffect;
@@ -488,7 +495,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
 
     public int deleteUserByID(int id) {
         SQLiteDatabase db = getReadableDatabase();
-        int rowEffect = db.delete(TABLE_USER,  USER_ID + " = ? "  ,new String[]{String.valueOf(id)});
+        int rowEffect = db.delete(TABLE_USER, USER_ID + " = ? ", new String[]{String.valueOf(id)});
         db.close();
         return rowEffect;
     }
@@ -533,22 +540,22 @@ public class BaseDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(CHECK_COLUMN,domesticDeclaration.getCkKH());
-        values.put(VEHICLE_COLUMN,domesticDeclaration.getVehicle());
-        values.put(ADDRESS_DEPARTURE_COLUMN,domesticDeclaration.getDeparture());
-        values.put(ADDRESS_DESTINATION_COLUMN,domesticDeclaration.getDestination());
-        values.put(NAME_COLUMN,domesticDeclaration.getName());
-        values.put(DATE_OF_BIRTH_COLUMN,domesticDeclaration.getDateOfBirth());
-        values.put(NUMBER_PASSPORT_COLUMN,domesticDeclaration.getNumberPassport());
-        values.put(SEX_COLUMN,domesticDeclaration.getSex());
-        values.put(CITY_CONTACT_COLUMN,domesticDeclaration.getContactCity());
-        values.put(DISTRICT_CONTACT_COLUMN,domesticDeclaration.getContactDistrict());
-        values.put(TOWN_CONTACT_COLUMN,domesticDeclaration.getContactTown());
-        values.put(ADDRESS_CONTACT_COLUMN,domesticDeclaration.getContactAddress());
-        values.put(NUMBERPHONE_CONTACT_COLUMN,domesticDeclaration.getContactAddress());
-        values.put(SYMPTON_COLUMN,domesticDeclaration.getSympton());
-        values.put(COVID_CONTACT_COLUMN,domesticDeclaration.getCovidContact());
-        values.put(ID_USERNAME_COLUMN,domesticDeclaration.getIdUsername());
+        values.put(CHECK_COLUMN, domesticDeclaration.getCkKH());
+        values.put(VEHICLE_COLUMN, domesticDeclaration.getVehicle());
+        values.put(ADDRESS_DEPARTURE_COLUMN, domesticDeclaration.getDeparture());
+        values.put(ADDRESS_DESTINATION_COLUMN, domesticDeclaration.getDestination());
+        values.put(NAME_COLUMN, domesticDeclaration.getName());
+        values.put(DATE_OF_BIRTH_COLUMN, domesticDeclaration.getDateOfBirth());
+        values.put(NUMBER_PASSPORT_COLUMN, domesticDeclaration.getNumberPassport());
+        values.put(SEX_COLUMN, domesticDeclaration.getSex());
+        values.put(CITY_CONTACT_COLUMN, domesticDeclaration.getContactCity());
+        values.put(DISTRICT_CONTACT_COLUMN, domesticDeclaration.getContactDistrict());
+        values.put(TOWN_CONTACT_COLUMN, domesticDeclaration.getContactTown());
+        values.put(ADDRESS_CONTACT_COLUMN, domesticDeclaration.getContactAddress());
+        values.put(NUMBERPHONE_CONTACT_COLUMN, domesticDeclaration.getContactAddress());
+        values.put(SYMPTON_COLUMN, domesticDeclaration.getSympton());
+        values.put(COVID_CONTACT_COLUMN, domesticDeclaration.getCovidContact());
+        values.put(ID_USERNAME_COLUMN, domesticDeclaration.getIdUsername());
 
         long rowId = db.insert(TABLE_DOMESTIC, null, values);
         db.close();
@@ -556,36 +563,25 @@ public class BaseDatabase extends SQLiteOpenHelper {
             return true;
         return false;
     }
-//    public int updateData(KhaiBao khaiBao) {
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(NAME_COLUMN, khaiBao.getName());
-//        values.put(SEX_COLUMN, khaiBao.getSex());
-//        values.put(ADDRESS_COLUMN, khaiBao.getAddress());
-//        values.put(DATE_OF_BIRTH_COLUMN, khaiBao.getDateOfBirth());
-//        int rowEffect = db.update(TABLE, values, ID_COLUMN + " = ?",
-//                new String[]{String.valueOf(khaiBao.getId())});
-//        db.close();
-//        return rowEffect;
-//    }
+
 
     public boolean insertEntry(EntryDeclaration entryDeclaration) {
         Log.e(TAG, "onInsert: ");
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(GATE_COLUMN,entryDeclaration.getGate());
-        values.put(NAME_COLUMN,entryDeclaration.getName());
-        values.put(DATE_OF_BIRTH_COLUMN,entryDeclaration.getDateOfBirth());
-        values.put(SEX_COLUMN,entryDeclaration.getSex());
-        values.put(DATE_ENTRY_COLUMN,entryDeclaration.getDate());
-        values.put(NATIONALITY,entryDeclaration.getNationality());
-        values.put(CITY_CONTACT_COLUMN,entryDeclaration.getContactCity());
-        values.put(DISTRICT_CONTACT_COLUMN,entryDeclaration.getContactDistrict());
-        values.put(TOWN_CONTACT_COLUMN,entryDeclaration.getContactTown());
-        values.put(ADDRESS_CONTACT_COLUMN,entryDeclaration.getContactAddress());
-        values.put(NUMBERPHONE_CONTACT_COLUMN,entryDeclaration.getPhoneNumber());
-        values.put(ID_USERNAME_COLUMN,entryDeclaration.getIdUser());
+        values.put(GATE_COLUMN, entryDeclaration.getGate());
+        values.put(NAME_COLUMN, entryDeclaration.getName());
+        values.put(DATE_OF_BIRTH_COLUMN, entryDeclaration.getDateOfBirth());
+        values.put(SEX_COLUMN, entryDeclaration.getSex());
+        values.put(DATE_ENTRY_COLUMN, entryDeclaration.getDate());
+        values.put(NATIONALITY, entryDeclaration.getNationality());
+        values.put(CITY_CONTACT_COLUMN, entryDeclaration.getContactCity());
+        values.put(DISTRICT_CONTACT_COLUMN, entryDeclaration.getContactDistrict());
+        values.put(TOWN_CONTACT_COLUMN, entryDeclaration.getContactTown());
+        values.put(ADDRESS_CONTACT_COLUMN, entryDeclaration.getContactAddress());
+        values.put(NUMBERPHONE_CONTACT_COLUMN, entryDeclaration.getPhoneNumber());
+        values.put(ID_USERNAME_COLUMN, entryDeclaration.getIdUser());
         long rowId = db.insert(TABLE_ENTRY, null, values);
         db.close();
         if (rowId != -1)
@@ -621,5 +617,169 @@ public class BaseDatabase extends SQLiteOpenHelper {
         }
         db.close();
         return entryDeclarations;
+    }
+
+    public ArrayList<EntryDeclaration> getAllEntryWithUser(int idUser) {
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<EntryDeclaration> entryDeclarations = new ArrayList<>();
+
+        String sql = "SELECT * FROM " +
+                TABLE_ENTRY + " WHERE " + ID_USERNAME_COLUMN + " = ? ";
+
+        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(idUser)});
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                entryDeclarations.add(new
+                        EntryDeclaration(cursor.getInt(cursor.getColumnIndex(ID_ENTRY_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(GATE_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NAME_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DATE_OF_BIRTH_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(SEX_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NATIONALITY)),
+                        cursor.getString(cursor.getColumnIndex(DATE_ENTRY_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(CITY_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DISTRICT_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TOWN_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(ADDRESS_CONTACT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NUMBERPHONE_CONTACT_COLUMN)),
+                        cursor.getInt(cursor.getColumnIndex(ID_USERNAME_COLUMN))
+
+                ));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return entryDeclarations;
+    }
+
+    public int updateEntry(EntryDeclaration entryDeclaration) {
+        Log.e(TAG, "onUpdate: ");
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(GATE_COLUMN, entryDeclaration.getGate());
+        values.put(NAME_COLUMN, entryDeclaration.getName());
+        values.put(DATE_OF_BIRTH_COLUMN, entryDeclaration.getDateOfBirth());
+        values.put(SEX_COLUMN, entryDeclaration.getSex());
+        values.put(DATE_ENTRY_COLUMN, entryDeclaration.getDate());
+        values.put(NATIONALITY, entryDeclaration.getNationality());
+        values.put(CITY_CONTACT_COLUMN, entryDeclaration.getContactCity());
+        values.put(DISTRICT_CONTACT_COLUMN, entryDeclaration.getContactDistrict());
+        values.put(TOWN_CONTACT_COLUMN, entryDeclaration.getContactTown());
+        values.put(ADDRESS_CONTACT_COLUMN, entryDeclaration.getContactAddress());
+        values.put(NUMBERPHONE_CONTACT_COLUMN, entryDeclaration.getPhoneNumber());
+        values.put(ID_USERNAME_COLUMN, entryDeclaration.getIdUser());
+
+        int rowEffect = db.update(TABLE_ENTRY, values, ID_ENTRY_COLUMN + " = ? ",
+                new String[]{String.valueOf(entryDeclaration.getId())});
+        db.close();
+        return rowEffect;
+    }
+
+    public int deleteEntryByID(EntryDeclaration entryDeclaration) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        int rowEffect = db.delete(TABLE_ENTRY, ID_ENTRY_COLUMN + " = ? ", new String[]{String.valueOf(entryDeclaration.getId())});
+        db.close();
+        return rowEffect;
+    }
+    //table report
+    private static final String TABLE_REPORT= "REPORT_TABLE";
+    private static final String ID_REPORT_COLUMN = "id_report";
+    private static final String NAME_REPORT_COLUMN= "name_report";
+    private static final String SDT_REPORT_COLUMN = "sdt_report";
+    private static final String DATE_REPORT_COLUMN = "date_report";
+    private static final String PROVINCE_REPORT_COLUMN= "province_report";
+    private static final String DISTRICT_REPORT_COLUMN= "district_report";
+    private static final String WARD_REPORT_COLUMN = "ward_report";
+    private static final String STREET_REPORT_COLUMN = "street_report";
+    private static final String TYPE_REPORT_COLUMN = "type_report";
+    private static final String CONTENT_REPORT_COLUMN = "content_report";
+
+    private static final String CREATE_TABLE_REPORT_SQL =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_REPORT + "(" +
+                    ID_REPORT_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                    NAME_REPORT_COLUMN + " TEXT NOT NULL," +
+                    SDT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    PROVINCE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    DISTRICT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    WARD_REPORT_COLUMN + " TEXT NOT NULL," +
+                    STREET_REPORT_COLUMN + " TEXT NOT NULL," +
+                    TYPE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    CONTENT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    DATE_REPORT_COLUMN + " TEXT NOT NULL" +
+                    ")";
+    //
+    public boolean insertReport(Report report) {
+        Log.e(TAG, "onInsert: ");
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(NAME_REPORT_COLUMN,report.getNameReport());
+        values.put(SDT_REPORT_COLUMN,report.getSdtReport());
+        values.put(PROVINCE_REPORT_COLUMN,report.getProvince());
+        values.put(DISTRICT_REPORT_COLUMN,report.getDistrict());
+        values.put(WARD_REPORT_COLUMN,report.getWard());
+        values.put(STREET_REPORT_COLUMN,report.getStreet());
+        values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
+        values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
+        values.put(DATE_REPORT_COLUMN,report.getTimeDetectReport());
+        long rowId = db.insert(TABLE_REPORT, null, values);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
+    }
+    public ArrayList<Report> getAllReport(){
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Report> reports = new ArrayList<>();
+        String sql = "SELECT * FROM " + TABLE_REPORT;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                reports.add(new
+                        Report(cursor.getInt(cursor.getColumnIndex(ID_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DATE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NAME_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(SDT_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(PROVINCE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DISTRICT_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(WARD_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(STREET_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TYPE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(CONTENT_REPORT_COLUMN))
+                ));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return reports;
+    }
+    public int updateReport(Report report) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(NAME_REPORT_COLUMN, report.getNameReport());
+        values.put(DATE_REPORT_COLUMN,report.getTimeDetectReport());
+        values.put(SDT_REPORT_COLUMN,report.getSdtReport());
+        values.put(PROVINCE_REPORT_COLUMN,report.getProvince());
+        values.put(DISTRICT_REPORT_COLUMN,report.getDistrict());
+        values.put(WARD_REPORT_COLUMN,report.getWard());
+        values.put(STREET_REPORT_COLUMN,report.getStreet());
+        values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
+        values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
+        int rowEffect = db.update(TABLE_REPORT,
+                values,
+                ID_REPORT_COLUMN + " = ? " ,
+                new String[]{String.valueOf(report.getIdReport())});
+        db.close();
+        return rowEffect;
+    }
+    public int deleteReport(Report report) {
+        SQLiteDatabase db = getWritableDatabase();
+        int rowEffect = db.delete(TABLE_REPORT, ID_REPORT_COLUMN + " = ?", new
+                String[]{String.valueOf(report.getIdReport())});
+        db.close();
+        return rowEffect;
     }
 }

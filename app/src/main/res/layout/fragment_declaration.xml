@@ -36,12 +36,36 @@
 
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_toKhaiYTe"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/title"
-            android:layout_margin="@dimen/_8sdp" />
+        <Button
+            android:id="@+id/entryDeclaration"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/view"
+            android:layout_centerHorizontal="true"
+            android:background="@color/main_color"
+            android:text="Xem tờ khai y tế nhập cảnh của tôi"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view"
+
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true" />
+
+        <Button
+            android:id="@+id/report"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/main_color"
+            android:text="Xem tờ khai phản ánh của tôi"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 </layout>

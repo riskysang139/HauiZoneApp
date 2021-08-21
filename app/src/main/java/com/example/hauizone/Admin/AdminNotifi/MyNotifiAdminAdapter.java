@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hauizone.Notification.NotificationFragment;
 import com.example.hauizone.R;
-import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
+
 
 import java.util.ArrayList;
 
