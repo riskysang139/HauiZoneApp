@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Admin.AdminActivity">
+
+        <Button
+            android:id="@+id/btn_entry_declare"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/main_color"
+            android:text="Quản lý khai báo nhập cảnh và nội địa "
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_notifi"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_entry_declare"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@color/main_color"
+            android:text="Quản lý thông báo"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_manage_report"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_notifi"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="#f00"
+            android:text="Quản lý phản ánh từ người dùng "
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btn_manage_account"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_manage_report"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@color/main_color"
+            android:text="Quản lý tài khoản "
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</layout>
