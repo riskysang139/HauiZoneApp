@@ -11,8 +11,8 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:background="@color/blue"
+            android:layout_height="50dp"
+            android:background="@color/main_color"
             android:gravity="center"
             android:padding="20px"
             android:text="THÔNG BÁO"
@@ -20,7 +20,12 @@
             android:textSize="50px"
             android:textStyle="bold" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -34,13 +39,13 @@
                 android:layout_marginTop="20px"
                 android:text="Loại tin"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:textSize="20sp" />
 
             <Spinner
 
                 android:id="@+id/spinner_LoaiTin"
                 android:layout_width="match_parent"
-                android:layout_height="36dp" />
+                android:layout_height="45dp" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -49,28 +54,29 @@
                 android:layout_marginTop="20px"
                 android:text="Ngày thêm"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editText_NgayThem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="340dp"
+                    android:layout_height="45dp"
                     android:layout_weight="10"
                     android:background="@drawable/textbox_shape"
                     android:ems="10"
                     android:inputType="date"
                     android:minHeight="100px"
+                    android:textSize="14sp"
                     android:paddingBottom="10px" />
 
                 <Button
                     android:id="@+id/button_calendar"
                     android:layout_width="56dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="0"
                     android:minHeight="130px"
                     android:text="..."
@@ -84,28 +90,29 @@
                 android:layout_marginTop="20px"
                 android:text="Giờ thêm"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editText_GioThem"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="10"
                     android:background="@drawable/textbox_shape"
                     android:ems="10"
                     android:inputType="time"
                     android:minHeight="100px"
-                    android:paddingBottom="10px" />
+                    android:paddingBottom="10px"
+                    android:textSize="14sp"/>
 
                 <Button
                     android:id="@+id/button_settime"
                     android:layout_width="58dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="0"
                     android:minHeight="130px"
                     android:text="..."
@@ -119,17 +126,17 @@
                 android:layout_marginTop="20px"
                 android:text="Nội dung thông báo"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/editText_NoiDung"
                 android:layout_width="match_parent"
-                android:layout_height="59dp"
+                android:layout_height="60dp"
                 android:background="@drawable/textbox_shape"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                android:minHeight="100px"
-                android:text="" />
+                android:text=""
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
@@ -137,16 +144,17 @@
                 android:layout_marginTop="20px"
                 android:text="Đường dẫn ảnh"
                 android:textColor="@color/black"
-                android:textSize="40px" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/editText_Image"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="45dp"
                 android:background="@drawable/textbox_shape"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text=""
+                android:textSize="14sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -169,12 +177,13 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+
                 android:id="@+id/rv_admin_notification"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="685dp" />
 
         </LinearLayout>
 
-
+        </ScrollView>
     </LinearLayout>
 </layout>
