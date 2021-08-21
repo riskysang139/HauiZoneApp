@@ -259,7 +259,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_ENTRY_SQL);
             db.execSQL(CREATE_TABLE_USER_SQL);
             db.execSQL(CREATE_TABLE_NOTIFI_SQL);
-
+            db.execSQL(CREATE_TABLE_REPORT_SQL);
         }
         catch (Exception e)
         {
@@ -274,6 +274,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTIFI);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT);
         onCreate(db);
     }
     //Đếm tổng số dòng trong database
@@ -669,5 +670,57 @@ public class BaseDatabase extends SQLiteOpenHelper {
         if (rowId != -1)
             return true;
         return false;
+    }
+    public ArrayList<Report> getAllReport(){
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Report> reports = new ArrayList<>();
+        String sql = "SELECT * FROM " + TABLE_REPORT;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                reports.add(new
+                        Report(cursor.getInt(cursor.getColumnIndex(ID_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DATE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NAME_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(SDT_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(PROVINCE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DISTRICT_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(WARD_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(STREET_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TYPE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(CONTENT_REPORT_COLUMN))
+                ));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return reports;
+    }
+    public int updateReport(Report report) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(NAME_REPORT_COLUMN, report.getNameReport());
+        values.put(DATE_REPORT_COLUMN,report.getTimeDetectReport());
+        values.put(SDT_REPORT_COLUMN,report.getSdtReport());
+        values.put(PROVINCE_REPORT_COLUMN,report.getProvince());
+        values.put(DISTRICT_REPORT_COLUMN,report.getDistrict());
+        values.put(WARD_REPORT_COLUMN,report.getWard());
+        values.put(STREET_REPORT_COLUMN,report.getStreet());
+        values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
+        values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
+        int rowEffect = db.update(TABLE_REPORT,
+                values,
+                ID_REPORT_COLUMN + " = ? " ,
+                new String[]{String.valueOf(report.getIdReport())});
+        db.close();
+        return rowEffect;
+    }
+    public int deleteReport(Report report) {
+        SQLiteDatabase db = getWritableDatabase();
+        int rowEffect = db.delete(TABLE_REPORT, ID_REPORT_COLUMN + " = ?", new
+                String[]{String.valueOf(report.getIdReport())});
+        db.close();
+        return rowEffect;
     }
 }

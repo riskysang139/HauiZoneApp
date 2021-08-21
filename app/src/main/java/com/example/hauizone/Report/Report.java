@@ -11,8 +11,6 @@ public class Report implements Serializable {
     String typeReport;
     String contentReport;
 
-    public Report() {
-    }
 
     public Report(int idReport, String timeDetectReport, String nameReport, String sdtReport, String province, String district, String ward, String street, String typeReport, String contentReport) {
         this.idReport = idReport;
@@ -117,5 +115,21 @@ public class Report implements Serializable {
 
     public void setContentReport(String contentReport) {
         this.contentReport = contentReport;
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "idReport=" + idReport +
+                ", timeDetectReport='" + timeDetectReport + '\'' +
+                ", nameReport='" + nameReport + '\'' +
+                ", sdtReport='" + sdtReport + '\'' +
+                ", province='" + province + '\'' +
+                ", district='" + district + '\'' +
+                ", ward='" + ward + '\'' +
+                ", street='" + street + '\'' +
+                ", typeReport='" + typeReport + '\'' +
+                ", contentReport='" + contentReport + '\'' +
+                '}';
     }
 }
