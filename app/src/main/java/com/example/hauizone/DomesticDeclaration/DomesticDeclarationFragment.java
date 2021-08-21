@@ -1,16 +1,13 @@
-package com.example.hauizone.domesticDeclaration;
+package com.example.hauizone.DomesticDeclaration;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;

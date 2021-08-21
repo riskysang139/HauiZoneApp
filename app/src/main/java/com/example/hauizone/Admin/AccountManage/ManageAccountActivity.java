@@ -1,4 +1,4 @@
-package com.example.hauizone.Account;
+package com.example.hauizone.Admin.AccountManage;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,13 +11,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Toast;
 
+import com.example.hauizone.Account.User;
 import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityManageAccountBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ManageAccountActivity extends AppCompatActivity {
@@ -33,13 +34,12 @@ public class ManageAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_manage_account);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_manage_account);
-
         setEvent();
     }
 
     private void setEvent() {
         mBaseDatabase = new BaseDatabase(this);
-
+        mUserList = new ArrayList<>();
         // listView
         setDataListView();
 
@@ -85,9 +85,11 @@ public class ManageAccountActivity extends AppCompatActivity {
                 Dialog dialog = builder.create();
                 dialog.show();
 
-                return false;
+                return true;
             }
         });
+
+        binding.imgBack.setOnClickListener(v -> finish());
     }
 
     private void setDataListView() {

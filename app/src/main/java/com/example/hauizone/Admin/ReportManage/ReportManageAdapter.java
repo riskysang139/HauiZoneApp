@@ -32,6 +32,9 @@ public class ReportManageAdapter extends RecyclerView.Adapter<ReportManageAdapte
 
     @Override
     public int getItemCount() {
+        if(reportList == null){
+            return 0;
+        }
         return reportList.size();
     }
 

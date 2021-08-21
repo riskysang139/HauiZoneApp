@@ -81,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/title_username"
                         android:background="@drawable/bg_line_edt_thong_tin"
-                        android:hint="nguyenvana"
+                        android:hint="tai_khoan"
                         android:inputType="text"
                         android:maxLines="1"
                         android:padding="@dimen/_4sdp"
@@ -89,7 +89,7 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                //hoten
+                //mat khau
 
                 <RelativeLayout
                     android:id="@+id/ln_password"
@@ -121,15 +121,15 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/title_password"
                         android:background="@drawable/bg_line_edt_thong_tin"
-                        android:text="nguyenvana"
+                        android:hint="mat_khau"
                         android:maxLines="1"
+                        android:inputType="textPassword"
                         android:padding="@dimen/_4sdp"
                         android:singleLine="true"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
                 //hoten
-
                 <RelativeLayout
                     android:id="@+id/ln_hoTen"
                     android:layout_width="match_parent"
@@ -495,7 +495,7 @@
                 <!--                android:text="@string/account_commit" />-->
                 // tinh hinh dich benh
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/ln_dichbenh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -516,7 +516,7 @@
                         android:id="@+id/sp_dichbenh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                </RelativeLayout>
+                </LinearLayout>
 
                 //dang ky
                 <androidx.appcompat.widget.AppCompatButton

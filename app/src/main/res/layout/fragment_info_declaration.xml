@@ -59,18 +59,25 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
-                <ImageButton
-                    android:id="@+id/img_usa"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_gravity="center_vertical" />
-
-                <ImageButton
+                <ImageView
                     android:id="@+id/img_vn"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_toLeftOf="@id/img_usa" />
+                    android:padding="4dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:src="@drawable/vn"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/img_usa"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/anh"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"
+                    android:layout_margin="@dimen/_8sdp" />
+
+
 
             </LinearLayout>
 

@@ -33,7 +33,7 @@ public class InfoDeclarationFragment extends Fragment {
     }
 
     private void setEvents() {
-        binding.imgBack.setOnClickListener(v -> setClickBack());
+        binding.imgBack.setOnClickListener(v -> getActivity().onBackPressed());
     }
 
     private void setClickBack() {
