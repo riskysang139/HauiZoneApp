@@ -16,8 +16,6 @@ import com.example.hauizone.EntryDeclaration.EntryDeclaration;
 import com.example.hauizone.Notification.Notification;
 import com.example.hauizone.Account.User;
 import com.example.hauizone.Report.Report;
-import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
-import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
 
 import java.util.ArrayList;
