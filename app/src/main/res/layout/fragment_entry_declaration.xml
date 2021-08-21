@@ -515,6 +515,21 @@
                 android:textStyle="bold">
 
             </Button>
+            <Button
+                android:visibility="invisible"
+                android:id="@+id/update_entry_declaration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_warning"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_report_submit"
+                android:text="Cập nhật thông tin"
+                android:textColor="@color/white"
+                android:textStyle="bold">
+
+            </Button>
         </RelativeLayout>
 
     </ScrollView>
