@@ -10,8 +10,9 @@ import android.widget.BaseAdapter;
 
 import androidx.annotation.Nullable;
 
-import com.example.hauizone.Account.User;
 import com.example.hauizone.Notification.Notification;
+import com.example.hauizone.Account.User;
+import com.example.hauizone.Report.Report;
 import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
@@ -621,5 +622,52 @@ public class BaseDatabase extends SQLiteOpenHelper {
         }
         db.close();
         return entryDeclarations;
+    }
+    //table report
+    private static final String TABLE_REPORT= "REPORT_TABLE";
+    private static final String ID_REPORT_COLUMN = "id_report";
+    private static final String NAME_REPORT_COLUMN= "name_report";
+    private static final String SDT_REPORT_COLUMN = "sdt_report";
+    private static final String DATE_REPORT_COLUMN = "date_report";
+    private static final String PROVINCE_REPORT_COLUMN= "province_report";
+    private static final String DISTRICT_REPORT_COLUMN= "district_report";
+    private static final String WARD_REPORT_COLUMN = "ward_report";
+    private static final String STREET_REPORT_COLUMN = "street_report";
+    private static final String TYPE_REPORT_COLUMN = "type_report";
+    private static final String CONTENT_REPORT_COLUMN = "content_report";
+
+    private static final String CREATE_TABLE_REPORT_SQL =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_REPORT + "(" +
+                    ID_REPORT_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                    NAME_REPORT_COLUMN + " TEXT NOT NULL," +
+                    SDT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    PROVINCE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    DISTRICT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    WARD_REPORT_COLUMN + " TEXT NOT NULL," +
+                    STREET_REPORT_COLUMN + " TEXT NOT NULL," +
+                    TYPE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    CONTENT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    DATE_REPORT_COLUMN + " TEXT NOT NULL" +
+                    ")";
+    //
+    public boolean insertReport(Report report) {
+        Log.e(TAG, "onInsert: ");
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(NAME_REPORT_COLUMN,report.getNameReport());
+        values.put(SDT_REPORT_COLUMN,report.getSdtReport());
+        values.put(PROVINCE_REPORT_COLUMN,report.getProvince());
+        values.put(DISTRICT_REPORT_COLUMN,report.getDistrict());
+        values.put(WARD_REPORT_COLUMN,report.getWard());
+        values.put(STREET_REPORT_COLUMN,report.getStreet());
+        values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
+        values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
+        values.put(DATE_REPORT_COLUMN,report.getTimeDetectReport());
+        long rowId = db.insert(TABLE_REPORT, null, values);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
     }
 }
