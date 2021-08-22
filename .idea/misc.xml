@@ -13,10 +13,13 @@
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/fragment_qr.xml" value="0.22" />
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/fragment_your_route.xml" value="0.18342391304347827" />
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_nearplace.xml" value="0.1480978260869565" />
-        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_yourroute.xml" value="0.25" />
-        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/spinner_item.xml" value="0.14175724637681159" />
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_yourroute.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/spinner_item.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/activity_manage_report.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/fragment_account.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/fragment_report.xml" value="0.33" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/item_rcv_entry.xml" value="0.2015625" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/HauiZoneApp/app/src/main/res/layout/item_report_manage.xml" value="0.2015625" />
       </map>
     </option>
   </component>

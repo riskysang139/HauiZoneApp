@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.hauizone.Account.AccountFragment;
+import com.example.hauizone.Account.Report.ShowListReport;
 import com.example.hauizone.Account.UpdateEntryDeclaration.ShowListEntryDeclaration;
 import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
@@ -34,6 +35,15 @@ public class DeclarationFragment extends Fragment {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.mainFragment, new ShowListEntryDeclaration())
+                        .addToBackStack(null).commit();
+            }
+        });
+        binding.report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainFragment, new ShowListReport())
                         .addToBackStack(null).commit();
             }
         });
