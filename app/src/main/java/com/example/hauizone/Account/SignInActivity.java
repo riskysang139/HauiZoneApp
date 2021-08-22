@@ -27,6 +27,12 @@ public class SignInActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_sign_in);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         setEvent();
     }
 
@@ -41,7 +47,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void addData() {
-        mBaseDataBase = new BaseDatabase(this);
+        mBaseDataBase = BaseDatabase.getInstance(getBaseContext());
         if(mBaseDataBase.getCountUser() <= 0 ){
             fakeData();
         }
