@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.hauizone"
-        minSdkVersion 16
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -48,6 +48,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+    //barcode
+    implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
 

@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.hauizone.BaseDatabase;
+import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentReportBinding;
 
@@ -49,6 +51,7 @@ public class ReportFragment extends Fragment {
         setEvent();
         return view;
     }
+
     private void setInit(){
         date = binding.txtTimeDetect.getText().toString();
         name = binding.txtNameReport.getText().toString();
@@ -113,10 +116,25 @@ public class ReportFragment extends Fragment {
         else return false;
     }
     private void insertReport(){
-        Report report = new Report(date,name,sdt,province,district,ward,street,typeReport,content);
+        Report report = new Report(date,name,sdt,province,district,ward,street,typeReport,content,MainActivity.INDEX);
         Boolean success = mBaseDatabase.insertReport(report);
         if(success){
-            Toast.makeText(getContext(),"Tạo phản ánh thành công",Toast.LENGTH_SHORT).show();
+
+            System.out.println("tạo oke");
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Thông báo");
+            builder.setMessage("Tạo phản ánh thành công!");
+            builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getContext(),"Tạo phản ánh thành công",Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            Dialog dialog = builder.create();
+            dialog.show();
+            Log.e("E","insertReport");
+
         }
         else Toast.makeText(getContext(),"Tạo phản ánh không thành công",Toast.LENGTH_SHORT).show();
     }
@@ -148,6 +166,5 @@ public class ReportFragment extends Fragment {
             }
         });
     }
-
 
 }

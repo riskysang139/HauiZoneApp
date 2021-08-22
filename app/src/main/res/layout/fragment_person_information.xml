@@ -21,7 +21,7 @@
                 android:padding="@dimen/_4sdp"
                 android:text="@string/account"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -56,7 +56,7 @@
                     android:padding="@dimen/_6sdp"
                     android:text="@string/account_infomation"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 //hoten
@@ -456,6 +456,7 @@
                     android:layout_marginBottom="@dimen/_16sdp"
                     android:background="@drawable/bg_btn_update"
                     android:text="@string/account_update"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp" />
 

@@ -13,7 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.hauizone.ItemClickListener;
+import com.example.hauizone.ScanQR.ItemClickListener;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentDiseaseTutorialBinding;
 

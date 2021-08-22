@@ -18,7 +18,9 @@ import android.view.View;
 import com.example.hauizone.Account.AccountFragment;
 import com.example.hauizone.Home.HomeFragment;
 import com.example.hauizone.Notification.NotificationFragment;
+import com.example.hauizone.R;
 import com.example.hauizone.Report.ReportFragment;
+import com.example.hauizone.ScanQR.QrFragment;
 import com.example.hauizone.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

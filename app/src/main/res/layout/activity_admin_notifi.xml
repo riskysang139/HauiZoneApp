@@ -17,7 +17,7 @@
             android:padding="20px"
             android:text="THÔNG BÁO"
             android:textColor="@color/white"
-            android:textSize="50px"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <ScrollView
