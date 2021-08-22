@@ -71,11 +71,11 @@ public class MyNotifiAdminAdapter extends RecyclerView.Adapter<RecyclerView.View
         LinearLayout linearLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtType=itemView.findViewById(R.id.type_notifi);
-            txtDateTime=itemView.findViewById(R.id.datetime);
-            txtContent=itemView.findViewById(R.id.content_notifi);
-            txtImage=itemView.findViewById(R.id.image_notifi);
-            linearLayout=itemView.findViewById(R.id.layoutItem);
+            txtType = itemView.findViewById(R.id.type_notifi);
+            txtDateTime = itemView.findViewById(R.id.datetime);
+            txtContent = itemView.findViewById(R.id.content_notifi);
+            txtImage = itemView.findViewById(R.id.image_notifi);
+            linearLayout = itemView.findViewById(R.id.layoutItem);
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
