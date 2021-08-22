@@ -40,6 +40,7 @@ public class ReportFragment extends Fragment {
     ArrayAdapter<String> provinceAdapter,districtAdapter,wardAdapter;
     BaseDatabase mBaseDatabase;
     Boolean checkRequired;
+    Boolean isAccept = false;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -49,6 +50,13 @@ public class ReportFragment extends Fragment {
         setAdapter();
         setDatimeDialog();
         setEvent();
+        if(isAccept){
+            binding.btnSubmitReport.setClickable(true);
+            binding.btnUpdateReport.setClickable(true);
+        }else{
+            binding.btnSubmitReport.setClickable(false);
+            binding.btnUpdateReport.setClickable(false);
+        }
         return view;
     }
 
@@ -106,7 +114,7 @@ public class ReportFragment extends Fragment {
         datePickerDialog.show();
     }
     private boolean setCheckRequired(){
-        if(isEmpty(date) && isEmpty(name) && isEmpty(sdt) && isEmpty(province) && isEmpty(district) && isEmpty(ward)){
+        if(isEmpty(date) || isEmpty(name) || isEmpty(sdt) || isEmpty(province) || isEmpty(district) || isEmpty(ward)){
             return false;
         }
         return true;
@@ -119,7 +127,6 @@ public class ReportFragment extends Fragment {
         Report report = new Report(date,name,sdt,province,district,ward,street,typeReport,content,MainActivity.INDEX);
         Boolean success = mBaseDatabase.insertReport(report);
         if(success){
-
             System.out.println("tạo oke");
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Thông báo");
@@ -130,7 +137,6 @@ public class ReportFragment extends Fragment {
                     Toast.makeText(getContext(),"Tạo phản ánh thành công",Toast.LENGTH_SHORT).show();
                 }
             });
-
             Dialog dialog = builder.create();
             dialog.show();
             Log.e("E","insertReport");
@@ -162,6 +168,19 @@ public class ReportFragment extends Fragment {
                 }
                 else {
                     insertReport();
+                }
+            }
+        });
+        binding.isAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isAccept = !isAccept;
+                if(isAccept){
+                    binding.btnSubmitReport.setClickable(true);
+                    binding.btnUpdateReport.setClickable(true);
+                }else{
+                    binding.btnSubmitReport.setClickable(false);
+                    binding.btnUpdateReport.setClickable(false);
                 }
             }
         });

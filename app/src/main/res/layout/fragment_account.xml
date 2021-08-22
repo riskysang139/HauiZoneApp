@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -45,16 +45,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/img_vn"
             android:id="@+id/rl_thongTinCaNhan">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/thongTinCaNhan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
-            android:background="@color/main_color"
-            android:textAllCaps="true"
-            android:text="@string/account_infomation"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/thongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:background="@color/main_color"
+                android:textAllCaps="true"
+                android:text="@string/account_infomation"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                 android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_person_24"
                 android:gravity="center_horizontal"
-                 />
+                />
 
         </RelativeLayout>
 
@@ -72,31 +72,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/rl_thongTinCaNhan"
             android:id="@+id/rl_toKhaiYTe">
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/toKhaiYTe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:layout_margin="@dimen/_8sdp"
+                android:background="@color/main_color"
+                android:textAllCaps="true"
                 android:text="@string/account_medical_declaration"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/toKhaiYTe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
-            android:background="@color/main_color"
-            android:textAllCaps="true"
-            android:text="@string/account_medical_declaration"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
@@ -129,10 +114,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8sdp"
-                android:background="#2B78E4"
+                android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_format_list_bulleted_24"
                 android:gravity="center_horizontal"
-                 />
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -159,7 +144,7 @@
                 android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_send_24"
                 android:gravity="center_horizontal"
-                 />
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -185,7 +170,7 @@
                 android:background="@color/main_color"
                 android:drawableRight="@drawable/ic_baseline_send_24"
                 android:gravity="center_horizontal"
-                 />
+                />
 
         </RelativeLayout>
 

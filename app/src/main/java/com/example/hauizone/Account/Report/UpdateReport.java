@@ -39,6 +39,7 @@ public class UpdateReport extends AppCompatActivity {
     ArrayAdapter<String> typeReportAdapter;
     ArrayAdapter<String> provinceAdapter,districtAdapter,wardAdapter;
     String date,name,sdt,province,district, ward,street,typeReport,content;
+    Boolean isAccept=false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class UpdateReport extends AppCompatActivity {
         setSpinnerAndAutoCompleteTextView();
         setUpDisplay();
         setDatimeDialog();
+//        setEvent();
         binding.btnUpdateReport.setOnClickListener(view -> {
             setInit();
             if(!setCheckRequired()){
@@ -58,6 +60,13 @@ public class UpdateReport extends AppCompatActivity {
                 updateData();
             }
         });
+        if(isAccept){
+            binding.btnSubmitReport.setClickable(true);
+            binding.btnUpdateReport.setClickable(true);
+        }else{
+            binding.btnSubmitReport.setClickable(false);
+            binding.btnUpdateReport.setClickable(false);
+        }
     }
     private void setInit(){
         date = binding.txtTimeDetect.getText().toString();
@@ -181,6 +190,18 @@ public class UpdateReport extends AppCompatActivity {
         dialog.show();
     }
     private void setEvent(){
-
+        binding.isAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isAccept = !isAccept;
+                if(isAccept){
+                    binding.btnSubmitReport.setClickable(true);
+                    binding.btnUpdateReport.setClickable(true);
+                }else{
+                    binding.btnSubmitReport.setClickable(false);
+                    binding.btnUpdateReport.setClickable(false);
+                }
+            }
+        });
     }
 }

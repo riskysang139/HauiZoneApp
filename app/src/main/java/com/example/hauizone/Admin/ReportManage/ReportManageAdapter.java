@@ -47,8 +47,9 @@ public class ReportManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         Report report=reportList.get(position);
         viewHolder.idReported.setText(report.getIdReport()+"");
         BaseDatabase baseDatabase = BaseDatabase.getInstance(context);
-        String username = baseDatabase.getUserById(MainActivity.INDEX).getUserName();
+        String username = baseDatabase.getUserById(report.getIdUser()).getUserName();
         viewHolder.userNameReported.setText(username+"");
+        viewHolder.timeDetectedReported.setText(report.getTimeDetectReport()+"");
         viewHolder.contentTypeReported.setText(report.getTypeReport());
         viewHolder.placeDetectedReported.setText(report.getStreet()+","+report.getWard()+","+report.getDistrict()+","+report.getProvince());
         viewHolder.otherContentReported.setText(report.getContentReport());

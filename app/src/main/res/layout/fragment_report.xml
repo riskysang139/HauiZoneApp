@@ -19,7 +19,7 @@
                 android:gravity="center"
                 android:text="@string/report_title"
                 android:textColor="#F82828"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold">
 
             </TextView>
@@ -140,6 +140,7 @@
                     android:background="@drawable/edittext_report_screen"
                     android:inputType="phone"
                     android:maxLines="1"
+                    android:maxLength="10"
                     android:textSize="14sp">
                 </EditText>
 
@@ -365,7 +366,7 @@
                 </CheckBox>
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/commitReport"
@@ -383,7 +384,17 @@
                     android:textStyle="bold">
 
                 </Button>
-            </LinearLayout>
+                <Button
+                    android:id="@+id/btnUpdateReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_report_submit"
+                    android:text="CẬP NHẬT"
+                    android:textColor="@color/white"
+                    android:visibility="invisible"
+                    android:textStyle="bold">
+                </Button>
+            </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>
