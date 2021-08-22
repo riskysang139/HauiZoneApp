@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hauizone.ItemClickListener;
+import com.example.hauizone.ScanQR.ItemClickListener;
 import com.example.hauizone.R;
 
 import java.util.ArrayList;

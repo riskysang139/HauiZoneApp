@@ -7,10 +7,14 @@
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/drawable/tv_dialogyourroute.xml" value="0.2203125" />
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/drawable/tv_yourroute.xml" value="0.2203125" />
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/activity_admin.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/dialog_yourrouter.xml" value="0.1480978260869565" />
-        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/fragment_qr.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/fragment_home.xml" value="0.13179347826086957" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/fragment_qr.xml" value="0.22" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/fragment_your_route.xml" value="0.18342391304347827" />
         <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_nearplace.xml" value="0.1480978260869565" />
-        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_yourroute.xml" value="0.1480978260869565" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/item_fragment_qr_yourroute.xml" value="0.25" />
+        <entry key="..\:/D_Deadline/BT_PhatTrienDiDong/HauiZoneApp/app/src/main/res/layout/spinner_item.xml" value="0.14175724637681159" />
       </map>
     </option>
   </component>

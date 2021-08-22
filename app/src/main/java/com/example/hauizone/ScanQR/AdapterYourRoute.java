@@ -1,16 +1,16 @@
-package com.example.hauizone;
+package com.example.hauizone.ScanQR;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.example.hauizone.R;
 
 import java.util.List;
 
@@ -18,6 +18,11 @@ public class AdapterYourRoute extends RecyclerView.Adapter<AdapterYourRoute.View
     Context mContext;
     List<DataYourRoute> dataYourRoutes;
     OnClickItemYourRoute onClickItemYourRoute;
+    OnLongClickItemYourRoute onLongClickItemYourRoute;
+
+    public void setOnLongClickItemYourRoute(OnLongClickItemYourRoute onLongClickItemYourRoute) {
+        this.onLongClickItemYourRoute = onLongClickItemYourRoute;
+    }
 
     public void setOnClickItemYourRoute(OnClickItemYourRoute onClickItemYourRoute) {
         this.onClickItemYourRoute = onClickItemYourRoute;
@@ -38,7 +43,7 @@ public class AdapterYourRoute extends RecyclerView.Adapter<AdapterYourRoute.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterYourRoute.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterYourRoute.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         DataYourRoute dataYourRoute = dataYourRoutes.get(position);
         if(dataYourRoute != null){
@@ -49,17 +54,34 @@ public class AdapterYourRoute extends RecyclerView.Adapter<AdapterYourRoute.View
             holder.tvRoute.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onClickItemYourRoute.onData(dataYourRoute,position);
+                    onClickItemYourRoute.onData(dataYourRoute);
                 }
             });
             holder.tvTime.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onClickItemYourRoute.onData(dataYourRoute,position);
+                    onClickItemYourRoute.onData(dataYourRoute);
+                }
+            });
+
+            holder.tvRoute.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    onLongClickItemYourRoute.onData(dataYourRoute.getId());
+                    return false;
+                }
+            });
+            holder.tvTime.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    onLongClickItemYourRoute.onData(dataYourRoute.getId());
+                    return false;
                 }
             });
         }
     }
+
+
 
     @Override
     public int getItemCount() {
