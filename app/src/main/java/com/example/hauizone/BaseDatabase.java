@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-
 import com.example.hauizone.ScanQR.DataYourRoute;
 import com.example.hauizone.Account.User;
 import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
