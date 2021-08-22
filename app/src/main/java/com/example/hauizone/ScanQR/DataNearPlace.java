@@ -1,4 +1,4 @@
-package com.example.hauizone;
+package com.example.hauizone.ScanQR;
 
 public class DataNearPlace {
     private String imgNearPlace;

@@ -6,18 +6,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.BaseAdapter;
 
 import androidx.annotation.Nullable;
 
+import com.example.hauizone.ScanQR.DataYourRoute;
 import com.example.hauizone.Account.User;
 import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.EntryDeclaration.EntryDeclaration;
 import com.example.hauizone.Notification.Notification;
-import com.example.hauizone.Account.User;
 import com.example.hauizone.Report.Report;
-import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
-import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
 
 import java.util.ArrayList;
@@ -240,7 +237,27 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     NUMBERPHONE_CONTACT_COLUMN + " TEXT NOT NULL," +
                     ID_USERNAME_COLUMN + " INTEGER NOT NULL" +
                     ")";
-    //
+
+    // table scan qr
+    private static final String TABLE_YOURROUTE = "YOURROUTE_TABLE";
+    private static final String ID_YOURROUTE_COLUMN = "id";
+    private static final String NAME_YOURROUTE_COLUMN = "name";
+    private static final String ADDRESS_YOURROUTE_COLUMN = "address";
+    private static final String ADDRESS_DES_YOURROUTE_COLUMN = "address_des";
+    private static final String ADDRESS_GO_YOURROUTE_COLUMN = "address_go";
+    private static final String DAY_DES_YOURROUTE_COLUMN = "day_des";
+    private static final String DAY_GO_YOURROUTE_COLUMN = "day_go";
+
+    private static final String CREATE_TABLE_YOURROUTE =
+            " CREATE TABLE IF NOT EXISTS " + TABLE_YOURROUTE + " ( " +
+                    ID_YOURROUTE_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT , " +
+                    NAME_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
+                    ADDRESS_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
+                    ADDRESS_DES_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
+                    ADDRESS_GO_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
+                    DAY_DES_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
+                    DAY_GO_YOURROUTE_COLUMN + " TEXT NOT NULL " +
+                    " ) ";
 
     private static BaseDatabase sInstance;
 
@@ -264,6 +281,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_USER_SQL);
             db.execSQL(CREATE_TABLE_NOTIFI_SQL);
             db.execSQL(CREATE_TABLE_REPORT_SQL);
+            db.execSQL(CREATE_TABLE_YOURROUTE);
         }
         catch (Exception e)
         {
@@ -276,6 +294,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         Log.e(TAG, "onUpgrade: ");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOMESTIC);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_YOURROUTE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTIFI);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT);
@@ -440,7 +459,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
     public List<User> getAllUser() {
         SQLiteDatabase db = getReadableDatabase();
         List<User> lists = new ArrayList<User>();
-        String sql = "SELECT * FROM " + TABLE_USER;
+        String sql = " SELECT * FROM " + TABLE_USER ;
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -565,6 +584,19 @@ public class BaseDatabase extends SQLiteOpenHelper {
     }
 
 
+//    public int updateData(KhaiBao khaiBao) {
+//        SQLiteDatabase db = getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(NAME_COLUMN, khaiBao.getName());
+//        values.put(SEX_COLUMN, khaiBao.getSex());
+//        values.put(ADDRESS_COLUMN, khaiBao.getAddress());
+//        values.put(DATE_OF_BIRTH_COLUMN, khaiBao.getDateOfBirth());
+//        int rowEffect = db.update(TABLE, values, ID_COLUMN + " = ?",
+//                new String[]{String.valueOf(khaiBao.getId())});
+//        db.close();
+//        return rowEffect;
+//    }
+
     public boolean insertEntry(EntryDeclaration entryDeclaration) {
         Log.e(TAG, "onInsert: ");
         SQLiteDatabase db = getWritableDatabase();
@@ -592,7 +624,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
     public ArrayList<EntryDeclaration> getAllEntry() {
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<EntryDeclaration> entryDeclarations = new ArrayList<>();
-        String sql = "SELECT * FROM " + TABLE_ENTRY;
+        String sql = " SELECT * FROM " + TABLE_ENTRY;
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -617,6 +649,78 @@ public class BaseDatabase extends SQLiteOpenHelper {
         }
         db.close();
         return entryDeclarations;
+    }
+
+
+    // query your route
+    public boolean insertYourRoute(DataYourRoute dataYourRoute){
+
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(NAME_YOURROUTE_COLUMN,dataYourRoute.getName());
+        contentValues.put(ADDRESS_YOURROUTE_COLUMN,dataYourRoute.getAddress());
+        contentValues.put(ADDRESS_DES_YOURROUTE_COLUMN,dataYourRoute.getAddress_des());
+        contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
+        contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
+        contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
+
+        long rowId = db.insert(TABLE_YOURROUTE, null, contentValues);
+        Log.e(TAG, "onInsert: YourRoute = " + rowId);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
+    }
+    // updateData
+    public boolean updateYourRoute(DataYourRoute dataYourRoute){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(NAME_YOURROUTE_COLUMN,dataYourRoute.getName());
+        contentValues.put(ADDRESS_YOURROUTE_COLUMN,dataYourRoute.getAddress());
+        contentValues.put(ADDRESS_DES_YOURROUTE_COLUMN,dataYourRoute.getAddress_des());
+        contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
+        contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
+        contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
+
+        long rowId = db.update(TABLE_YOURROUTE, contentValues, " id = ? ",new String[]{String.valueOf(dataYourRoute.getId())});
+        Log.e(TAG, "onUpdate: YourRoute = " + rowId);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
+    }
+    public void deleteYourRoute(int id){
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.delete(TABLE_YOURROUTE,"id = ? ",new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public ArrayList<DataYourRoute> getAllYourRoute(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<DataYourRoute> dataYourRoutes = new ArrayList<>();
+        String sql = "SELECT * FROM " + TABLE_YOURROUTE;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                    int id = cursor.getInt(cursor.getColumnIndex(ID_YOURROUTE_COLUMN));
+                    String name = cursor.getString(cursor.getColumnIndex(NAME_YOURROUTE_COLUMN));
+                    String address = cursor.getString(cursor.getColumnIndex(ADDRESS_YOURROUTE_COLUMN));
+                    String address_des = cursor.getString(cursor.getColumnIndex(ADDRESS_DES_YOURROUTE_COLUMN));
+                    String address_go = cursor.getString(cursor.getColumnIndex(ADDRESS_GO_YOURROUTE_COLUMN));
+                    String day_des = cursor.getString(cursor.getColumnIndex(DAY_DES_YOURROUTE_COLUMN));
+                    String day_go = cursor.getString(cursor.getColumnIndex(DAY_GO_YOURROUTE_COLUMN));
+
+                    dataYourRoutes.add(new DataYourRoute(id, name, address, address_des, address_go, day_des, day_go));
+            }while (cursor.moveToNext());
+            cursor.close();
+        }
+
+        db.close();
+        return dataYourRoutes;
     }
 
     public ArrayList<EntryDeclaration> getAllEntryWithUser(int idUser) {
