@@ -22,19 +22,7 @@ import java.util.List;
 public class BaseDatabase extends SQLiteOpenHelper {
     private static final String TAG = "MyDatabase";
     private static final String DATABASE_NAME = "MY_DB";
-    private static final int DATABASE_VERSION = 3;
-
-
-    // same column in table domestic and entry
-    private static final String NAME_COLUMN = "name";
-    private static final String SEX_COLUMN = "sex";
-    private static final String DATE_OF_BIRTH_COLUMN = "date_of_birth";
-    private static final String CITY_CONTACT_COLUMN = "contact_city";
-    private static final String DISTRICT_CONTACT_COLUMN = "contact_district";
-    private static final String TOWN_CONTACT_COLUMN = "contact_town";
-    private static final String ADDRESS_CONTACT_COLUMN = "contact_address";
-    private static final String NUMBERPHONE_CONTACT_COLUMN = "numberphone";
-    private static final String ID_USERNAME_COLUMN = "id_username";
+    private static final int DATABASE_VERSION = 6;
 
     // table user
 
@@ -72,6 +60,18 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     USER_EPIDEMIC + " TEXT NOT NULL," +
                     USER_FLAG + " INTEGER NOT NULL" +
                     ")";
+
+    // same column in table domestic and entry
+    private static final String NAME_COLUMN = "name";
+    private static final String SEX_COLUMN = "sex";
+    private static final String DATE_OF_BIRTH_COLUMN = "date_of_birth";
+    private static final String CITY_CONTACT_COLUMN = "contact_city";
+    private static final String DISTRICT_CONTACT_COLUMN = "contact_district";
+    private static final String TOWN_CONTACT_COLUMN = "contact_town";
+    private static final String ADDRESS_CONTACT_COLUMN = "contact_address";
+    private static final String NUMBERPHONE_CONTACT_COLUMN = "numberphone";
+    private static final String ID_USERNAME_COLUMN = "id_username";
+
     // table domestic
 
     private static final String TABLE_DOMESTIC = "DOMESTIC_TABLE";
@@ -81,8 +81,6 @@ public class BaseDatabase extends SQLiteOpenHelper {
     private static final String ADDRESS_DEPARTURE_COLUMN = "departure";
     private static final String ADDRESS_DESTINATION_COLUMN = "destination";
     private static final String NUMBER_PASSPORT_COLUMN = "number_passport";
-
-
     private static final String SYMPTON_COLUMN = "sympton";
     private static final String COVID_CONTACT_COLUMN = "covid_contact";
 
@@ -104,114 +102,9 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     NUMBERPHONE_CONTACT_COLUMN + " TEXT NOT NULL," +
                     SYMPTON_COLUMN + " TEXT NOT NULL," +
                     COVID_CONTACT_COLUMN + " TEXT NOT NULL," +
-                    ID_USERNAME_COLUMN + " INTEGER NOT NULL" +
+                    ID_USERNAME_COLUMN + " INTEGER NOT NULL " +
+                    " references "+TABLE_USER+"(ID_USERNAME_COLUMN)"+" on delete cascade" +
                     ")";
-
-    //table notification
-    private static final String TABLE_NOTIFI= "NOTIFICATION_TABLE";
-    private static final String ID_NOTIFI_COLUMN = "ID";
-    private static final String TYPE_NOTIFI_COLUMN = "Type";
-    private static final String DATE_NOTIFI_COLUMN = "Date";
-    private static final String TIME_NOTIFI_COLUMN = "Time";
-    private static final String CONTENT_NOTIFI_COLUMN = "Content";
-    private static final String URL_NOTIFI_COLUMN = "Image";
-    private static final String CREATE_TABLE_NOTIFI_SQL =
-            "CREATE TABLE IF NOT EXISTS " + TABLE_NOTIFI + " (" +
-                    ID_NOTIFI_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-                    TYPE_NOTIFI_COLUMN + " TEXT NOT NULL," +
-                    DATE_NOTIFI_COLUMN + " TEXT NOT NULL," +
-                    TIME_NOTIFI_COLUMN + " TEXT NOT NULL," +
-                    CONTENT_NOTIFI_COLUMN + " TEXT NOT NULL," +
-                    URL_NOTIFI_COLUMN + " TEXT NOT NULL" +
-                    ")";
-    public ArrayList<Notification> getAllNotifi() {
-        SQLiteDatabase db = getReadableDatabase();
-        ArrayList<Notification> notifications = new ArrayList<Notification>();
-        String sql = "SELECT * FROM " + TABLE_NOTIFI;
-        Cursor cursor = db.rawQuery(sql, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                notifications.add(new
-                        Notification(cursor.getInt(cursor.getColumnIndex(ID_NOTIFI_COLUMN)),
-                        cursor.getString(cursor.getColumnIndex(TYPE_NOTIFI_COLUMN)),
-                        cursor.getString(cursor.getColumnIndex(DATE_NOTIFI_COLUMN)),
-                        cursor.getString(cursor.getColumnIndex(TIME_NOTIFI_COLUMN)),
-                        cursor.getString(cursor.getColumnIndex(CONTENT_NOTIFI_COLUMN)),
-                        cursor.getString(cursor.getColumnIndex(URL_NOTIFI_COLUMN))
-                ));
-
-            } while (cursor.moveToNext());
-            cursor.close();
-        }
-        db.close();
-        return notifications;
-    }
-
-
-
-    public Notification getNotifications( Notification notifications) {
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NOTIFI, new String[]{ID_NOTIFI_COLUMN,
-                        TYPE_NOTIFI_COLUMN, DATE_NOTIFI_COLUMN, TIME_NOTIFI_COLUMN, CONTENT_NOTIFI_COLUMN, URL_NOTIFI_COLUMN},
-                ID_NOTIFI_COLUMN + " = ?",
-                new String[]{String.valueOf(notifications.getId())}, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            notifications = new Notification(cursor.getInt(0), cursor.getString(1),
-                    cursor.getString(2),cursor.getString(3),cursor.getString(4), cursor.getString(5));
-            cursor.close();
-        }
-        db.close();
-        return notifications;
-    }
-
-    public boolean insertNotification(Notification notifications) {
-        Log.e(TAG, "onInsert: ");
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(TYPE_NOTIFI_COLUMN, notifications.getType());
-        values.put(DATE_NOTIFI_COLUMN, notifications.getDate());
-        values.put(TIME_NOTIFI_COLUMN, notifications.getTime());
-        values.put(CONTENT_NOTIFI_COLUMN, notifications.getContent());
-        values.put(URL_NOTIFI_COLUMN, notifications.getImageNotification());
-        long rowId = db.insert(TABLE_NOTIFI, null, values);
-        db.close();
-        if (rowId != -1)
-            return true;
-        return false;
-    }
-    public int updateNotificaton(Notification notification) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(TYPE_NOTIFI_COLUMN, notification.getType());
-        values.put(DATE_NOTIFI_COLUMN, notification.getDate());
-        values.put(TIME_NOTIFI_COLUMN, notification.getTime());
-        values.put(CONTENT_NOTIFI_COLUMN, notification.getContent());
-        values.put(URL_NOTIFI_COLUMN, notification.getImageNotification());
-        int rowEffect = db.update(TABLE_NOTIFI, values, ID_NOTIFI_COLUMN + " = ?",
-                new String[]{String.valueOf(notification.getId())});
-        db.close();
-        return rowEffect;
-
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(TYPE_COLUMN, notifications.getLoaiTin());
-//        values.put(DATE_COLUMN, notifications.getNgayThem());
-//        values.put(TIME_COLUMN, notifications.getGioThem());
-//        values.put(CONTENT_COLUMN, notifications.getNoiDung());
-//        int rowEffect = db.update(TABLE, values, ID_COLUMN + " = ?",
-//                new String[]{String.valueOf(notifications.getId())});
-//        db.close();
-//        return rowEffect;
-    }
-
-    public int deleteNotifi(Notification notifications) {
-        SQLiteDatabase db = getReadableDatabase();
-        int rowEffect = db.delete(TABLE_NOTIFI, ID_NOTIFI_COLUMN + " = ?", new
-                String[]{String.valueOf(notifications.getId())});
-        db.close();
-        return rowEffect;
-    }
-
 
     //table entry
     private static final String TABLE_ENTRY = "ENTRY_TABLE";
@@ -234,10 +127,42 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     TOWN_CONTACT_COLUMN + " TEXT NOT NULL," +
                     ADDRESS_CONTACT_COLUMN + " TEXT NOT NULL," +
                     NUMBERPHONE_CONTACT_COLUMN + " TEXT NOT NULL," +
-                    ID_USERNAME_COLUMN + " INTEGER NOT NULL" +
+                    ID_USERNAME_COLUMN + " INTEGER NOT NULL " +
+                    " references "+TABLE_USER+"(ID_USERNAME_COLUMN)"+" on delete cascade" +
+                    ")";
+
+
+    //table report
+    private static final String TABLE_REPORT= "REPORT_TABLE";
+    private static final String ID_REPORT_COLUMN = "id_report";
+    private static final String NAME_REPORT_COLUMN= "name_report";
+    private static final String SDT_REPORT_COLUMN = "sdt_report";
+    private static final String DATE_REPORT_COLUMN = "date_report";
+    private static final String PROVINCE_REPORT_COLUMN= "province_report";
+    private static final String DISTRICT_REPORT_COLUMN= "district_report";
+    private static final String WARD_REPORT_COLUMN = "ward_report";
+    private static final String STREET_REPORT_COLUMN = "street_report";
+    private static final String TYPE_REPORT_COLUMN = "type_report";
+    private static final String CONTENT_REPORT_COLUMN = "content_report";
+
+    private static final String CREATE_TABLE_REPORT_SQL =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_REPORT + "(" +
+                    ID_REPORT_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                    NAME_REPORT_COLUMN + " TEXT NOT NULL," +
+                    SDT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    PROVINCE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    DISTRICT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    WARD_REPORT_COLUMN + " TEXT NOT NULL," +
+                    STREET_REPORT_COLUMN + " TEXT NOT NULL," +
+                    TYPE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    CONTENT_REPORT_COLUMN + " TEXT NOT NULL," +
+                    DATE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    ID_USERNAME_COLUMN + " INTEGER NOT NULL " +
+                    " references "+TABLE_USER+"(ID_USERNAME_COLUMN)"+" on delete cascade" +
                     ")";
 
     // table scan qr
+
     private static final String TABLE_YOURROUTE = "YOURROUTE_TABLE";
     private static final String ID_YOURROUTE_COLUMN = "id";
     private static final String NAME_YOURROUTE_COLUMN = "name";
@@ -257,6 +182,26 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     DAY_DES_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
                     DAY_GO_YOURROUTE_COLUMN + " TEXT NOT NULL " +
                     " ) ";
+
+    //table notification
+
+    private static final String TABLE_NOTIFI= "NOTIFICATION_TABLE";
+    private static final String ID_NOTIFI_COLUMN = "ID";
+    private static final String TYPE_NOTIFI_COLUMN = "Type";
+    private static final String DATE_NOTIFI_COLUMN = "Date";
+    private static final String TIME_NOTIFI_COLUMN = "Time";
+    private static final String CONTENT_NOTIFI_COLUMN = "Content";
+    private static final String URL_NOTIFI_COLUMN = "Image";
+    private static final String CREATE_TABLE_NOTIFI_SQL =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NOTIFI + " (" +
+                    ID_NOTIFI_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                    TYPE_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    DATE_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    TIME_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    CONTENT_NOTIFI_COLUMN + " TEXT NOT NULL," +
+                    URL_NOTIFI_COLUMN + " TEXT NOT NULL" +
+                    ")";
+
 
     private static BaseDatabase sInstance;
 
@@ -299,30 +244,6 @@ public class BaseDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REPORT);
         onCreate(db);
     }
-    //Đếm tổng số dòng trong database
-//    public int getTotal() {
-//        SQLiteDatabase db = getReadableDatabase();
-//        String sql = "SELECT * FROM " + TABLE;
-//        Cursor cursor = db.rawQuery(sql, null);
-//        int totalRows = cursor.getCount();
-//        cursor.close();
-//        return totalRows;
-//    }
-//
-//    public int deleteAll() {
-//        SQLiteDatabase db = getReadableDatabase();
-//        int rowEffect = db.delete(TABLE, null,null);
-//        db.close();
-//        return rowEffect;
-//    }
-//    public int delete(DomesticDeclaration domesticDeclaration) {
-//        SQLiteDatabase db = getReadableDatabase();
-//        int rowEffect = db.delete(TABLE, ID_COLUMN + " = ?", new
-//                String[]{String.valueOf(domesticDeclaration.getId())});
-//        db.close();
-//        return rowEffect;
-//    }
-
 
     public int getIndex(){
 
@@ -582,20 +503,6 @@ public class BaseDatabase extends SQLiteOpenHelper {
         return false;
     }
 
-
-//    public int updateData(KhaiBao khaiBao) {
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(NAME_COLUMN, khaiBao.getName());
-//        values.put(SEX_COLUMN, khaiBao.getSex());
-//        values.put(ADDRESS_COLUMN, khaiBao.getAddress());
-//        values.put(DATE_OF_BIRTH_COLUMN, khaiBao.getDateOfBirth());
-//        int rowEffect = db.update(TABLE, values, ID_COLUMN + " = ?",
-//                new String[]{String.valueOf(khaiBao.getId())});
-//        db.close();
-//        return rowEffect;
-//    }
-
     public boolean insertEntry(EntryDeclaration entryDeclaration) {
         Log.e(TAG, "onInsert: ");
         SQLiteDatabase db = getWritableDatabase();
@@ -648,78 +555,6 @@ public class BaseDatabase extends SQLiteOpenHelper {
         }
         db.close();
         return entryDeclarations;
-    }
-
-
-    // query your route
-    public boolean insertYourRoute(DataYourRoute dataYourRoute){
-
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put(NAME_YOURROUTE_COLUMN,dataYourRoute.getName());
-        contentValues.put(ADDRESS_YOURROUTE_COLUMN,dataYourRoute.getAddress());
-        contentValues.put(ADDRESS_DES_YOURROUTE_COLUMN,dataYourRoute.getAddress_des());
-        contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
-        contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
-        contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
-
-        long rowId = db.insert(TABLE_YOURROUTE, null, contentValues);
-        Log.e(TAG, "onInsert: YourRoute = " + rowId);
-        db.close();
-        if (rowId != -1)
-            return true;
-        return false;
-    }
-    // updateData
-    public boolean updateYourRoute(DataYourRoute dataYourRoute){
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put(NAME_YOURROUTE_COLUMN,dataYourRoute.getName());
-        contentValues.put(ADDRESS_YOURROUTE_COLUMN,dataYourRoute.getAddress());
-        contentValues.put(ADDRESS_DES_YOURROUTE_COLUMN,dataYourRoute.getAddress_des());
-        contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
-        contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
-        contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
-
-        long rowId = db.update(TABLE_YOURROUTE, contentValues, " id = ? ",new String[]{String.valueOf(dataYourRoute.getId())});
-        Log.e(TAG, "onUpdate: YourRoute = " + rowId);
-        db.close();
-        if (rowId != -1)
-            return true;
-        return false;
-    }
-    public void deleteYourRoute(int id){
-        SQLiteDatabase db = getWritableDatabase();
-
-        db.delete(TABLE_YOURROUTE,"id = ? ",new String[]{String.valueOf(id)});
-        db.close();
-    }
-
-    public ArrayList<DataYourRoute> getAllYourRoute(){
-
-        SQLiteDatabase db = getReadableDatabase();
-        ArrayList<DataYourRoute> dataYourRoutes = new ArrayList<>();
-        String sql = "SELECT * FROM " + TABLE_YOURROUTE;
-        Cursor cursor = db.rawQuery(sql, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                    int id = cursor.getInt(cursor.getColumnIndex(ID_YOURROUTE_COLUMN));
-                    String name = cursor.getString(cursor.getColumnIndex(NAME_YOURROUTE_COLUMN));
-                    String address = cursor.getString(cursor.getColumnIndex(ADDRESS_YOURROUTE_COLUMN));
-                    String address_des = cursor.getString(cursor.getColumnIndex(ADDRESS_DES_YOURROUTE_COLUMN));
-                    String address_go = cursor.getString(cursor.getColumnIndex(ADDRESS_GO_YOURROUTE_COLUMN));
-                    String day_des = cursor.getString(cursor.getColumnIndex(DAY_DES_YOURROUTE_COLUMN));
-                    String day_go = cursor.getString(cursor.getColumnIndex(DAY_GO_YOURROUTE_COLUMN));
-
-                    dataYourRoutes.add(new DataYourRoute(id, name, address, address_des, address_go, day_des, day_go));
-            }while (cursor.moveToNext());
-            cursor.close();
-        }
-
-        db.close();
-        return dataYourRoutes;
     }
 
     public ArrayList<EntryDeclaration> getAllEntryWithUser(int idUser) {
@@ -786,34 +621,80 @@ public class BaseDatabase extends SQLiteOpenHelper {
         db.close();
         return rowEffect;
     }
-    //table report
-    private static final String TABLE_REPORT= "REPORT_TABLE";
-    private static final String ID_REPORT_COLUMN = "id_report";
-    private static final String NAME_REPORT_COLUMN= "name_report";
-    private static final String SDT_REPORT_COLUMN = "sdt_report";
-    private static final String DATE_REPORT_COLUMN = "date_report";
-    private static final String PROVINCE_REPORT_COLUMN= "province_report";
-    private static final String DISTRICT_REPORT_COLUMN= "district_report";
-    private static final String WARD_REPORT_COLUMN = "ward_report";
-    private static final String STREET_REPORT_COLUMN = "street_report";
-    private static final String TYPE_REPORT_COLUMN = "type_report";
-    private static final String CONTENT_REPORT_COLUMN = "content_report";
 
-    private static final String CREATE_TABLE_REPORT_SQL =
-            "CREATE TABLE IF NOT EXISTS " + TABLE_REPORT + "(" +
-                    ID_REPORT_COLUMN + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                    NAME_REPORT_COLUMN + " TEXT NOT NULL," +
-                    SDT_REPORT_COLUMN + " TEXT NOT NULL," +
-                    PROVINCE_REPORT_COLUMN + " TEXT NOT NULL," +
-                    DISTRICT_REPORT_COLUMN + " TEXT NOT NULL," +
-                    WARD_REPORT_COLUMN + " TEXT NOT NULL," +
-                    STREET_REPORT_COLUMN + " TEXT NOT NULL," +
-                    TYPE_REPORT_COLUMN + " TEXT NOT NULL," +
-                    CONTENT_REPORT_COLUMN + " TEXT NOT NULL," +
-                    DATE_REPORT_COLUMN + " TEXT NOT NULL," +
-                    ID_USERNAME_COLUMN + " INTEGER NOT NULL" +
-                    ")";
-    //
+    // query your route
+    public boolean insertYourRoute(DataYourRoute dataYourRoute){
+
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(NAME_YOURROUTE_COLUMN,dataYourRoute.getName());
+        contentValues.put(ADDRESS_YOURROUTE_COLUMN,dataYourRoute.getAddress());
+        contentValues.put(ADDRESS_DES_YOURROUTE_COLUMN,dataYourRoute.getAddress_des());
+        contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
+        contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
+        contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
+
+        long rowId = db.insert(TABLE_YOURROUTE, null, contentValues);
+        Log.e(TAG, "onInsert: YourRoute = " + rowId);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
+    }
+    // updateData
+    public boolean updateYourRoute(DataYourRoute dataYourRoute){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(NAME_YOURROUTE_COLUMN,dataYourRoute.getName());
+        contentValues.put(ADDRESS_YOURROUTE_COLUMN,dataYourRoute.getAddress());
+        contentValues.put(ADDRESS_DES_YOURROUTE_COLUMN,dataYourRoute.getAddress_des());
+        contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
+        contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
+        contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
+
+        long rowId = db.update(TABLE_YOURROUTE, contentValues, " id = ? ",new String[]{String.valueOf(dataYourRoute.getId())});
+        Log.e(TAG, "onUpdate: YourRoute = " + rowId);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
+    }
+    public void deleteYourRoute(int id){
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.delete(TABLE_YOURROUTE,"id = ? ",new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public ArrayList<DataYourRoute> getAllYourRoute(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<DataYourRoute> dataYourRoutes = new ArrayList<>();
+        String sql = "SELECT * FROM " + TABLE_YOURROUTE;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(ID_YOURROUTE_COLUMN));
+                String name = cursor.getString(cursor.getColumnIndex(NAME_YOURROUTE_COLUMN));
+                String address = cursor.getString(cursor.getColumnIndex(ADDRESS_YOURROUTE_COLUMN));
+                String address_des = cursor.getString(cursor.getColumnIndex(ADDRESS_DES_YOURROUTE_COLUMN));
+                String address_go = cursor.getString(cursor.getColumnIndex(ADDRESS_GO_YOURROUTE_COLUMN));
+                String day_des = cursor.getString(cursor.getColumnIndex(DAY_DES_YOURROUTE_COLUMN));
+                String day_go = cursor.getString(cursor.getColumnIndex(DAY_GO_YOURROUTE_COLUMN));
+
+                dataYourRoutes.add(new DataYourRoute(id, name, address, address_des, address_go, day_des, day_go));
+            }while (cursor.moveToNext());
+            cursor.close();
+        }
+
+        db.close();
+        return dataYourRoutes;
+    }
+
+
+
     public boolean insertReport(Report report) {
         Log.e(TAG, "onInsert: ");
         SQLiteDatabase db = getWritableDatabase();
@@ -828,7 +709,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
         values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
         values.put(DATE_REPORT_COLUMN,report.getTimeDetectReport());
-        values.put(ID_USERNAME_COLUMN,MainActivity.INDEX);
+        values.put(ID_USERNAME_COLUMN,report.getIdUser());
         long rowId = db.insert(TABLE_REPORT, null, values);
         db.close();
         if (rowId != -1)
@@ -916,5 +797,84 @@ public class BaseDatabase extends SQLiteOpenHelper {
         }
         db.close();
         return reports;
+    }
+
+    public ArrayList<Notification> getAllNotifi() {
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Notification> notifications = new ArrayList<Notification>();
+        String sql = "SELECT * FROM " + TABLE_NOTIFI;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                notifications.add(new
+                        Notification(cursor.getInt(cursor.getColumnIndex(ID_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TYPE_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DATE_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TIME_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(CONTENT_NOTIFI_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(URL_NOTIFI_COLUMN))
+                ));
+
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return notifications;
+    }
+
+
+    public boolean insertNotification(Notification notifications) {
+        Log.e(TAG, "onInsert: ");
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TYPE_NOTIFI_COLUMN, notifications.getType());
+        values.put(DATE_NOTIFI_COLUMN, notifications.getDate());
+        values.put(TIME_NOTIFI_COLUMN, notifications.getTime());
+        values.put(CONTENT_NOTIFI_COLUMN, notifications.getContent());
+        values.put(URL_NOTIFI_COLUMN, notifications.getImageNotification());
+        long rowId = db.insert(TABLE_NOTIFI, null, values);
+        db.close();
+        if (rowId != -1)
+            return true;
+        return false;
+    }
+    public int updateNotificaton(Notification notification) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TYPE_NOTIFI_COLUMN, notification.getType());
+        values.put(DATE_NOTIFI_COLUMN, notification.getDate());
+        values.put(TIME_NOTIFI_COLUMN, notification.getTime());
+        values.put(CONTENT_NOTIFI_COLUMN, notification.getContent());
+        values.put(URL_NOTIFI_COLUMN, notification.getImageNotification());
+        int rowEffect = db.update(TABLE_NOTIFI, values, ID_NOTIFI_COLUMN + " = ?",
+                new String[]{String.valueOf(notification.getId())});
+        db.close();
+        return rowEffect;
+    }
+
+    public int deleteNotifi(Notification notifications) {
+        SQLiteDatabase db = getReadableDatabase();
+        int rowEffect = db.delete(TABLE_NOTIFI, ID_NOTIFI_COLUMN + " = ?", new
+                String[]{String.valueOf(notifications.getId())});
+        db.close();
+        return rowEffect;
+    }
+
+    //excute when delete account
+
+    public int deleteEntryByIDUser(int id) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        int rowEffect = db.delete(TABLE_ENTRY, ID_USERNAME_COLUMN + " = ? ", new String[]{String.valueOf(id)});
+        db.close();
+        return rowEffect;
+    }
+
+    public int deleteReportByIdUser(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        int rowEffect = db.delete(TABLE_REPORT, ID_USERNAME_COLUMN + " = ?", new
+                String[]{String.valueOf(id)});
+        db.close();
+        return rowEffect;
     }
 }

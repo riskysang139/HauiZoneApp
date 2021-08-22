@@ -64,9 +64,14 @@ public class ManageAccountActivity extends AppCompatActivity {
                         // xoa thong tin nguoi dung khoi database va up date lại listview
 
                         int check = -1;
-                        check = mBaseDatabase.deleteUserByID(mUserList.get(position).getUserId());
+                        int checkEntry = -1;
+                        int checkReport = -1;
 
-                        if(check != -1){
+                        check = mBaseDatabase.deleteUserByID(mUserList.get(position).getUserId());
+                        checkEntry = mBaseDatabase.deleteEntryByIDUser(mUserList.get(position).getUserId());
+                        checkReport=mBaseDatabase.deleteReportByIdUser(mUserList.get(position).getUserId());
+
+                        if(check != -1 && checkEntry != -1 && checkReport !=-1){
                             Toast.makeText(ManageAccountActivity.this, "Xóa thông tin tài khoản thành công!", Toast.LENGTH_SHORT).show();
                             setDataListView();
                         }else{
