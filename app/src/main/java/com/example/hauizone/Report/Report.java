@@ -10,9 +10,9 @@ public class Report implements Serializable {
     String province,district,ward,street;
     String typeReport;
     String contentReport;
+    int idUser;
 
-
-    public Report(int idReport, String timeDetectReport, String nameReport, String sdtReport, String province, String district, String ward, String street, String typeReport, String contentReport) {
+    public Report(int idReport, String timeDetectReport, String nameReport, String sdtReport, String province, String district, String ward, String street, String typeReport, String contentReport,int idUser) {
         this.idReport = idReport;
         this.timeDetectReport = timeDetectReport;
         this.nameReport = nameReport;
@@ -23,9 +23,10 @@ public class Report implements Serializable {
         this.street = street;
         this.typeReport = typeReport;
         this.contentReport = contentReport;
+        this.idUser = idUser;
     }
 
-    public Report(String timeDetectReport, String nameReport, String sdtReport, String province, String district, String ward, String street, String typeReport, String contentReport) {
+    public Report(String timeDetectReport, String nameReport, String sdtReport, String province, String district, String ward, String street, String typeReport, String contentReport,int idUser) {
         this.timeDetectReport = timeDetectReport;
         this.nameReport = nameReport;
         this.sdtReport = sdtReport;
@@ -35,6 +36,7 @@ public class Report implements Serializable {
         this.street = street;
         this.typeReport = typeReport;
         this.contentReport = contentReport;
+        this.idUser = idUser;
     }
 
     public int getIdReport() {
@@ -115,6 +117,14 @@ public class Report implements Serializable {
 
     public void setContentReport(String contentReport) {
         this.contentReport = contentReport;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     @Override
