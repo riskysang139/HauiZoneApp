@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.BaseAdapter;
 
 import androidx.annotation.Nullable;
 
@@ -15,10 +14,7 @@ import com.example.hauizone.Account.User;
 import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
 import com.example.hauizone.EntryDeclaration.EntryDeclaration;
 import com.example.hauizone.Notification.Notification;
-import com.example.hauizone.Account.User;
 import com.example.hauizone.Report.Report;
-import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
-import com.example.hauizone.entryDeclaration.EntryDeclaration;
 
 
 import java.util.ArrayList;
@@ -463,7 +459,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
     public List<User> getAllUser() {
         SQLiteDatabase db = getReadableDatabase();
         List<User> lists = new ArrayList<User>();
-        String sql = "SELECT * FROM " + TABLE_USER;
+        String sql = " SELECT * FROM " + TABLE_USER ;
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
