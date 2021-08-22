@@ -828,7 +828,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
         values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
         values.put(DATE_REPORT_COLUMN,report.getTimeDetectReport());
-        values.put(ID_USERNAME_COLUMN,MainActivity.INDEX);
+        values.put(ID_USERNAME_COLUMN,report.getIdUser());
         long rowId = db.insert(TABLE_REPORT, null, values);
         db.close();
         if (rowId != -1)
