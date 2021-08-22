@@ -27,11 +27,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
+    BaseDatabase mBaseDatabase;
+    public static int INDEX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBaseDatabase = new BaseDatabase(this);
+        INDEX = mBaseDatabase.getIndex();
         binding.btnFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

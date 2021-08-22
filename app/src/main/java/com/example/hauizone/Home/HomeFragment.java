@@ -19,8 +19,8 @@ import androidx.fragment.app.Fragment;
 import com.example.hauizone.DiseaseTutorial.DiseaseTutorialFragment;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentHomeBinding;
-import com.example.hauizone.domesticDeclaration.DomesticDeclarationFragment;
-import com.example.hauizone.entryDeclaration.EntryDeclarationFragment;
+import com.example.hauizone.DomesticDeclaration.DomesticDeclarationFragment;
+import com.example.hauizone.EntryDeclaration.EntryDeclarationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

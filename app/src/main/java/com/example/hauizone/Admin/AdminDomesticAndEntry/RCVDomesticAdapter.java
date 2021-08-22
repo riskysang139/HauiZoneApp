@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hauizone.R;
-import com.example.hauizone.domesticDeclaration.DomesticDeclaration;
+import com.example.hauizone.DomesticDeclaration.DomesticDeclaration;
 
 import java.util.ArrayList;
 

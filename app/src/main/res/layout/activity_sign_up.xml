@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".Account.SignUpActivity">
 
         <RelativeLayout
             android:id="@+id/title"
@@ -19,7 +23,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_4sdp"
-                android:text="@string/account"
+                android:text="@string/account_sign_up"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -47,25 +51,89 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_8sdp">
 
-                <TextView
-                    android:id="@+id/thongTinCaNhan"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/ln_username"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/bg_tv_thong_tin"
-                    android:padding="@dimen/_6sdp"
-                    android:text="@string/account_infomation"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/title_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/account_username"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/title_username"
+                        android:text="*"
+                        android:textColor="#FA0202" />
+
+                    <EditText
+                        android:id="@+id/edt_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title_username"
+                        android:background="@drawable/bg_line_edt_thong_tin"
+                        android:hint="tai_khoan"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="@dimen/_4sdp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                //mat khau
+
+                <RelativeLayout
+                    android:id="@+id/ln_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ln_username"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/title_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/account_password"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/title_password"
+                        android:text="*"
+                        android:textColor="#FA0202" />
+
+                    <EditText
+                        android:id="@+id/edt_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title_password"
+                        android:background="@drawable/bg_line_edt_thong_tin"
+                        android:hint="mat_khau"
+                        android:maxLines="1"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/_4sdp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
 
                 //hoten
-
                 <RelativeLayout
                     android:id="@+id/ln_hoTen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/thongTinCaNhan"
+                    android:layout_below="@id/ln_password"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="vertical">
 
@@ -100,6 +168,7 @@
                 </RelativeLayout>
 
                 //ngay sinh
+
                 <RelativeLayout
                     android:id="@+id/ln_ngaySinh"
                     android:layout_width="match_parent"
@@ -150,6 +219,7 @@
                 </RelativeLayout>
 
                 // gioi tinh
+
                 <TextView
                     android:id="@+id/tv_gioiTinh"
                     android:layout_width="wrap_content"
@@ -191,6 +261,7 @@
                 </RadioGroup>
 
                 // tinh thanh
+
                 <RelativeLayout
                     android:id="@+id/ln_tinhThanh"
                     android:layout_width="match_parent"
@@ -226,10 +297,11 @@
                         android:maxLines="1"
                         android:inputType="text"
                         android:singleLine="true"
-                        android:hint="Hà Nội"/>
+                        android:hint="Hà Nội" />
                 </RelativeLayout>
 
                 // quan/huyen
+
                 <RelativeLayout
                     android:id="@+id/ln_quanHuyen"
                     android:layout_width="match_parent"
@@ -265,10 +337,11 @@
                         android:maxLines="1"
                         android:inputType="text"
                         android:singleLine="true"
-                        android:hint="Bắc Từ Liêm"/>
+                        android:hint="Bắc Từ Liêm" />
                 </RelativeLayout>
 
                 //phuong/xa
+
                 <RelativeLayout
                     android:id="@+id/ln_phuongXa"
                     android:layout_width="match_parent"
@@ -304,10 +377,11 @@
                         android:maxLines="1"
                         android:inputType="text"
                         android:singleLine="true"
-                        android:hint="Minh Khai"/>
+                        android:hint="Minh Khai" />
                 </RelativeLayout>
 
                 //so nha, duong
+
                 <RelativeLayout
                     android:id="@+id/ln_soNha"
                     android:layout_width="match_parent"
@@ -345,6 +419,7 @@
                 </RelativeLayout>
 
                 // sdt
+
                 <RelativeLayout
                     android:id="@+id/ln_SDT"
                     android:layout_width="match_parent"
@@ -383,41 +458,48 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                //email
-                <LinearLayout
-                    android:id="@+id/ln_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ln_SDT"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:orientation="vertical">
+                <!--            //email-->
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/ln_email"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_below="@id/ln_SDT"-->
+                <!--                android:layout_marginTop="@dimen/_8sdp"-->
+                <!--                android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/account_email_address"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="@string/account_email_address"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="14sp" />-->
 
-                    <EditText
-                        android:id="@+id/edt_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_edt_thong_tin"
-                        android:padding="@dimen/_4sdp"
-                        android:singleLine="true"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                <!--                <EditText-->
+                <!--                    android:id="@+id/det"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:background="@drawable/bg_line_edt_thong_tin"-->
+                <!--                    android:padding="@dimen/_4sdp"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textSize="14sp" />-->
+                <!--            </LinearLayout>-->
 
-
+                <!--            // cam ket-->
+                <!--            <CheckBox-->
+                <!--                android:id="@+id/cb_camKet"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_below="@+id/ln_email"-->
+                <!--                android:layout_marginTop="@dimen/_8sdp"-->
+                <!--                android:text="@string/account_commit" />-->
                 // tinh hinh dich benh
 
                 <LinearLayout
                     android:id="@+id/ln_dichbenh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ln_email"
                     android:gravity="center_vertical"
+                    android:layout_below="@+id/ln_SDT"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="horizontal">
 
@@ -425,42 +507,31 @@
                         android:id="@+id/tv_dichbenh"
                         android:layout_width="wrap_content"
                         android:textColor="@color/black"
-                        android:gravity="center_vertical"
                         android:layout_height="wrap_content"
                         android:text="Tình hình dịch bệnh: " />
 
                     <Spinner
                         android:layout_toRightOf="@id/tv_dichbenh"
                         android:id="@+id/sp_dichbenh"
-                        android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
-
-                // cam ket
-                <CheckBox
-                    android:id="@+id/cb_camKet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ln_dichbenh"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="@string/account_commit" />
-                //cap nhat
+                //dang ky
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnCapNhat"
+                    android:id="@+id/btn_dangKy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_below="@+id/cb_camKet"
+                    android:layout_below="@+id/ln_dichbenh"
                     android:layout_marginBottom="@dimen/_16sdp"
                     android:background="@drawable/bg_btn_update"
-                    android:text="@string/account_update"
+                    android:text="@string/account_sign_up"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp" />
-
             </RelativeLayout>
         </ScrollView>
+
     </RelativeLayout>
 </layout>

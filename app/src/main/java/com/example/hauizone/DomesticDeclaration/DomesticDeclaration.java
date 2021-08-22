@@ -1,4 +1,4 @@
-package com.example.hauizone.domesticDeclaration;
+package com.example.hauizone.DomesticDeclaration;
 
 public class DomesticDeclaration {
     private int id;

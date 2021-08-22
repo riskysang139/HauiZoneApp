@@ -1,6 +1,8 @@
-package com.example.hauizone.entryDeclaration;
+package com.example.hauizone.EntryDeclaration;
 
-public class EntryDeclaration {
+import java.io.Serializable;
+
+public class EntryDeclaration implements Serializable {
     private int id;
     private String gate;
     private String name;

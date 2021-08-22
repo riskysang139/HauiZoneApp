@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.hauizone.R;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public NotificationAdapter(Context context, List<Notification> notifications) {
         this.context = context;
         this.notifications = notifications;
+    }
+
+    public NotificationAdapter(NotificationAdapter notificationAdapter, Context baseContext) {
     }
 
 
@@ -37,9 +41,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         Notification notification = notifications.get(position);
         if(notification != null){
             holder.type_notifi.setText(notification.getType());
-            holder.datetime.setText(String.valueOf(notification.getDate()) + "   " + String.valueOf(notification.getTime()));
+            holder.datetime.setText(notification.getDate() + "   " + notification.getTime());
             holder.content_notifi.setText(notification.getContent());
-            holder.image_notifi.setImageResource(notification.getImageNotification());
+            Glide.with(context).load(notification.getImageNotification()).into(holder.image_notifi);
         }
     }
 
@@ -48,7 +52,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         return notifications.size();
     }
 
-    public class NotificationViewHolder extends RecyclerView.ViewHolder{
+    public static class NotificationViewHolder extends RecyclerView.ViewHolder{
 
         TextView type_notifi, datetime,content_notifi;
         ImageView imageView2, image_notifi;

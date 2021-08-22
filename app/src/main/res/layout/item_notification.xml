@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -31,7 +32,7 @@
                 android:layout_weight="0.5"
                 android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -48,22 +49,25 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="5dp"
         android:id="@+id/content_notifi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textColor="@color/black" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        app:cardCornerRadius="5dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_height="wrap_content">
+        app:cardCornerRadius="5dp">
+
         <ImageView
             android:id="@+id/image_notifi"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY" />
     </androidx.cardview.widget.CardView>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
