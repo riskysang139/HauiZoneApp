@@ -28,7 +28,7 @@ import android.widget.Toast;
 import com.example.hauizone.Admin.AdminDomesticAndEntry.RCVEntryAdapter;
 import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.Notification.Notification;
-import com.example.hauizone.Notification.NotificationAdapter;
+//import com.example.hauizone.Notification.NotificationAdapter;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityAdminNotifiBinding;
 

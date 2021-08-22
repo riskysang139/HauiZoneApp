@@ -20,8 +20,6 @@ import java.util.List;
 
 public class NotificationFragment extends Fragment implements MyNotifiAdminAdapter.ClickListener {
     FragmentNotificationBinding binding;
-//    List<Notification> arrList ;
-//    NotificationAdapter notificationAdapter;
     MyNotifiAdminAdapter myNotifiAdminAdapter;
     RecyclerView rv_admin_notifi;
     ArrayList<Notification> arrList = null;
@@ -42,7 +40,6 @@ public class NotificationFragment extends Fragment implements MyNotifiAdminAdapt
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.rvNotification.setLayoutManager(layoutManager);
         binding.rvNotification.setAdapter(myNotifiAdminAdapter);
-
         return view;
     }
 
