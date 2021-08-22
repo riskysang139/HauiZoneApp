@@ -26,7 +26,7 @@ public class DeclarationFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_declaration, container, false);
         BottomNavigationView bottomNavigationView=getActivity().findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setVisibility(View.INVISIBLE);
+        bottomNavigationView.setVisibility(View.GONE);
         View view = binding.getRoot();
         setEvents();
         binding.entryDeclaration.setOnClickListener(new View.OnClickListener() {

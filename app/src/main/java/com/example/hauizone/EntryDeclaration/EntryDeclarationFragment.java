@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,17 +58,18 @@ public class EntryDeclarationFragment extends Fragment {
     }
 
     private void showDateEntryDialog() {
+        Calendar calendar1 = Calendar.getInstance();
+        int thisDate = calendar1.get(Calendar.DATE);
+        int thisMonth = calendar1.get(Calendar.MONTH);
+        int thisYear = calendar1.get(Calendar.YEAR);
         datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Year = year;
-                Month = month;
-                Day = dayOfMonth;
-                calendar.set(Year, Month, Day);
+                calendar1.set(year, month-1, dayOfMonth);
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                binding.txtDateEntry.setText(simpleDateFormat.format(calendar.getTime()));
+                binding.txtDateEntry.setText(simpleDateFormat.format(calendar1.getTime()));
             }
-        }, Year, Month, Day);
+        }, thisYear, thisMonth, thisDate);
         datePickerDialog.setTitle("Date Entry");
         datePickerDialog.show();
     }
@@ -135,5 +137,6 @@ public class EntryDeclarationFragment extends Fragment {
                 binding.txtNumberPhoneEntry.getText().toString(),
                 MainActivity.INDEX
         ));
+        Toast.makeText(getActivity(),"Khai báo nội địa thành công",Toast.LENGTH_SHORT).show();
     }
 }

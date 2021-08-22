@@ -38,12 +38,13 @@ public class RCVEntryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         EntryViewHolder viewHolder= (EntryViewHolder) holder;
         EntryDeclaration entryDeclaration=arrList.get(position);
+        viewHolder.txtIDEntry.setText(entryDeclaration.getId()+"");
         viewHolder.txtIDUser.setText(entryDeclaration.getIdUser()+"");
         viewHolder.txtGate.setText(entryDeclaration.getGate());
         viewHolder.txtName.setText(entryDeclaration.getName());
         viewHolder.txtPhoneNumber.setText(entryDeclaration.getPhoneNumber());
-        viewHolder.txtAddress.setText("Số nhà, tổ / thôn : "+entryDeclaration.getContactAddress() +" Phường / Xã :" + entryDeclaration.getContactTown() +
-                " Quận / Huyện :" +entryDeclaration.getContactDistrict() + " Tỉnh Thành :" +entryDeclaration.getContactCity());
+        viewHolder.txtAddress.setText(entryDeclaration.getContactAddress() +" , " + entryDeclaration.getContactTown() +
+                " , " +entryDeclaration.getContactDistrict() + " , " +entryDeclaration.getContactCity());
         viewHolder.txtDate.setText(entryDeclaration.getDate());
         viewHolder.txtDateOB.setText(entryDeclaration.getDateOfBirth());
         viewHolder.txtSex.setText(entryDeclaration.getSex());
@@ -55,7 +56,7 @@ public class RCVEntryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return arrList.size();
     }
     public class EntryViewHolder extends RecyclerView.ViewHolder{
-        TextView txtGate,txtName,txtDateOB,txtSex,txtNationality,txtDate,txtAddress,txtPhoneNumber,txtIDUser;
+        TextView txtGate,txtName,txtDateOB,txtSex,txtNationality,txtDate,txtAddress,txtPhoneNumber,txtIDUser,txtIDEntry;
         LinearLayout layout;
         public EntryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +70,7 @@ public class RCVEntryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             txtAddress=itemView.findViewById(R.id.rcv_Entry_txtAddress);
             txtPhoneNumber=itemView.findViewById(R.id.rcv_Entry_txtPhoneNumber);
             layout=itemView.findViewById(R.id.layoutEntry);
+            txtIDEntry=itemView.findViewById(R.id.idEntry);
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

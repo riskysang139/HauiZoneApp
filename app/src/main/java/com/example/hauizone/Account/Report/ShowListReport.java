@@ -52,7 +52,8 @@ public class ShowListReport extends Fragment implements ReportManageAdapter.Clic
         reportsList = baseDatabase.getAllReportWithUser(MainActivity.INDEX);
         if(reportsList.size()==0)
         {
-            reportsList = baseDatabase.getAllReport();
+            fakeData();
+            reportsList = baseDatabase.getAllReportWithUser(MainActivity.INDEX);
         }
         reportManageAdapter=new ReportManageAdapter(getContext(),reportsList,this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -104,5 +105,18 @@ public class ShowListReport extends Fragment implements ReportManageAdapter.Clic
         bundle.putSerializable("report", (Serializable) report);
         intent.putExtras(bundle);
         getActivity().startActivity(intent);
+    }
+    private void fakeData() {
+        baseDatabase.insertReport(new Report("20/06/2021", "Cao Thế Thắng",
+                                            "0974145648","Hải Phòng","Lê Chân","Hoàng Cầm",
+                                    "Hoàng Minh Giám","Có người trở về từ vùng dịch","ok", MainActivity.INDEX));
+
+        baseDatabase.insertReport(new Report("22/08/2021", "Cao Thế Thắng",
+                "0987456789","Vĩnh Phúc","Vĩnh Tường","Ngũ Kiên",
+                "Làng Mộc","Có người tiếp xúc với người mắc bệnh","ok", MainActivity.INDEX));
+        baseDatabase.insertReport(new Report("13/11/2021", "Cao Thế Thắng",
+                "0974145648","Hà Nội","Bắc Từ Liêm","Minh Khai",
+                "Nguyên Xá","Có người trở về từ vùng dịch","ok", MainActivity.INDEX));
+
     }
 }

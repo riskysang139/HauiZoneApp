@@ -28,7 +28,7 @@
                 android:layout_centerInParent="true"
                 android:text="Danh Sách Các Phản Ánh"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold">
 
             </TextView>

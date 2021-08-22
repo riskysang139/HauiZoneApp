@@ -12,7 +12,8 @@
             android:id="@+id/btn_entry_declare"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_200sdp"
             android:background="@color/main_color"
             android:text="Quản lý khai báo nhập cảnh và nội địa "
             android:textColor="@color/white" />

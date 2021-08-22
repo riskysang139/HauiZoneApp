@@ -51,7 +51,7 @@ public class ShowListEntryDeclaration extends Fragment implements RCVEntryAdapte
         if(entryDeclarations.size()==0)
         {
             fakeData();
-            entryDeclarations = baseDatabase.getAllEntry();
+            entryDeclarations = baseDatabase.getAllEntryWithUser(MainActivity.INDEX);
         }
         entryAdapter=new RCVEntryAdapter(entryDeclarations,getContext(),this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());

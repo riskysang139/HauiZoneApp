@@ -18,7 +18,7 @@
 
                 <TextView
                     android:id="@+id/tv_taiKhoan"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="@dimen/_500sdp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
@@ -26,7 +26,7 @@
                     android:padding="@dimen/_8sdp"
                     android:text="@string/entry_medical_declaration"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <ImageView

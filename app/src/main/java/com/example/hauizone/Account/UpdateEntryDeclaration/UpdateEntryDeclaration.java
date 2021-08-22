@@ -10,6 +10,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import com.example.hauizone.BaseDatabase;
 import com.example.hauizone.EntryDeclaration.EntryDeclaration;
@@ -90,22 +91,24 @@ public class UpdateEntryDeclaration extends AppCompatActivity {
         entryDeclaration1.setPhoneNumber(binding.txtNumberPhoneEntry.getText().toString());
 
         baseDatabase.updateEntry(entryDeclaration1);
+        Toast.makeText(this,"Cập nhập thông tin thành công",Toast.LENGTH_SHORT).show();
         finish();
 
     }
 
     private void showDateEntryDialog() {
+        Calendar calendar1 = Calendar.getInstance();
+        int thisDate = calendar1.get(Calendar.DATE);
+        int thisMonth = calendar1.get(Calendar.MONTH);
+        int thisYear = calendar1.get(Calendar.YEAR);
         dateEntryPickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Year = year;
-                Month = month;
-                Day = dayOfMonth;
-                calendar.set(Year, Month, Day);
+                calendar1.set(year, month-1, dayOfMonth);
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                binding.txtDateEntry.setText(simpleDateFormat.format(calendar.getTime()));
+                binding.txtDateEntry.setText(simpleDateFormat.format(calendar1.getTime()));
             }
-        }, Year, Month, Day);
+        }, thisYear, thisMonth, thisDate);
         dateEntryPickerDialog.setTitle("Date Entry");
         dateEntryPickerDialog.show();
     }

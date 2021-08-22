@@ -12,7 +12,7 @@
         <RelativeLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:background="@color/main_color">
 
             <ImageView
@@ -20,17 +20,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:layout_centerVertical="true"
                 android:src="@drawable/ic_close" />
 
             <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="@string/disease_tutorial"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>

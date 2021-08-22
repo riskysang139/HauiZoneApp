@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hauizone.Admin.AdminDomesticAndEntry.RCVEntryAdapter;
 import com.example.hauizone.BaseDatabase;
+import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.Report.Report;
 import com.example.hauizone.databinding.ActivityManageReportBinding;
@@ -32,7 +33,7 @@ public class AdminReportManage extends AppCompatActivity implements ReportManage
         reportsList = baseDatabase.getAllReport();
         if(reportsList.size()==0)
         {
-//            fakeData();
+            fakeData();
             reportsList=baseDatabase.getAllReport();
         }
         reportManageAdapter=new ReportManageAdapter(getBaseContext(),reportsList,this);
@@ -79,5 +80,17 @@ public class AdminReportManage extends AppCompatActivity implements ReportManage
 
         alertDialog.show();
     }
+    private void fakeData() {
+        baseDatabase.insertReport(new Report("20/06/2021", "Cao Thế Thắng",
+                "0974145648","Hải Phòng","Lê Chân","Hoàng Cầm",
+                "Hoàng Minh Giám","Có người trở về từ vùng dịch","ok",4));
 
+        baseDatabase.insertReport(new Report("22/08/2021", "Cao Thế Thắng",
+                "0987456789","Vĩnh Phúc","Vĩnh Tường","Ngũ Kiên",
+                "Làng Mộc","Có người tiếp xúc với người mắc bệnh","ok",3));
+        baseDatabase.insertReport(new Report("13/11/2021", "Cao Thế Thắng",
+                "0974145648","Hà Nội","Bắc Từ Liêm","Minh Khai",
+                "Nguyên Xá","Có người trở về từ vùng dịch","ok",2));
+
+    }
 }
