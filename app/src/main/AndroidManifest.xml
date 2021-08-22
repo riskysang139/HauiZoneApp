@@ -30,6 +30,7 @@
 
         <activity android:name=".Admin.AdminDomesticAndEntry.AdminDomesticAndEntry" />
         <activity android:name=".Admin.ReportManage.AdminReportManage" />
+        <activity android:name=".Account.Report.UpdateReport" />
     </application>
 
 </manifest>

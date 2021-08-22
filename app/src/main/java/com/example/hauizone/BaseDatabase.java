@@ -811,7 +811,8 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     STREET_REPORT_COLUMN + " TEXT NOT NULL," +
                     TYPE_REPORT_COLUMN + " TEXT NOT NULL," +
                     CONTENT_REPORT_COLUMN + " TEXT NOT NULL," +
-                    DATE_REPORT_COLUMN + " TEXT NOT NULL" +
+                    DATE_REPORT_COLUMN + " TEXT NOT NULL," +
+                    ID_USERNAME_COLUMN + " INTEGER NOT NULL" +
                     ")";
     //
     public boolean insertReport(Report report) {
@@ -828,6 +829,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
         values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
         values.put(DATE_REPORT_COLUMN,report.getTimeDetectReport());
+        values.put(ID_USERNAME_COLUMN,MainActivity.INDEX);
         long rowId = db.insert(TABLE_REPORT, null, values);
         db.close();
         if (rowId != -1)
@@ -851,7 +853,8 @@ public class BaseDatabase extends SQLiteOpenHelper {
                         cursor.getString(cursor.getColumnIndex(WARD_REPORT_COLUMN)),
                         cursor.getString(cursor.getColumnIndex(STREET_REPORT_COLUMN)),
                         cursor.getString(cursor.getColumnIndex(TYPE_REPORT_COLUMN)),
-                        cursor.getString(cursor.getColumnIndex(CONTENT_REPORT_COLUMN))
+                        cursor.getString(cursor.getColumnIndex(CONTENT_REPORT_COLUMN)),
+                        cursor.getInt(cursor.getColumnIndex(ID_USERNAME_COLUMN))
                 ));
             } while (cursor.moveToNext());
             cursor.close();
@@ -872,6 +875,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         values.put(STREET_REPORT_COLUMN,report.getStreet());
         values.put(TYPE_REPORT_COLUMN,report.getTypeReport());
         values.put(CONTENT_REPORT_COLUMN,report.getContentReport());
+        values.put(ID_USERNAME_COLUMN,MainActivity.INDEX);
         int rowEffect = db.update(TABLE_REPORT,
                 values,
                 ID_REPORT_COLUMN + " = ? " ,
@@ -885,5 +889,33 @@ public class BaseDatabase extends SQLiteOpenHelper {
                 String[]{String.valueOf(report.getIdReport())});
         db.close();
         return rowEffect;
+    }
+    public ArrayList<Report> getAllReportWithUser(int idUser) {
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Report> reports = new ArrayList<>();
+
+        String sql = "SELECT * FROM " +
+                TABLE_REPORT + " WHERE " + ID_USERNAME_COLUMN + " = ? ";
+
+        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(idUser)});
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                reports.add(new Report(cursor.getInt(cursor.getColumnIndex(ID_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DATE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(NAME_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(SDT_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(PROVINCE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(DISTRICT_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(WARD_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(STREET_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(TYPE_REPORT_COLUMN)),
+                        cursor.getString(cursor.getColumnIndex(CONTENT_REPORT_COLUMN)),
+                        cursor.getInt(cursor.getColumnIndex(ID_USERNAME_COLUMN))
+                ));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return reports;
     }
 }
