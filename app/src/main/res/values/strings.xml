@@ -69,6 +69,14 @@
     <string name="account_hauifanpage">Haui fanpage</string>
     <string name="account_q_and_a">Gửi hỏi đáp</string>
     <string name="account_terms_of_use">Điều khoản sử dụng</string>
+    <string name="account_name_your_route">Họ tên:</string>
+    <string name="account_address">Quê quán:</string>
+    <string name="account_address_go">Điểm đi:</string>
+    <string name="account_address_des">Điểm đến:</string>
+    <string name="account_day_go">Ngày đi:</string>
+    <string name="account_day_des">Ngày đến:</string>
+    <string name="account_id">ID:</string>
+
 
 
     <string name="entry_medical_declaration">TỜ KHAI Y TẾ NHẬP CẢNH</string>
@@ -104,4 +112,6 @@ hiểu và đồng ý</string>
     <string name="account_epidemic">Tình hình dịch bệnh</string>
     <string name="account_infor">Thông tin tài khoản</string>
     <string name="account_manage">Quản lý  tài khoản</string>
+    <string name="account_your_route">Quản lý lộ trình của bạn</string>
+
 </resources>

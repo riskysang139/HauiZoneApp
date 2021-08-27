@@ -13,6 +13,18 @@ public class DataYourRoute implements Serializable {
     private String address_go;
     private String day_des;
     private String day_go;
+    private int idUsername;
+
+    public DataYourRoute(int id, String name, String address, String address_des, String address_go, String day_des, String day_go, int idUsername) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.address_des = address_des;
+        this.address_go = address_go;
+        this.day_des = day_des;
+        this.day_go = day_go;
+        this.idUsername = idUsername;
+    }
 
     public DataYourRoute(int id, String name, String address, String address_des, String address_go, String day_des, String day_go) {
 
@@ -35,6 +47,23 @@ public class DataYourRoute implements Serializable {
         this.day_go = day_go;
     }
 
+    public DataYourRoute(String name, String address, String address_des, String address_go, String day_des, String day_go, int idUsername) {
+        this.name = name;
+        this.address = address;
+        this.address_des = address_des;
+        this.address_go = address_go;
+        this.day_des = day_des;
+        this.day_go = day_go;
+        this.idUsername = idUsername;
+    }
+
+    public int getIdUsername() {
+        return idUsername;
+    }
+
+    public void setIdUsername(int idUsername) {
+        this.idUsername = idUsername;
+    }
 
     public int getId() {
         return id;

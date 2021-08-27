@@ -41,10 +41,21 @@
             android:textColor="#fff" />
 
         <Button
-            android:id="@+id/btn_manage_account"
+            android:id="@+id/btn_manage_your_route"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_manage_report"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@color/main_color"
+            android:text="Quản lý lộ trình "
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_manage_account"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_manage_your_route"
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
             android:background="@color/main_color"

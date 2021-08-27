@@ -17,7 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hauizone.Account.User;
 import com.example.hauizone.BaseDatabase;
+import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentQrBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,7 +30,10 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 public class QrFragment extends Fragment {
@@ -38,6 +43,8 @@ public class QrFragment extends Fragment {
     ArrayList<DataNearPlace> dataNearPlaces;
     ArrayList<DataYourRoute> dataYourRoutes;
     IntentIntegrator intentIntegrator;
+    User user;
+    int Day, Month, Year;
     BaseDatabase baseDatabase;
     final static String ICON_HOSPITAL = "https://www.iconpacks.net/icons/1/free-hospital-icon-1066-thumb.png";
     final static String ICON_CHURCH = "https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/001/827/original/church.png";
@@ -60,6 +67,8 @@ public class QrFragment extends Fragment {
 
         btnFab = getActivity().findViewById(R.id.btnFab);
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavigation);
+        baseDatabase = BaseDatabase.getInstance(getContext());
+        user = baseDatabase.getUserById(MainActivity.INDEX);
     }
 
     @Nullable
@@ -183,7 +192,7 @@ public class QrFragment extends Fragment {
         if(baseDatabase == null) baseDatabase = BaseDatabase.getInstance(getContext());
         if(dataYourRoutes == null ) dataYourRoutes = new ArrayList<>();
         try {
-            dataYourRoutes = baseDatabase.getAllYourRoute();
+            dataYourRoutes = baseDatabase.getAllYourRouteWithUser(MainActivity.INDEX);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -203,13 +212,19 @@ public class QrFragment extends Fragment {
             } else {
                 try {
                     JSONObject jsonObject = new JSONObject(result.getContents());
-                    String name = jsonObject.getString("name");
-                    String address = jsonObject.getString("address");
+                    String name = user.getName();
+                    String address = user.getUserProvince();
                     String address_des = jsonObject.getString("address_des");
-                    String address_go = jsonObject.getString("address_go");
-                    String day_des = jsonObject.getString("day_des");
+                    String address_go = user.getUserProvince();
                     String day_go = jsonObject.getString("day_go");
-                    DataYourRoute dataYourRoute = new DataYourRoute(name,address,address_des,address_go,day_des,day_go);
+
+                    Calendar calendar = Calendar.getInstance();
+                    Day = calendar.get(Calendar.DAY_OF_MONTH);
+                    Month = calendar.get(Calendar.MONTH) + 1;
+                    Year = calendar.get(Calendar.YEAR);
+                    String day_des = Day + "/" + Month + "/" + Year;
+
+                    DataYourRoute dataYourRoute = new DataYourRoute(name,address,address_des,address_go,day_des,day_go,MainActivity.INDEX);
 
                     confirmQRCode(dataYourRoute);
 

@@ -3,7 +3,7 @@
     package="com.example.hauizone">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -12,13 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HauiZone">
+        <activity
+            android:name=".Admin.AdminYourRoute.YourRouteManageActivity"
+            android:exported="true" />
         <activity android:name=".Account.UpdateEntryDeclaration.UpdateEntryDeclaration" />
         <activity android:name=".Admin.AdminNotifi.AdminNotifiActivity" />
-        <activity android:name=".Admin.AdminActivity"/>
-        <activity android:name=".Admin.AccountManage.ViewInformationAccountActivity"/>
+        <activity android:name=".Admin.AdminActivity" />
+        <activity android:name=".Admin.AccountManage.ViewInformationAccountActivity" />
         <activity android:name=".Admin.AccountManage.ManageAccountActivity" />
         <activity android:name=".Account.SignUpActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Account.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

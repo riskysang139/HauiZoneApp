@@ -10,6 +10,7 @@ import android.view.View;
 import com.example.hauizone.Admin.AccountManage.ManageAccountActivity;
 import com.example.hauizone.Admin.AdminDomesticAndEntry.AdminDomesticAndEntry;
 import com.example.hauizone.Admin.AdminNotifi.AdminNotifiActivity;
+import com.example.hauizone.Admin.AdminYourRoute.YourRouteManageActivity;
 import com.example.hauizone.Admin.ReportManage.AdminReportManage;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.ActivityAdminBinding;
@@ -37,6 +38,12 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AdminActivity.this, AdminReportManage.class));
+            }
+        });
+        binding.btnManageYourRoute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminActivity.this, YourRouteManageActivity.class));
             }
         });
 

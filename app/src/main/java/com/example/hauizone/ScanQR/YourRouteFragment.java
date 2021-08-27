@@ -16,7 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.hauizone.Account.User;
 import com.example.hauizone.BaseDatabase;
+import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.databinding.FragmentYourRouteBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,11 +32,12 @@ public class YourRouteFragment extends Fragment {
 
     FragmentYourRouteBinding binding;
     BaseDatabase baseDatabase;
-
+    User user;
+    int position=0;
     SimpleDateFormat dft;
     Calendar calendar;
     int DayDes, MonthDes, YearDes, DayGo, MonthGo, YearGo;
-    String arrProvice[] = {"Hà Nội", "Hà Giang", "Hội An", "TPHCM", "Bắc Giang", "Hà Nam", "Hải Phòng", "Vĩnh Phúc", "Hà Nam", "An Giang", "Bình Định", "Cao Bằng", "Đắk Nông"};
+    String arrProvice[] = {"Hà Nội", "Hà Giang", "Hội An", "TPHCM", "Bắc Giang", "Nam Định", "Hải Phòng", "Vĩnh Phúc", "Hà Nam", "An Giang", "Bình Định","Thái Bình", "Cao Bằng", "Đắk Nông"};
 
     private FloatingActionButton btnFab;
     private BottomNavigationView bottomNavigationView;
@@ -53,6 +56,7 @@ public class YourRouteFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         baseDatabase = BaseDatabase.getInstance(getContext());
+        user = baseDatabase.getUserById(MainActivity.INDEX);
 
         Bundle bundle = getArguments();
         if(bundle != null){
@@ -78,10 +82,19 @@ public class YourRouteFragment extends Fragment {
         ArrayAdapter<String> adapterProvice = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, arrProvice);
         binding.spinner.setAdapter(adapterProvice);
 
+        //fake dữ liệu
+        binding.edtTen.setText(user.getName());
+        for(int i = 0 ;i<arrProvice.length;i++){
+            if(arrProvice[i].equals(user.getUserProvince())){
+                position = i;
+                break;
+            }
+        }
+        binding.spinner.setSelection(position);
+        //Sửa
         if(dataYourRoute != null){
             binding.btnSua.setVisibility(View.VISIBLE);
             binding.edtTen.setText(dataYourRoute.getName());
-            int position=0;
             for(int i = 0 ;i<arrProvice.length;i++){
                 if(arrProvice[i].equals(dataYourRoute.getAddress())){
                     position = i;
@@ -133,45 +146,6 @@ public class YourRouteFragment extends Fragment {
                 processDay(false);
             }
         });
-    }
-
-    private void updateData(){
-        try {
-            if(baseDatabase == null) baseDatabase = BaseDatabase.getInstance(getContext());
-            baseDatabase.updateYourRoute(new DataYourRoute(
-                    dataYourRoute.getId(),
-                    binding.edtTen.getText().toString(),
-                    binding.spinner.getSelectedItem().toString(),
-                    binding.edtDiemDen.getText().toString(),
-                    binding.edtDiemDi.getText().toString(),
-                    binding.edtNgayDen.getText().toString(),
-                    binding.edtNgayDi.getText().toString()
-                    ));
-            Toast.makeText(getContext(), "Sửa thành công", Toast.LENGTH_SHORT).show();
-            openQrFragment(QrFragment.newInstance());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    private void insertData(){
-
-        try {
-            if(baseDatabase == null) baseDatabase = BaseDatabase.getInstance(getContext());
-            baseDatabase.insertYourRoute(new DataYourRoute(
-                    binding.edtTen.getText().toString(),
-                    binding.spinner.getSelectedItem().toString(),
-                    binding.edtDiemDen.getText().toString(),
-                    binding.edtDiemDi.getText().toString(),
-                    binding.edtNgayDen.getText().toString(),
-                    binding.edtNgayDi.getText().toString()
-            ));
-
-            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-            openQrFragment(QrFragment.newInstance());
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void close(){
@@ -249,5 +223,47 @@ public class YourRouteFragment extends Fragment {
         super.onDestroy();
 
         bottomNavigationView.setVisibility(View.VISIBLE);
+    }
+
+
+    private void updateData(){
+        try {
+            if(baseDatabase == null) baseDatabase = BaseDatabase.getInstance(getContext());
+            baseDatabase.updateYourRoute(new DataYourRoute(
+                    dataYourRoute.getId(),
+                    binding.edtTen.getText().toString(),
+                    binding.spinner.getSelectedItem().toString(),
+                    binding.edtDiemDen.getText().toString(),
+                    binding.edtDiemDi.getText().toString(),
+                    binding.edtNgayDen.getText().toString(),
+                    binding.edtNgayDi.getText().toString(),
+                    MainActivity.INDEX
+            ));
+            Toast.makeText(getContext(), "Sửa thành công", Toast.LENGTH_SHORT).show();
+            openQrFragment(QrFragment.newInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void insertData(){
+
+        try {
+            if(baseDatabase == null) baseDatabase = BaseDatabase.getInstance(getContext());
+            baseDatabase.insertYourRoute(new DataYourRoute(
+                    user.getName(),
+                    binding.spinner.getSelectedItem().toString(),
+                    binding.edtDiemDen.getText().toString(),
+                    binding.edtDiemDi.getText().toString(),
+                    binding.edtNgayDen.getText().toString(),
+                    binding.edtNgayDi.getText().toString(),
+                    MainActivity.INDEX
+            ));
+
+            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+            openQrFragment(QrFragment.newInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+        }
     }
 }

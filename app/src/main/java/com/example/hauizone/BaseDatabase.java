@@ -180,8 +180,10 @@ public class BaseDatabase extends SQLiteOpenHelper {
                     ADDRESS_DES_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
                     ADDRESS_GO_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
                     DAY_DES_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
-                    DAY_GO_YOURROUTE_COLUMN + " TEXT NOT NULL " +
-                    " ) ";
+                    DAY_GO_YOURROUTE_COLUMN + " TEXT NOT NULL , " +
+                    ID_USERNAME_COLUMN + " INTEGER NOT NULL " +
+                    " references "+TABLE_USER+"(ID_USERNAME_COLUMN)"+" on delete cascade" +
+                    ")";
 
     //table notification
 
@@ -634,6 +636,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
         contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
         contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
+        contentValues.put(ID_USERNAME_COLUMN,dataYourRoute.getIdUsername());
 
         long rowId = db.insert(TABLE_YOURROUTE, null, contentValues);
         Log.e(TAG, "onInsert: YourRoute = " + rowId);
@@ -653,6 +656,7 @@ public class BaseDatabase extends SQLiteOpenHelper {
         contentValues.put(ADDRESS_GO_YOURROUTE_COLUMN,dataYourRoute.getAddress_go());
         contentValues.put(DAY_DES_YOURROUTE_COLUMN,dataYourRoute.getDay_des());
         contentValues.put(DAY_GO_YOURROUTE_COLUMN,dataYourRoute.getDay_go());
+        contentValues.put(ID_USERNAME_COLUMN,dataYourRoute.getIdUsername());
 
         long rowId = db.update(TABLE_YOURROUTE, contentValues, " id = ? ",new String[]{String.valueOf(dataYourRoute.getId())});
         Log.e(TAG, "onUpdate: YourRoute = " + rowId);
@@ -666,6 +670,32 @@ public class BaseDatabase extends SQLiteOpenHelper {
 
         db.delete(TABLE_YOURROUTE,"id = ? ",new String[]{String.valueOf(id)});
         db.close();
+    }
+    public ArrayList<DataYourRoute> getAllYourRouteWithUser(int idUser){
+
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<DataYourRoute> dataYourRoutes = new ArrayList<>();
+        String sql = " SELECT * FROM " + TABLE_YOURROUTE + " WHERE " + ID_USERNAME_COLUMN + " = ? ";
+
+        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(idUser)});
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(ID_YOURROUTE_COLUMN));
+                String name = cursor.getString(cursor.getColumnIndex(NAME_YOURROUTE_COLUMN));
+                String address = cursor.getString(cursor.getColumnIndex(ADDRESS_YOURROUTE_COLUMN));
+                String address_des = cursor.getString(cursor.getColumnIndex(ADDRESS_DES_YOURROUTE_COLUMN));
+                String address_go = cursor.getString(cursor.getColumnIndex(ADDRESS_GO_YOURROUTE_COLUMN));
+                String day_des = cursor.getString(cursor.getColumnIndex(DAY_DES_YOURROUTE_COLUMN));
+                String day_go = cursor.getString(cursor.getColumnIndex(DAY_GO_YOURROUTE_COLUMN));
+                int idUsername = cursor.getInt(cursor.getColumnIndex(ID_USERNAME_COLUMN));
+
+                dataYourRoutes.add(new DataYourRoute(id, name, address, address_des, address_go, day_des, day_go,idUsername));
+            }while (cursor.moveToNext());
+            cursor.close();
+        }
+
+        db.close();
+        return dataYourRoutes;
     }
 
     public ArrayList<DataYourRoute> getAllYourRoute(){
@@ -683,8 +713,9 @@ public class BaseDatabase extends SQLiteOpenHelper {
                 String address_go = cursor.getString(cursor.getColumnIndex(ADDRESS_GO_YOURROUTE_COLUMN));
                 String day_des = cursor.getString(cursor.getColumnIndex(DAY_DES_YOURROUTE_COLUMN));
                 String day_go = cursor.getString(cursor.getColumnIndex(DAY_GO_YOURROUTE_COLUMN));
+                int idUsername = cursor.getInt(cursor.getColumnIndex(ID_USERNAME_COLUMN));
 
-                dataYourRoutes.add(new DataYourRoute(id, name, address, address_des, address_go, day_des, day_go));
+                dataYourRoutes.add(new DataYourRoute(id, name, address, address_des, address_go, day_des, day_go,idUsername));
             }while (cursor.moveToNext());
             cursor.close();
         }
