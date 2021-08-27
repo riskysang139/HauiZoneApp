@@ -15,6 +15,7 @@ import com.example.hauizone.ScanQR.DataYourRoute;
 import com.example.hauizone.databinding.ActivityManageYourRouteBinding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class YourRouteManageActivity extends AppCompatActivity implements YourRouteManageAdapter.OnClickItemYourRouteManage {
@@ -47,6 +48,7 @@ public class YourRouteManageActivity extends AppCompatActivity implements YourRo
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Collections.reverse(dataYourRoutes);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         yourRouteAdapter = new YourRouteManageAdapter(this, dataYourRoutes, this);
         binding.rvManageYourRoute.setLayoutManager(linearLayoutManager);

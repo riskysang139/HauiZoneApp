@@ -33,6 +33,8 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -196,6 +198,7 @@ public class QrFragment extends Fragment {
         }catch (Exception e){
             e.printStackTrace();
         }
+        Collections.reverse(dataYourRoutes);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         adapterYourRoute = new AdapterYourRoute(getContext(),dataYourRoutes);
         binding.rvQRCode.setLayoutManager(layoutManager);
@@ -216,12 +219,12 @@ public class QrFragment extends Fragment {
                     String address = user.getUserProvince();
                     String address_des = jsonObject.getString("address_des");
                     String address_go = user.getUserProvince();
-                    String day_go = jsonObject.getString("day_go");
 
                     Calendar calendar = Calendar.getInstance();
                     Day = calendar.get(Calendar.DAY_OF_MONTH);
                     Month = calendar.get(Calendar.MONTH) + 1;
                     Year = calendar.get(Calendar.YEAR);
+                    String day_go = Day + "/" + Month + "/" + Year;
                     String day_des = Day + "/" + Month + "/" + Year;
 
                     DataYourRoute dataYourRoute = new DataYourRoute(name,address,address_des,address_go,day_des,day_go,MainActivity.INDEX);
