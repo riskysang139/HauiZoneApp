@@ -127,20 +127,7 @@ public class ReportFragment extends Fragment {
         Report report = new Report(date,name,sdt,province,district,ward,street,typeReport,content,MainActivity.INDEX);
         Boolean success = mBaseDatabase.insertReport(report);
         if(success){
-            System.out.println("tạo oke");
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Thông báo");
-            builder.setMessage("Tạo phản ánh thành công!");
-            builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getContext(),"Tạo phản ánh thành công",Toast.LENGTH_SHORT).show();
-                }
-            });
-            Dialog dialog = builder.create();
-            dialog.show();
-            Log.e("E","insertReport");
-
+            Toast.makeText(getContext(),"Tạo phản ánh thành công",Toast.LENGTH_SHORT).show();
         }
         else Toast.makeText(getContext(),"Tạo phản ánh không thành công",Toast.LENGTH_SHORT).show();
     }
