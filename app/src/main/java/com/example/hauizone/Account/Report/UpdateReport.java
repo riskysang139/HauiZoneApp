@@ -54,8 +54,8 @@ public class UpdateReport extends AppCompatActivity {
         binding.btnUpdateReport.setOnClickListener(view -> {
             setInit();
             if(setCheckRequired()==false){
-//              showDialog();
-                Toast.makeText(getBaseContext(),"Bạn phải nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+              showDialog();
+//                Toast.makeText(getBaseContext(),"Bạn phải nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
             }
             else {
                 updateData();
@@ -177,7 +177,7 @@ public class UpdateReport extends AppCompatActivity {
         else Toast.makeText(getBaseContext(),"Cập nhật phản ánh không thành công",Toast.LENGTH_SHORT).show();
     }
     private void showDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Thông báo");
         builder.setMessage("Bạn phải nhập đầy đủ thông tin yêu cầu!");
         builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
