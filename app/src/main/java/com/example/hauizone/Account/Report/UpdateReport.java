@@ -50,11 +50,12 @@ public class UpdateReport extends AppCompatActivity {
         setSpinnerAndAutoCompleteTextView();
         setUpDisplay();
         setDatimeDialog();
-//        setEvent();
+        setEvent();
         binding.btnUpdateReport.setOnClickListener(view -> {
             setInit();
-            if(!setCheckRequired()){
-                showDialog();
+            if(setCheckRequired()==false){
+//              showDialog();
+                Toast.makeText(getBaseContext(),"Bạn phải nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
             }
             else {
                 updateData();
@@ -148,7 +149,7 @@ public class UpdateReport extends AppCompatActivity {
         binding.typeReport.setAdapter(typeReportAdapter);
     }
     private boolean setCheckRequired(){
-        if(isEmpty(date) && isEmpty(name) && isEmpty(sdt) && isEmpty(province) && isEmpty(district) && isEmpty(ward)){
+        if(isEmpty(date) || isEmpty(name) || isEmpty(sdt) || isEmpty(province) || isEmpty(district) || isEmpty(ward)){
             return false;
         }
         return true;
