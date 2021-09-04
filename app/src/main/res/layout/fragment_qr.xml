@@ -107,7 +107,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/your_route"
                             android:textColor="@color/white"
-                            android:textSize="20dp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
                     </RelativeLayout>
 
@@ -122,13 +122,13 @@
 
                         <TextView
                             android:id="@+id/btnNearPlace"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:layout_centerInParent="true"
-                            android:textColor="@color/black"
-                            android:text="@string/near_place"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/near_place"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
                     </RelativeLayout>
 
 

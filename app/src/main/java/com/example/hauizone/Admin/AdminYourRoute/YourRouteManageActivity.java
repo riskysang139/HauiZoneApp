@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hauizone.BaseDatabase;
+import com.example.hauizone.MainActivity;
 import com.example.hauizone.R;
 import com.example.hauizone.ScanQR.DataYourRoute;
 import com.example.hauizone.databinding.ActivityManageYourRouteBinding;
@@ -45,6 +46,28 @@ public class YourRouteManageActivity extends AppCompatActivity implements YourRo
 
         try {
             dataYourRoutes = baseDatabase.getAllYourRoute();
+            if(dataYourRoutes.size() == 0){
+                baseDatabase.insertYourRoute(new DataYourRoute("Nguyễn Đức Thành","Hà Nam","Hà Nam","Nam Định","05/09/2021","04/09/2021",4));
+                baseDatabase.insertYourRoute(new DataYourRoute("Nguyễn Đức Thành","Hà Nam","Nam Định","Hà Nam","05/09/2021","04/09/2021",4));
+                baseDatabase.insertYourRoute(new DataYourRoute("Nguyễn Đức Thành","Hà Nam","Vĩnh Phúc","Nam Định","05/09/2021","04/09/2021",4));
+
+                baseDatabase.insertYourRoute(new DataYourRoute("Nguyễn Văn Thàng","Nam Định","Hà Nam","Nam Định","05/09/2021","04/09/2021",3));
+                baseDatabase.insertYourRoute(new DataYourRoute("Nguyễn Văn Thàng","Nam Định","Nam Định","Hà Nam","05/09/2021","04/09/2021",3));
+                baseDatabase.insertYourRoute(new DataYourRoute("Nguyễn Văn Thàng","Nam Định","Vĩnh Phúc","Nam Định","05/09/2021","04/09/2021",3));
+
+                baseDatabase.insertYourRoute(new DataYourRoute("Cao Thế Thắng","Vĩnh Phúc","Hà Nam","Nam Định","05/09/2021","04/09/2021",5));
+                baseDatabase.insertYourRoute(new DataYourRoute("Cao Thế Thắng","Vĩnh Phúc","Nam Định","Hà Nam","05/09/2021","04/09/2021",5));
+                baseDatabase.insertYourRoute(new DataYourRoute("Cao Thế Thắng","Vĩnh Phúc","Vĩnh Phúc","Nam Định","05/09/2021","04/09/2021",5));
+
+                baseDatabase.insertYourRoute(new DataYourRoute("Bùi Đăng Tân","Nam Định","Hà Nam","Nam Định","05/09/2021","04/09/2021",1));
+                baseDatabase.insertYourRoute(new DataYourRoute("Bùi Đăng Tân","Nam Định","Nam Định","Hà Nam","05/09/2021","04/09/2021",1));
+                baseDatabase.insertYourRoute(new DataYourRoute("Bùi Đăng Tân","Nam Định","Vĩnh Phúc","Nam Định","05/09/2021","04/09/2021",1));
+
+                baseDatabase.insertYourRoute(new DataYourRoute("Trần Quang Sang","Thái Bình","Hà Nam","Nam Định","05/09/2021","04/09/2021",2));
+                baseDatabase.insertYourRoute(new DataYourRoute("Trần Quang Sang","Thái Bình","Nam Định","Hà Nam","05/09/2021","04/09/2021",2));
+                baseDatabase.insertYourRoute(new DataYourRoute("Trần Quang Sang","Thái Bình","Vĩnh Phúc","Nam Định","05/09/2021","04/09/2021",2));
+                dataYourRoutes = baseDatabase.getAllYourRouteWithUser(MainActivity.INDEX);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

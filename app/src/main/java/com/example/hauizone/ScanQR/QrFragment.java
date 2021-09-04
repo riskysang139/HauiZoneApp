@@ -195,6 +195,13 @@ public class QrFragment extends Fragment {
         if(dataYourRoutes == null ) dataYourRoutes = new ArrayList<>();
         try {
             dataYourRoutes = baseDatabase.getAllYourRouteWithUser(MainActivity.INDEX);
+            if(dataYourRoutes.size() == 0){
+                baseDatabase.insertYourRoute(new DataYourRoute(user.getName(),user.getUserProvince(),"Hà Nam","Nam Định","05/09/2021","04/09/2021",MainActivity.INDEX));
+                baseDatabase.insertYourRoute(new DataYourRoute(user.getName(),user.getUserProvince(),"Nam Định","Hà Nam","05/09/2021","04/09/2021",MainActivity.INDEX));
+                baseDatabase.insertYourRoute(new DataYourRoute(user.getName(),user.getUserProvince(),"Vĩnh Phúc","Nam Định","05/09/2021","04/09/2021",MainActivity.INDEX));
+
+                dataYourRoutes = baseDatabase.getAllYourRouteWithUser(MainActivity.INDEX);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
